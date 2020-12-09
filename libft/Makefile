@@ -78,6 +78,10 @@ LIBFT =	ft_memset.c \
 		ft_strndup.c \
 		get_next_line.c \
 		ft_error.c \
+		get_emplace_vector.c \
+        init_free_vector.c \
+        insert_sort_vector.c \
+        push_pop_vector.c \
 
 FT_PRINTF = 		ad_0_after0x.c \
              		ad_0_aftersign.c \
@@ -144,7 +148,7 @@ OBJS = $(addprefix $(OBJSFD)/, $(OBJECTS))
 
 VPATH =	src:src/ft_printf
 
-all: $(NAME)
+all: $(NAME) $(VECTOR)
 
 $(NAME): $(OBJS)
 	@echo "$(GREEN)...compiling binary libft...$(NC)"
