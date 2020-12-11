@@ -1,5 +1,6 @@
 #ifndef CORWAR_CORWAR_H
 # define CORWAR_CORWAR_H
+
 # include "libft/inc/libft.h"
 # include "libft/inc/ft_printf.h"
 # include "libft/inc/get_next_line.h"
@@ -24,15 +25,19 @@ struct			s_player
 	char chmpsize[CHAMP_MAX_SIZE + 1];
 	char string[FULL_SIZE + 1];
 	int	 player_num;
+	int  index_player_ac;
 };
 
 typedef	struct s_cor	t_cor;
 struct			s_cor
 {
 	t_cflag flag;
-	t_player player;
+	t_player player[MAX_PLAYERS + 1];
 	char **files;
 	int cycles_to_die;
+	int dump;
+	int count_players;
+	int count_cursors;
 };
 
 #endif //CORWAR_CORWAR_H

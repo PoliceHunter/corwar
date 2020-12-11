@@ -12,6 +12,13 @@
 
 #include "../inc/vector.h"
 
+void	*get_from_vec(t_vector *vec, int index)
+{
+	if (index >= vec->size)
+		return (NULL);
+	return (vec->data + (index * vec->elem_size));
+}
+
 t_vector	new_vector(size_t capacity, size_t elem_size)
 {
 	t_vector res;
