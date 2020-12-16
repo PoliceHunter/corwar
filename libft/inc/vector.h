@@ -23,7 +23,6 @@ struct					s_vector
 	int					size;
 	int					capacity;
 	size_t				elem_size;
-	int					max_bfs;
 };
 
 typedef struct s_range	t_range;

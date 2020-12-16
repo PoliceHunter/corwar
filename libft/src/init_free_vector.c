@@ -27,7 +27,6 @@ t_vector	new_vector(size_t capacity, size_t elem_size)
 	res.capacity = capacity;
 	res.elem_size = elem_size;
 	res.data = malloc(res.capacity * res.elem_size);
-	res.max_bfs = 0;
 	return (res);
 }
 

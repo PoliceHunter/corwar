@@ -128,6 +128,7 @@ set(SOURCE_CODE
         libft/src/insert_sort_vector.c
         libft/src/push_pop_vector.c
         corwar.h
+        exit.c
         op.h)
 
 add_executable(corwar ${SOURCE_CODE} main.c)
