@@ -7,6 +7,10 @@ void init_cor(t_cor *cor, char **av)
 	cor->count_players = 0;
 	cor->flag.visual = 0;
 	cor->flag.dump = 0;
+	cor->count_cursors = 0;
+	cor->cycle = 0;
+	cor->cycle_to_check = 0;
+	cor->last_live_player = 0;
 }
 
 void parse_dump_flag(t_cor *cor, char *num, int *i, int ac)
@@ -29,7 +33,7 @@ int		check_duplicate_num(t_cor *cor, long tmp)
 	index = -1;
 	while (++index < cor->count_players)
 	{
-		if (tmp == cor->player[index].player_num)
+		if (tmp == cor->player[index].id)
 			return (1);
 	}
 	return (0);
@@ -50,7 +54,7 @@ void	save_num_player(t_cor *cor, char *num, int *i, int ac)
 		exterminate(cor, INVALID_FLAG_N);
 	if (check_duplicate_num(cor, tmp))
 		exterminate(cor, DUPLICATE_NUM_N);
-	cor->player[amount_players].player_num = (int)tmp;
+	cor->player[amount_players].id = (int)tmp;
 	cor->player[amount_players].index_player_ac = *i;
 }
 
@@ -64,15 +68,15 @@ void	save_empty_num_player(t_cor *cor, const int *i)
 		count = 1;
 	else
 	{
-		count = cor->player[0].player_num;
+		count = cor->player[0].id;
 		while (++index < cor->count_players)
-			count = (count > cor->player[index].player_num) ? cor->player[index].player_num : count;
+			count = (count > cor->player[index].id) ? cor->player[index].id : count;
 		count++;
 		while (check_duplicate_num(cor, count))
 			if (count++ == INT_MAX)
 				return;
 	}
-	cor->player[cor->count_players].player_num = count;
+	cor->player[cor->count_players].id = count;
 	cor->player[cor->count_players].index_player_ac = *i;
 }
 
@@ -224,6 +228,54 @@ void	error_usage(void)
 	exit(1);
 }
 
+void init_arena(t_cor *cor)
+{
+	int index;
+	uint32_t pos;
+
+	pos = 0;
+	index = -1;
+	while (++index != cor->count_players)
+	{
+		ft_memcpy(&(cor->map[pos]), cor->player[index].code, (size_t)cor->player[index].code_size);
+		pos += MEM_SIZE / cor->count_players;
+	}
+}
+
+t_process *init_process(int32_t pos, t_vector process)
+{
+	t_process *proc;
+
+	proc = malloc(sizeof(t_process));
+	proc->carry = FALSE;
+	proc->cycle_to_exec = 0;
+	proc->live_last_cycle = 0;
+	proc->live_last_id = 0;
+	proc->pos = pos;
+	proc->op_code = 0;
+	proc->id = process.size; // Указываем id процесса по размеру вектора
+	proc->player_id = 0;
+
+	return (proc);
+}
+
+void init_processes(t_cor *cor)
+{
+	int index;
+	int32_t pos;
+	t_vector process;
+
+	pos = 0;
+	process = new_vector(cor->count_cursors, sizeof(t_process));
+	index = -1;
+	while (++index != cor->count_cursors)
+	{
+		push_back_vec(&process, init_process(pos, process));
+		pos += MEM_SIZE / cor->count_players;
+	}
+	cor->process = process;
+}
+
 int main(int ac, char **av)
 {
 	t_cor cor;
@@ -232,5 +284,8 @@ int main(int ac, char **av)
 	init_cor(&cor, av);
 	parse_flags(&cor, ac, av);
 	parse_champion_file(&cor);
+	init_arena(&cor);
+	init_processes(&cor);
+
 	return 0;
 }
