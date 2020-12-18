@@ -228,6 +228,23 @@ void	error_usage(void)
 	exit(1);
 }
 
+void		print_arena(uint8_t *map, int print_mode)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		ft_printf("%.4p : ", i);
+		j = -1;
+		while (++j < print_mode)
+			ft_printf("%.2x ", map[i + j]);
+		ft_printf("\n");
+		i += print_mode;
+	}
+}
+
 void init_arena(t_cor *cor)
 {
 	int index;
@@ -276,6 +293,43 @@ void init_processes(t_cor *cor)
 	cor->process = process;
 }
 
+void		print_intro(t_cor *cor)
+{
+	int32_t id;
+
+	id = -1;
+	ft_printf("Introducing contestants...\n");
+	while (++id != cor->count_players)
+		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n", id, cor->player[id].code_size, cor->player[id].name, cor->player[id].comment);
+}
+
+void make_op(t_process *proc, t_cor *cor)
+{
+
+}
+
+void check_cycle(t_cor *cor)
+{
+	int index;
+
+	index = 0;
+	cor->cycle++;
+	cor->cycle_to_check++;
+	while (cor->process.size > index)
+		make_op(get_from_vec(&cor->process, index), cor);
+}
+
+void start_game(t_cor *cor)
+{
+	while (cor->process.size != 0)
+	{
+		if (cor->flag.dump == cor->cycle)
+			print_arena(cor->map, 64);
+		check_cycle(cor);
+
+	}
+}
+
 int main(int ac, char **av)
 {
 	t_cor cor;
@@ -286,6 +340,11 @@ int main(int ac, char **av)
 	parse_champion_file(&cor);
 	init_arena(&cor);
 	init_processes(&cor);
-
+	if (cor.flag.visual == FALSE)
+	{
+		print_intro(&cor);
+		start_game(&cor);
+	}
+	//print_arena(cor.map, 64);
 	return 0;
 }
