@@ -3,28 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmyrcell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcapers <dcapers@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/14 18:48:06 by tmyrcell          #+#    #+#             */
-/*   Updated: 2020/02/23 19:40:36 by tmyrcell         ###   ########.fr       */
+/*   Created: 2019/09/08 16:40:41 by dcapers           #+#    #+#             */
+/*   Updated: 2019/11/02 13:55:45 by dcapers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
-char	*ft_strjoin(char const *left, char const *right)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*result;
-	size_t	left_len;
-	size_t	right_len;
+	char	*res;
+	size_t	len;
+	size_t	i;
 
-	left_len = ft_strlen(left);
-	right_len = ft_strlen(right);
-	if ((left_len + right_len) == 0)
+	i = 0;
+	if (!s1 || !s2)
 		return (NULL);
-	result = malloc((left_len + right_len + 1) * sizeof(char));
-	memmove(result, left, left_len * sizeof(char));
-	memmove(result + (left_len * sizeof(char)), right,
-			(right_len + 1) * sizeof(char));
-	return (result);
+	len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	if (!(res = (char *)malloc(len)))
+		return (NULL);
+	while (*s1 != '\0')
+		res[i++] = *s1++;
+	while (*s2 != '\0')
+		res[i++] = *s2++;
+	res[i] = '\0';
+	return (res);
 }

@@ -3,37 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmyrcell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcapers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/17 17:39:01 by tmyrcell          #+#    #+#             */
-/*   Updated: 2019/09/17 17:55:44 by tmyrcell         ###   ########.fr       */
+/*   Created: 2019/09/08 18:27:49 by dcapers           #+#    #+#             */
+/*   Updated: 2019/09/08 18:30:58 by dcapers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char index;
-
-	index = 0;
 	if (n == -2147483648)
-	{
-		n = n / 10;
-		index = 1;
-	}
-	if (n < 0)
-	{
-		n = -n;
-		ft_putchar_fd('-', fd);
-	}
-	if (n < 10)
-		ft_putchar_fd(n + '0', fd);
+		ft_putstr_fd("-2147483648", fd);
 	else
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			n = -n;
+		}
+		if (n >= 10)
+			ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
 	}
-	if (index == 1)
-		ft_putchar_fd(8 + '0', fd);
 }

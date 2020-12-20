@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmyrcell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcapers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/11 18:58:12 by tmyrcell          #+#    #+#             */
-/*   Updated: 2019/09/14 15:18:10 by tmyrcell         ###   ########.fr       */
+/*   Created: 2019/09/08 14:20:17 by dcapers           #+#    #+#             */
+/*   Updated: 2019/09/10 18:49:44 by dcapers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 int		ft_toupper(int c)
 {
-	if (c >= 65 && c <= 90)
-		return (c);
-	if (c >= 97 && c <= 122)
-		return (c - 97 + 65);
+	if (ft_isascii(c) && c >= 'a' && c <= 'z')
+		c -= ('a' - 'A');
 	return (c);
 }

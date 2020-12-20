@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmyrcell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kolya <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 20:24:26 by tmyrcell          #+#    #+#             */
-/*   Updated: 2019/09/21 15:55:03 by tmyrcell         ###   ########.fr       */
+/*   Created: 2019/09/06 13:22:03 by kolya             #+#    #+#             */
+/*   Updated: 2019/09/14 17:29:33 by dcapers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t sz)
 {
-	size_t i;
-	size_t srclen;
-	size_t dstlen;
+	size_t	l_dst;
+	size_t	l_src;
+	size_t	res;
+	size_t	i;
 
+	l_dst = ft_strlen(dst);
+	l_src = ft_strlen(src);
+	if (sz >= l_dst)
+		res = l_dst + l_src;
+	else
+		res = sz + l_src;
 	i = 0;
-	srclen = ft_strlen((char *)src);
-	dstlen = ft_strlen(dst);
-	if (size <= dstlen)
-		return (srclen + size);
-	while (dst[i] != '\0' && i < size - 1)
-		i++;
-	while (i < size - 1 && *src)
+	while (l_dst + i + 1 < sz && src[i] != '\0')
 	{
-		dst[i] = *src;
+		dst[l_dst + i] = src[i];
 		i++;
-		src++;
 	}
-	dst[i] = '\0';
-	return (dstlen + srclen);
+	dst[l_dst + i] = '\0';
+	return (res);
 }

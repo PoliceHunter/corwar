@@ -3,33 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmyrcell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcapers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/17 12:36:59 by tmyrcell          #+#    #+#             */
-/*   Updated: 2019/09/23 20:39:29 by tmyrcell         ###   ########.fr       */
+/*   Created: 2019/09/08 17:55:21 by dcapers           #+#    #+#             */
+/*   Updated: 2019/09/17 13:06:43 by dcapers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
-#include <stdlib.h>
+#include "libft.h"
 
-char			*ft_strtrim(char const *s)
+static int		is_whitesp(char c)
 {
-	size_t	begin;
-	size_t	end;
-	size_t	len;
+	if (c == ' ' || c == '\n' || c == '\t')
+		return (1);
+	return (0);
+}
 
-	if (!s)
+static char		*ft_strempty(size_t len)
+{
+	char	*r;
+
+	if (!(r = (char *)malloc(len)))
 		return (NULL);
-	begin = 0;
-	end = ft_strlen(s);
-	while (s[begin] == ' ' || s[begin] == '\t' || s[begin] == '\n')
-		begin++;
-	while ((begin < end) && (s[end - 1] == ' ' ||
-				s[end - 1] == '\t' || s[end - 1] == '\n'))
-		end--;
-	if (begin == end)
-		return (ft_strnew(1));
-	len = end - begin;
-	return (ft_strsub(s, begin, len));
+	while (len--)
+		r[len] = '\0';
+	return (r);
+}
+
+char			*ft_strtrim(char const *str)
+{
+	char	*s;
+	size_t	len;
+	size_t	p;
+	char	*res;
+
+	p = 0;
+	s = (char *)str;
+	if (!str)
+		return (NULL);
+	len = ft_strlen(str);
+	while (s && s[p] && s[p] != '\0' && is_whitesp(s[p]))
+		p++;
+	if (s[p] != '\0')
+	{
+		while (s[len - 1] && len > p && is_whitesp(s[len - 1]))
+			len--;
+		if (len - p > 0)
+		{
+			if ((res = ft_strsub(s, p, len - p)) != NULL)
+				return (res);
+			else
+				return (NULL);
+		}
+	}
+	return (ft_strempty(1));
 }

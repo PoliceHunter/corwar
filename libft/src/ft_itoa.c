@@ -3,60 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmyrcell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcapers <dcapers@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/17 17:56:01 by tmyrcell          #+#    #+#             */
-/*   Updated: 2019/09/23 19:00:59 by tmyrcell         ###   ########.fr       */
+/*   Created: 2019/09/10 15:36:16 by dcapers           #+#    #+#             */
+/*   Updated: 2020/03/14 14:53:39 by dcapers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
-#include <stdlib.h>
+#include "libft.h"
 
-static int		ft_len(long nb)
+static void		ft_strrmove(char *s, int l, int from)
 {
-	int		len;
-
-	len = 0;
-	if (nb == 0)
-		return (1);
-	if (nb < 0)
-	{
-		nb = nb * -1;
-		len++;
-	}
-	while (nb > 0)
-	{
-		nb = nb / 10;
-		len++;
-	}
-	return (len);
+	while (l-- > from)
+		s[l + 1] = s[l];
 }
 
-char			*ft_itoa(int n)
+int				ft_numcount(int nb)
 {
-	char	*result;
-	int		r_index;
+	int		l;
 
-	r_index = ft_len(n);
-	if (!(result = (char*)malloc(sizeof(char) * (r_index + 1))))
+	l = 1;
+	if (nb < 0)
+		l++;
+	while (nb || l == 1)
+	{
+		nb /= 10;
+		l++;
+	}
+	return (l);
+}
+
+char			*ft_itoa(int nb)
+{
+	char	*res;
+	int		l;
+	int		sg;
+
+	l = 0;
+	if (!(res = (char *)malloc(ft_numcount(nb))))
 		return (NULL);
-	result[r_index--] = '\0';
-	if (n == 0)
+	if (nb == -2147483648)
+		return (ft_strdup("-2147483648"));
+	ft_memset(res, '\0', 12);
+	if (nb < 0)
 	{
-		result[0] = '0';
-		return (result);
+		nb = -nb;
+		res[0] = '-';
+		l++;
 	}
-	while (n != 0)
+	sg = l;
+	while (nb || l == 0)
 	{
-		if (n < 0)
-		{
-			result[0] = '-';
-			result[r_index--] = '0' + -(n % 10);
-		}
-		else
-			result[r_index--] = '0' + (n % 10);
-		n /= 10;
+		ft_strrmove(res, l, sg);
+		res[sg] = nb % 10 + 48;
+		nb /= 10;
+		l++;
 	}
-	return (result);
+	return (res);
 }

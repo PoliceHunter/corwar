@@ -3,40 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmyrcell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 17:10:42 by tmyrcell          #+#    #+#             */
-/*   Updated: 2020/08/07 12:37:42 by tmyrcell         ###   ########.fr       */
+/*   Created: 2020/02/27 22:20:39 by dcapers           #+#    #+#             */
+/*   Updated: 2020/06/23 16:27:50 by dcapers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
-int		ft_atoi(const char *str)
+long int			well_returned(unsigned long long res, int sg,
+		int count)
 {
-	int		sign;
-	int		dig;
-	long	res;
+	if (count >= 19)
+		return (sg == -1 ? 0 : -1);
+	else if (res > 9223372036854775807)
+		return (sg == -1 ? 0 : -1);
+	else
+		return (res * sg);
+}
 
-	sign = 1;
-	dig = 0;
+long int			ft_atoi(const char *str)
+{
+	int					ng;
+	unsigned long long	res;
+	int					count;
+
 	res = 0;
-	while (*str == '\n' || *str == '\t' || *str == '\v'
-			|| *str == ' ' || *str == '\r' || *str == '\f')
+	ng = 1;
+	count = 0;
+	while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
+				*str == '\r' || *str == '\f' || *str == '\v'))
 		str++;
 	if (*str == '-')
-		sign = -1;
+		ng = -1;
 	if (*str == '-' || *str == '+')
 		str++;
-	while (*str == '0')
-		str++;
-	while ((*str >= '0') && (*str <= '9'))
+	while (ft_isdigit(*str) && *str != '\0')
 	{
-		res = res * 10 + (*str - '0');
-		dig++;
-		if (dig > 10 || (res * sign) > INT_MAX || (res * sign) < INT_MIN)
-			ft_error();
+		res = (res * 10) + (unsigned long long)(*str - '0');
 		str++;
+		count++;
 	}
-	return (int)(res * sign);
+	return (res * ng);
 }
