@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 11:49:21 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 11:58:02 by dcapers          ###   ########.fr       */
+/*   Updated: 2020/12/21 19:02:13 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char			*str_join_free(char *s1, char *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	res = ft_strjoin_with(s1, '\n', s2);
+	res = ft_strjoin_by(s1, '\n', s2);
 	ft_strdel(&s1);
 	ft_strdel(&s2);
 	return (res);
