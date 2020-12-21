@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+         #
+#    By: student <student@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/20 12:04:51 by dcapers           #+#    #+#              #
-#    Updated: 2020/12/20 12:15:37 by dcapers          ###   ########.fr        #
+#    Updated: 2020/12/21 18:44:35 by student          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,13 +63,13 @@ LIBFT_ALL		= $(addsuffix .all,$(LIBFT_DIR))
 LIBFT_CLEAN	= $(addsuffix .clean,$(LIBFT_DIR))
 LIBFT_FCLEAN	= $(addsuffix .fclean,$(LIBFT_DIR))
 
-INCLUDES		= include/
+INCLUDES		= includes/
 INC_LIBFT	= $(addsuffix includes/,$(LIBFT_DIR))
 
 ASM_HEADERS_LIST = asm.h errors.h
 CORE_HEADERS_LIST = corewar.h errors.h
 
-ASM_HEADERS = $(addprefix inc/, $(ASM_HEADERS_LIST))
+ASM_HEADERS = $(addprefix includes/, $(ASM_HEADERS_LIST))
 CORE_HEADERS = $(addprefix inc/, $(CORE_HEADERS_LIST))
 
 FLAGS = 
