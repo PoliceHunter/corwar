@@ -245,7 +245,7 @@ void	error_usage(void)
 	GUI: ./corewar -visual [Players]\n \
 	Default Player Numbers: 1, 2, 3, 4...\n \
 	Change Player Number: -n -1 filename.cor\n \
-	Dump: ./corewar -dump32 300 [Players](prints the memory after 300 cycles)\n \
+	Dump: ./corewar -dump 300 [Players](prints the memory after 300 cycles)\n \
 	Game on! 👾 🤖 🔫 \n", 2);
 	exit(1);
 }
@@ -277,6 +277,7 @@ void init_arena(t_cor *cor)
 	while (++index != cor->count_players)
 	{
 		ft_memcpy(&(cor->map[pos]), cor->player[index].code, (size_t)cor->player[index].code_size);
+		cor->player[index].position_on_map = pos;
 		pos += MEM_SIZE / cor->count_players;
 	}
 }
@@ -305,7 +306,7 @@ void init_processes(t_cor *cor)
 	t_vector process;
 
 	pos = 0;
-	process = new_vector(cor->count_cursors, sizeof(t_process));
+	process = new_vector(1, sizeof(t_process));
 	index = -1;
 	while (++index != cor->count_cursors)
 	{
@@ -345,11 +346,18 @@ void start_game(t_cor *cor)
 {
 	while (cor->process.size != 0)
 	{
-		if (cor->flag.dump32 == cor->cycle)
+		if (cor->flag.dump64 == cor->cycle)
 			print_arena(cor->map, 64);
+		if (cor->flag.dump32 == cor->cycle)
+			print_arena(cor->map, 32);
 		check_cycle(cor);
 
 	}
+}
+
+void op_add(t_cor *cor, t_process *cursor)
+{
+
 }
 
 int main(int ac, char **av)
@@ -362,12 +370,17 @@ int main(int ac, char **av)
 	parse_champion_file(&cor);
 	init_arena(&cor);
 	init_processes(&cor);
+//	if (LIVE == cor.map[((t_process *)get_from_vec(&cor.process, 1))->pos])
+//	{
+//		((t_process *)get_from_vec(&cor.process, 1))->live_last_cycle = cor.cycle;
+//	}
 	if (cor.flag.visual == FALSE)
 	{
 		print_intro(&cor);
 		//start_game(&cor);
 	}
-	print_arena(cor.map, 64);
-
+	op_add(&cor, get_from_vec(&cor.process, 2));
+	print_arena(cor.map, 32);
 	return 0;
 }
+//TODO Зависимость id игрока от положения на карте
