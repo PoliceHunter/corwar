@@ -3,61 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmyrcell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 15:36:16 by dcapers           #+#    #+#             */
-/*   Updated: 2020/03/14 14:53:39 by dcapers          ###   ########.fr       */
+/*   Created: 2019/09/17 17:56:01 by tmyrcell          #+#    #+#             */
+/*   Updated: 2019/09/23 19:00:59 by tmyrcell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/libft.h"
+#include <stdlib.h>
 
-static void		ft_strrmove(char *s, int l, int from)
+static int		ft_len(long nb)
 {
-	while (l-- > from)
-		s[l + 1] = s[l];
-}
+	int		len;
 
-int				ft_numcount(int nb)
-{
-	int		l;
-
-	l = 1;
+	len = 0;
+	if (nb == 0)
+		return (1);
 	if (nb < 0)
-		l++;
-	while (nb || l == 1)
 	{
-		nb /= 10;
-		l++;
+		nb = nb * -1;
+		len++;
 	}
-	return (l);
+	while (nb > 0)
+	{
+		nb = nb / 10;
+		len++;
+	}
+	return (len);
 }
 
-char			*ft_itoa(int nb)
+char			*ft_itoa(int n)
 {
-	char	*res;
-	int		l;
-	int		sg;
+	char	*result;
+	int		r_index;
 
-	l = 0;
-	if (!(res = (char *)malloc(ft_numcount(nb))))
+	r_index = ft_len(n);
+	if (!(result = (char*)malloc(sizeof(char) * (r_index + 1))))
 		return (NULL);
-	if (nb == -2147483648)
-		return (ft_strdup("-2147483648"));
-	ft_memset(res, '\0', 12);
-	if (nb < 0)
+	result[r_index--] = '\0';
+	if (n == 0)
 	{
-		nb = -nb;
-		res[0] = '-';
-		l++;
+		result[0] = '0';
+		return (result);
 	}
-	sg = l;
-	while (nb || l == 0)
+	while (n != 0)
 	{
-		ft_strrmove(res, l, sg);
-		res[sg] = nb % 10 + 48;
-		nb /= 10;
-		l++;
+		if (n < 0)
+		{
+			result[0] = '-';
+			result[r_index--] = '0' + -(n % 10);
+		}
+		else
+			result[r_index--] = '0' + (n % 10);
+		n /= 10;
 	}
-	return (res);
+	return (result);
 }
