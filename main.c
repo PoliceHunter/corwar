@@ -306,7 +306,7 @@ void init_processes(t_cor *cor)
 	t_vector process;
 
 	pos = 0;
-	process = new_vector(1, sizeof(t_process));
+	process = new_vector(cor->count_cursors, sizeof(t_process));
 	index = -1;
 	while (++index != cor->count_cursors)
 	{
