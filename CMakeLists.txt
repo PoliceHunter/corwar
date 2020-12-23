@@ -127,6 +127,7 @@ set(SOURCE_CODE
         libft/src/init_free_vector.c
         libft/src/insert_sort_vector.c
         libft/src/push_pop_vector.c
+        libft/src/ft_atol.c
         corwar.h
         exit.c
         op.h)
