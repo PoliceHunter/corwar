@@ -6,7 +6,8 @@ void init_cor(t_cor *cor, char **av)
 	cor->files = av;
 	cor->count_players = 0;
 	cor->flag.visual = 0;
-	cor->flag.dump = 0;
+	cor->flag.dump32 = 0;
+	cor->flag.dump64 = 0;
 	cor->count_cursors = 0;
 	cor->cycle = 0;
 	cor->cycle_to_check = 0;
@@ -17,13 +18,30 @@ void parse_dump_flag(t_cor *cor, char *num, int *i, int ac)
 {
 	long tmp;
 
+	if (cor->flag.dump32 != 0 || cor->flag.dump64 != 0)
+		exterminate(cor, FEW_AC_DUMP);
 	if ((*i + 3) > ac)
 		exterminate(cor, FEW_AC_DUMP);
-	*i += 1;
-	tmp = atol(num); ///TODO write ft_atol
+	*i += 2;
+	tmp = ft_atol(num);
 	if (tmp > INT_MAX || tmp < 0)
 		exterminate(cor, INVALID_FLAG_D);
-	cor->flag.dump = (int)tmp;
+	cor->flag.dump32 = (int)tmp;
+}
+
+void parse_d_flag(t_cor *cor, char *num, int *i, int ac)
+{
+	long tmp;
+
+	if (cor->flag.dump64 != 0 || cor->flag.dump32 != 0)
+		exterminate(cor, FEW_AC_DUMP);
+	if ((*i + 3) > ac)
+		exterminate(cor, FEW_AC_DUMP);
+	*i += 2;
+	tmp = ft_atol(num);
+	if (tmp > INT_MAX || tmp < 0)
+		exterminate(cor, INVALID_FLAG_D);
+	cor->flag.dump64 = (int)tmp;
 }
 
 int		check_duplicate_num(t_cor *cor, long tmp)
@@ -49,7 +67,7 @@ void	save_num_player(t_cor *cor, char *num, int *i, int ac)
 	if ((*i + 3) > ac)
 		exterminate(cor, FEW_AC_N);
 	*i += 2;
-	tmp = atol(num); ///TODO write ft_atol
+	tmp = ft_atol(num);
 	if (tmp > INT_MAX || tmp < INT_MIN)
 		exterminate(cor, INVALID_FLAG_N);
 	if (check_duplicate_num(cor, tmp))
@@ -90,6 +108,8 @@ int			is_filename(const char *filename, const char *ext)
 
 void visual(t_cor *cor, int ac, int *i)
 {
+	if (cor->flag.visual != 0)
+		exterminate(cor, FEW_AC_V);
 	if ((*i + 2) > ac)
 		exterminate(cor, FEW_AC_V);
 	cor->flag.visual = 1;
@@ -100,13 +120,15 @@ void	parse_flags(t_cor *cor, int ac, char **av)
 {
 	int i;
 
-	i = 1;
-	if (ft_strcmp(av[i], "-dump") == 0)
-		parse_dump_flag(cor, av[i + 1], &i, ac);
-	else if (ft_strcmp(av[i], "-visual") == 0)
-		visual(cor, ac, &i);
+	i = 0;
 	while (++i < ac)
 	{
+		if (ft_strcmp(av[i], "-dump") == 0)
+			parse_dump_flag(cor, av[i + 1], &i, ac);
+		if (ft_strcmp(av[i], "-d") == 0)
+			parse_d_flag(cor, av[i + 1], &i, ac);
+		if (ft_strcmp(av[i], "-visual") == 0)
+			visual(cor, ac, &i);
 		if (!ft_strcmp(av[i], "-n") || is_filename(av[i], ".cor"))
 		{
 			if (ft_strcmp(av[i], "-n") == 0)
@@ -223,7 +245,7 @@ void	error_usage(void)
 	GUI: ./corewar -visual [Players]\n \
 	Default Player Numbers: 1, 2, 3, 4...\n \
 	Change Player Number: -n -1 filename.cor\n \
-	Dump: ./corewar -dump 300 [Players](prints the memory after 300 cycles)\n \
+	Dump: ./corewar -dump32 300 [Players](prints the memory after 300 cycles)\n \
 	Game on! 👾 🤖 🔫 \n", 2);
 	exit(1);
 }
@@ -323,7 +345,7 @@ void start_game(t_cor *cor)
 {
 	while (cor->process.size != 0)
 	{
-		if (cor->flag.dump == cor->cycle)
+		if (cor->flag.dump32 == cor->cycle)
 			print_arena(cor->map, 64);
 		check_cycle(cor);
 
@@ -343,8 +365,9 @@ int main(int ac, char **av)
 	if (cor.flag.visual == FALSE)
 	{
 		print_intro(&cor);
-		start_game(&cor);
+		//start_game(&cor);
 	}
-	//print_arena(cor.map, 64);
+	print_arena(cor.map, 64);
+
 	return 0;
 }

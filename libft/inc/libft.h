@@ -6,7 +6,7 @@
 /*   By: ksean <ksean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 20:00:46 by tmyrcell          #+#    #+#             */
-/*   Updated: 2020/11/29 16:25:17 by tmyrcell         ###   ########.fr       */
+/*   Updated: 2020/12/23 16:24:00 by tmyrcell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ t_list	*ft_lstnew(void const *content, size_t content_size);
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 char	*ft_strndup(const char *src, size_t len);
 void	ft_error(void);
+long	ft_atol(const char *str);
 
 #endif

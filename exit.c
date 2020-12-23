@@ -17,9 +17,9 @@ void write_exit_code(int exit_code)
 	if (exit_code == DUPLICATE_NUM_N)
 		ft_putstr_fd("Duplicate player number\n", 2);
 	if (exit_code == INVALID_FLAG_D)
-		ft_putstr_fd("Incorrect use of the flag -dump\n", 2);
+		ft_putstr_fd("Incorrect use of the flag dump\n", 2);
 	if (exit_code == FEW_AC_DUMP)
-		ft_putstr_fd("Too few argc for -dump\n", 2);
+		ft_putstr_fd("Too few argc for dump\n", 2);
 	if (exit_code == FEW_AC_N)
 		ft_putstr_fd("Too few argc for -n\n", 2);
 	if (exit_code == FEW_AC_V)

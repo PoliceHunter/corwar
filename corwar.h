@@ -36,7 +36,8 @@
 typedef	struct s_cflag	t_cflag;
 struct			s_cflag
 {
-	int dump;
+	int dump32;
+	int dump64;
 	int visual;
 };
 
