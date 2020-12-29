@@ -130,6 +130,22 @@ set(SOURCE_CODE
         libft/src/ft_atol.c
         corwar.h
         exit.c
+        g_op/g_add.c
+        g_op/g_aff.c
+        g_op/g_and.c
+        g_op/g_fork.c
+        g_op/g_ld.c
+        g_op/g_ldi.c
+        g_op/g_lfork.c
+        g_op/g_live.c
+        g_op/g_lld.c
+        g_op/g_lldi.c
+        g_op/g_or.c
+        g_op/g_st.c
+        g_op/g_sti.c
+        g_op/g_sub.c
+        g_op/g_xor.c
+        g_op/g_zjmp.c
         op.h)
 
 

@@ -62,6 +62,7 @@ typedef struct			s_process
 												// ** take one of two values: 1 or 0. If it's 1, then the function updates the ** "position
 	uint32_t 			pos; 					////Map address
 	uint8_t 			op_code; 				//Contains the operation code, at the time of moving to this position on the map
+	uint8_t				name_op;
 	//uint32_t			next_pos;
 	uint32_t			cycle_to_exec; 			// A counter containing the number of cycles that the carriage must wait before starting an operation.
 	uint32_t			live_last_cycle; 		// Contain the cycle on which the last live operation was performed
@@ -88,5 +89,6 @@ struct			s_cor
 };
 
 void exterminate(t_cor *cor, int exit_code);
-
+void				add(t_cor *vm, t_process *proc);
+void				sti(t_cor *vm, t_process *proc);
 #endif //CORWAR_CORWAR_H

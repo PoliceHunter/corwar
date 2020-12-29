@@ -19,8 +19,22 @@
 // Размер T_DIR 2.
 //Циклы до исполнения 25
 
-void				sti(t_cor *vm)
+void				sti(t_cor *vm, t_process *proc)
 {
+	int len;
+
+	len = 1;
+	uint8_t type_code = vm->map[proc->pos + 1]; // = 68
+	//type_code перевести из 10 в 16, после чего получим число 68 а потом переводим из байта в биты 104->68->01101000
+	//T_REG+1 	T_DIR+4/+2 	T_IND+2
+	//01->T_REG 10->T_DIR 10->T_DIR 00-IGNOR
+	uint8_t r1; //01
+	uint8_t r2; //00045
+	uint8_t r3; //0001
+	r1 = 0;
+
+	//proc->cycle_to_exec = find_cycle_to_exec(proc);
+	// перевеодим type_code в биты
 	//переменные
 	// (2)
 	// (3)

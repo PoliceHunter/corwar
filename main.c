@@ -342,15 +342,32 @@ void check_cycle(t_cor *cor)
 		make_op(get_from_vec(&cor->process, index), cor);
 }
 
+void find_op(t_cor *cor, uint8_t name, t_process *proc)
+{
+	if (name == 11)
+		sti(cor, proc);
+//	else if (name == 1)
+//		live();
+}
+
 void start_game(t_cor *cor)
 {
-	while (cor->process.size != 0)
+	int index = -1;
+
+	while (cor->process.size != 0 && ++index != cor->process.size)
 	{
 		if (cor->flag.dump64 == cor->cycle)
 			print_arena(cor->map, 64);
 		if (cor->flag.dump32 == cor->cycle)
 			print_arena(cor->map, 32);
-		check_cycle(cor);
+		t_process *caretka = get_from_vec(&cor->process, index);
+		caretka->name_op = cor->map[caretka->pos]; // Check if name_op is correct
+		find_op(cor, caretka->name_op, caretka); // сопоставляет имся операции и выполняет функцию с названием этой операции
+		if (index == cor->process.size)
+		{
+			check_cycle(cor);
+			index = -1;
+		}
 
 	}
 }
@@ -374,9 +391,9 @@ int main(int ac, char **av)
 	if (cor.flag.visual == FALSE)
 	{
 		print_intro(&cor);
-		//start_game(&cor);
+		start_game(&cor);
 	}
-	op_add(&cor, get_from_vec(&cor.process, 2));
+	add(&cor, get_from_vec(&cor.process, 0));
 	print_arena(cor.map, 32);
 	return 0;
 }
