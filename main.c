@@ -370,10 +370,7 @@ int main(int ac, char **av)
 	parse_champion_file(&cor);
 	init_arena(&cor);
 	init_processes(&cor);
-//	if (LIVE == cor.map[((t_process *)get_from_vec(&cor.process, 1))->pos])
-//	{
-//		((t_process *)get_from_vec(&cor.process, 1))->live_last_cycle = cor.cycle;
-//	}
+	//((t_op *)operation[cor.map[((t_process *)get_from_vec(&cor.process, 1))->pos]])
 	if (cor.flag.visual == FALSE)
 	{
 		print_intro(&cor);
