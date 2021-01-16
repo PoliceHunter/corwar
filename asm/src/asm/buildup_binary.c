@@ -6,7 +6,7 @@
 /*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 11:45:15 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 11:56:19 by dcapers          ###   ########.fr       */
+/*   Updated: 2021/01/16 22:20:54 by dcapers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			write_bytecode(t_parser *p, int fd)
 	int32_t			pos;
 
 	leng = 4 + PROG_NAME_LENGTH + 8 + COMMENT_LENGTH + 4 + p->pos;
-	if (!(bytecode = (char *)malloc(leng + 1)))
+	if (!(bytecode = ft_strnew(leng)))
 		kill_exe(ERR_STR_INIT);
 	pos = 0;
 	int32_to_bytecode(bytecode, pos, COREWAR_EXEC_MAGIC, 4);
