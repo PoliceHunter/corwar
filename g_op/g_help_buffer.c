@@ -13,24 +13,53 @@
 #include "corwar.h"
 #include "g_corewar_op.h"
 
-//Циклы до исполнения 10
-
-void				sub(t_cor *vm, t_process *proc)
+void make_buffer_codes(t_cor *cor)
 {
-	//переменные
-	//разница значений 1 и 2 регистров
+	int	i;
 
-	//движение дальше
-	//шаг курсора - прибавляем
+	i = 0;
+	cor->buffer_codes = (int *)malloc(sizeof(int) * 4);
+	while (i < 4)
+	{
+		cor->buffer_codes[i] = 0;
+		i++;
+	}
+	cor->buffer_counter = 0;
+	i = 0;
+	cor->buffer_sizes = (int *)malloc(sizeof(int) * 4);
+	while (i < 4)
+	{
+		cor->buffer_sizes[i] = 0;
+		i++;
+	}
+}
 
-	//получение данных
-	//1 - значение регистра, переданного в 1 аргументе
-	//2 - значение регистра, переданного в 2 аргументе
-	//3 - номер регистра каретки, куда записывается разность
+void	fill_buffer_with_zeros(t_cor *cor)
+{
+	int	i;
 
-	//изменения в структуре каретки
-	//из (1) вычитаем (2), загружаем это значение в регистр каретки (3). Если значение == 0, то carry  = 1, в ост
-	//случаях carry = 0
+	i = 0;
+	while (i < 4)
+	{
+		cor->buffer_codes[i] = 0;
+		i++;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		cor->buffer_sizes[i] = 0;
+		i++;
+	}
+	cor->buffer_counter = 0;
+}
 
-	//печать ft_printf("P %4d | sub r%d r%d r%d\n", cursor_id, r1_id, r2_id, r3_id);
+int32_t		get_address(t_process *process, int32_t step)
+{
+	int32_t	address;
+
+	address = process->pos + step;
+	if (address > MEM_SIZE)
+		address = address - MEM_SIZE;
+	process->cycle_to_exec = -1;
+	return (address);
 }

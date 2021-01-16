@@ -21,7 +21,7 @@
 // Размер T_DIR 2.
 //Циклы до исполнения 50
 
-void				lldi(t_cor *vm)
+void				lldi(t_cor *vm, t_process *proc)
 {
 	//переменные
 	//вычисленный адрес

@@ -146,7 +146,7 @@ set(SOURCE_CODE
         g_op/g_sub.c
         g_op/g_xor.c
         g_op/g_zjmp.c
-        op.h)
+        op.h g_op/g_game_logic.c g_op/g_game_in_cycle.c g_op/g_help_buffer.c g_op/g_get_put_values.c)
 
 
-add_executable(corwar ${SOURCE_CODE} main.c)
+add_executable(corwar ${SOURCE_CODE} main.c g_op/g_game_in_cycle.c g_op/g_help_buffer.c)

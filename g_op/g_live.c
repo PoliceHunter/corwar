@@ -15,8 +15,8 @@
 
 //Циклы до исполнения 10
 
-//void				live(t_cor *vm)
-//{
+void				live(t_cor *vm, t_process *proc)
+{
 //	//переменные
 //	//id игрока - int32_t player_id;
 //
@@ -38,7 +38,7 @@
 //	//др флаг - ft_printf("Player %d (%s) is said to be alive\n",
 //	//			  player_id,
 //	//			  player_name);
-//}
+}
 //
 //
 //

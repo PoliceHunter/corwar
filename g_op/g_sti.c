@@ -19,57 +19,34 @@
 // Размер T_DIR 2.
 //Циклы до исполнения 25
 
-void				sti(t_cor *vm, t_process *proc)
+void				sti(t_cor *cor, t_process *proc)
 {
-	int len;
+	uint8_t			reg1;
+	int32_t			regvalue;
+	uint32_t		value2;
+	uint32_t		value3;
+	uint32_t		address;
 
-	len = 1;
-	uint8_t type_code = vm->map[proc->pos + 1]; // = 68
-	//type_code перевести из 10 в 16, после чего получим число 68 а потом переводим из байта в биты 104->68->01101000
-	//T_REG+1 	T_DIR+4/+2 	T_IND+2
-	//01->T_REG 10->T_DIR 10->T_DIR 00-IGNOR
-	uint8_t r1; //01
-	uint8_t r2; //00045
-	uint8_t r3; //0001
-	r1 = 0;
+	reg1 = cor->map[proc->pos + 2];
+	regvalue = proc->reg[reg1];
+	value2 = byte_to_int32(cor, proc, 1, cor->buffer_sizes[1]);
+	value3 = byte_to_int32(cor, proc, 2, cor->buffer_sizes[2]);
+	address = proc->pos + (value2 + value3) % IDX_MOD;
 
-	//proc->cycle_to_exec = find_cycle_to_exec(proc);
-	// перевеодим type_code в биты
-	//переменные
-	// (2)
-	// (3)
-	//вычисленный адрес (4) на основе (2) и (3)
+	ft_printf("address:%d", address);
+	ft_printf("---map1:%d", cor->map[address]);
+	ft_printf("---map2:%d", cor->map[address] + 1);
+	ft_printf("---map3:%d", cor->map[address] + 2);
+	ft_printf("---map4:%d\n", cor->map[address] + 3);
 
-	//движение дальше
-	//шаг курсора - прибавляем стандартный
+	value32_to_map(cor, -1, address, DIR_SIZE);
 
-	//получение данных
-	// вычисляем адрес (4): текущая позиция + (<ЗНАЧЕНИЕ_ВТОРОГО_АРГУМЕНТА> + <ЗНАЧЕНИЕ_ТРЕТьЕГО_АРГУМЕНТА>) % IDX_MOD.
-	// Значение: если T_REG,
-	// то берем значение из указанного регистра
-	// T_DIR
-	//В данном случае у нас аргумент уже содержит свое значение
-	// T_IND
-	//Чтобы получить значение этого аргумента, нужно считать 4 байта по адресу — текущая позиция + <2_АРГУМЕНТ> % IDX_MOD.
-	//берем число из регистра (1) и записываем в адрес (4)
-	// update_map(vm, cursor, cursor->pc + ((addr_1 + addr_2) % IDX_MOD),
-	//																DIR_SIZE);
+	ft_printf("address:%d", address);
+	ft_printf("---map1:%d", cor->map[address]);
+	ft_printf("---map2:%d", cor->map[address] + 1);
+	ft_printf("---map3:%d", cor->map[address] + 2);
+	ft_printf("---map4:%d\n", cor->map[address] + 3);
 
-	//изменения в структуре каретки
-	//
-
-	//изменения в общей структуре vm
-	//переписываем значение по адресу
-
-	//печать
-	// ft_printf("P %4d | sti r%d %d %d\n",
-	//										cursor->id,
-	//										r_id,
-	//										addr_1,
-	//										addr_2);
-	//	ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n",
-	//							addr_1,
-	//							addr_2,
-	//							addr_1 + addr_2,
-	//							cursor->pc + ((addr_1 + addr_2) % IDX_MOD));
+	print_arena(cor->map, 64);
 }
+

@@ -18,7 +18,7 @@
 // Размер T_DIR 2.
 //Циклы до исполнения 20
 
-void				zjmp(t_cor *vm)
+void				zjmp(t_cor *vm, t_process *proc)
 {
 	//переменные
 	//
