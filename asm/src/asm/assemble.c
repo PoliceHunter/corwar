@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assemble.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 11:21:41 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 11:59:25 by dcapers          ###   ########.fr       */
+/*   Updated: 2021/01/19 22:25:44 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			setup_mention_val(t_parser *p)
 	int32_t		val;
 
 	label = p->label;
-	if (label)
+	while (label)
 	{
 		mention = label->mention;
 		while (mention)

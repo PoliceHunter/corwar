@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_label.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 13:40:59 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 02:50:10 by dcapers          ###   ########.fr       */
+/*   Updated: 2021/01/19 22:27:54 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_label			*find_label(t_label *label, char *name)
 			return (label);
 		label = label->next;
 	}
+	return(label);
 }
 
 void			push_label(t_parser *p, t_label *label)
