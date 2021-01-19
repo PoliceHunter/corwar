@@ -18,7 +18,7 @@
 // Размер T_DIR 2.
 //Циклы до исполнения 1000
 
-void				lfork(t_cor *vm, t_process *proc)
+void				lfork(t_cor *cor, t_process *proc)
 {
 	//переменные
 	// адрес куда копировать каретку

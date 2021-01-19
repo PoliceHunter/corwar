@@ -16,13 +16,22 @@
 //загрузка значения из команды в регистр каретки
 //Циклы до исполнения 5
 
-void				ld(t_cor *vm, t_process *proc)
+void				ld(t_cor *cor, t_process *proc)
 {
 //	//переменные
 	// число из первого арг, если 1 рег - T_DIR, или число из адреса, если 2 рег - T_IND
 	//номер регистра каретки, который передается как 2 аргумент
 	//вычисленный адрес, если 2 рег - T_IND
+	uint8_t			reg2;
+	int32_t			value_to_reg;
 
+	value_to_reg = get_value(cor, proc, 0);
+	reg2 = get_value(cor, proc, 1);
+	proc->reg[reg2] = value_to_reg;
+	if (value_to_reg == 0)
+		proc->carry = 1;
+	else
+		proc->carry = 0;
 	//движение дальше
 	//шаг курсора - прибавляем стандартный
 

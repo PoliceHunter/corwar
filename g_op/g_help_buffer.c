@@ -52,14 +52,3 @@ void	fill_buffer_with_zeros(t_cor *cor)
 	}
 	cor->buffer_counter = 0;
 }
-
-int32_t		get_address(t_process *process, int32_t step)
-{
-	int32_t	address;
-
-	address = process->pos + step;
-	if (address > MEM_SIZE)
-		address = address - MEM_SIZE;
-	process->cycle_to_exec = -1;
-	return (address);
-}

@@ -15,6 +15,7 @@ void init_cor(t_cor *cor, char **av)
 	cor->buffer_codes = NULL;		//(gala)
 	make_buffer_codes(cor);			//(gala)
 	cor->buffer_counter = 0;		//(gala)
+	cor->count_lives = 0;			//(gala) 17.01
 }
 
 void parse_dump_flag(t_cor *cor, char *num, int *i, int ac)
@@ -299,7 +300,7 @@ t_process *init_process(int32_t pos, t_vector process, int player_id)
 	proc = malloc(sizeof(t_process));
 	proc->carry = FALSE;
 	proc->cycle_to_exec = -1; //(gala) изменила
-	proc->live_last_cycle = 0;
+	proc->live_last_cycle = -1; //(gala) изменила 17.01
 	proc->live_last_id = 0;
 	proc->pos = pos;
 	proc->op_code = 0;
@@ -359,6 +360,7 @@ void start_game(t_cor *cor)
 			print_arena(cor->map, 64);
 		if (cor->flag.dump32 == cor->cycle && cor->flag.dump32 != 0)
 			print_arena(cor->map, 32);
+		print_arena(cor->map, 64);//
 		game_logic(cor);
 		//t_process *caretka = get_from_vec(&cor->process, index);
 		//caretka->name_op = cor->map[caretka->pos]; // Check if name_op is correct

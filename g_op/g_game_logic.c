@@ -13,9 +13,11 @@
 #include "corwar.h"
 #include "g_corewar_op.h"
 
-void 			kill_caretka(t_cor *cor, t_process *process)
+void 			kill_caretka(t_cor *cor, t_process *proc, int index)
 {
 	//1 - удалить из структуры данную каретку, очистить память
+	free(proc); //возможно не надо
+	remove_from_vec(&cor->process, index);
 	cor->count_cursors--;
 }
 
@@ -26,17 +28,24 @@ void 			proverka(t_cor *cor)
 	t_process	*process;
 
 	index = 0;
-	mem = cor->count_cursors;
-	while (index < mem)
+	//mem = cor->count_cursors;
+	while (index < cor->count_cursors)
 	{
-		process = get_from_vec(&cor->process, index);;
-		if (process->live_last_cycle > cor->cycles_to_die)
-			kill_caretka(cor, process);
+		process = get_from_vec(&cor->process, index);
+		//ft_printf("process->player_id: %d\n", process->player_id);
+		//ft_printf("process->live_last_cycle: %d\n", process->live_last_cycle);
+		//ft_printf("cor->cycles_to_die: %d\n", cor->cycles_to_die);
+		//ft_printf("if (process->live_last_cycle > cor->cycles_to_die)\n");
+		if (process->live_last_cycle == -1)
+		{
+			kill_caretka(cor, process, index);
+			index--;
+		}
 		else
-			process->live_last_cycle = 0;
+			process->live_last_cycle = -1;
 		index++;
 	}
-	cor->count_lives = 0;
+	cor->count_lives = 0; //
 	cor->count_check++;
 }
 
@@ -58,22 +67,23 @@ int 			game_logic(t_cor *cor)
 	int32_t		one_cycle_to_die;
 	int 		minus;
 
-	int f = 0;
+	int f = 0;//
 
 	cor->cycles_to_die = CYCLE_TO_DIE;
 	while (cor->count_cursors != 0 && f++ < 2)
 	{
-		while (cor->cycles_to_die > 0  && f++ < 2) //перепроверю
+		while (cor->cycles_to_die > 0 && f++ < 2) //перепроверю
 		{
 			one_cycle_to_die = 0;
 			ft_printf("\ncor->cycles_to_die: %d\n", cor->cycles_to_die);
-			while (one_cycle_to_die++ < 50) //cor->cycles_to_die
+			while (one_cycle_to_die++ < cor->cycles_to_die) //cor->cycles_to_die
 			{
-				ft_printf("\ncor->cycle: %d", cor->cycle);
-				ft_printf("\none_cycle_to_die: %d\n", one_cycle_to_die - 1);
+			//	ft_printf("\ncor->cycle: %d", cor->cycle);
+			//	ft_printf("\none_cycle_to_die: %d\n", one_cycle_to_die - 1);
 				game_in_cycle(cor);
 				cor->cycle++;
 			}
+			ft_printf("\nproverka, cycle = %d\n", cor->cycle);
 			proverka(cor);
 			minus = count_minus(cor);
 			cor->cycles_to_die = cor->cycles_to_die - minus;
