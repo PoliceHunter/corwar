@@ -5,7 +5,7 @@
 #ifndef CORWAR_G_COREWAR_OP_H
 #define CORWAR_G_COREWAR_OP_H
 
-# include "../corwar.h" //(gala)
+# include "corwar.h" //(gala)
 
 static int 		SIZES[3] = {T_REG, T_DIR, IND_SIZE}; //???
 static int 		CALC[3] = {192, 48, 12};

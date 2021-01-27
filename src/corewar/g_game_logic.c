@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corwar.h"
-#include "g_corewar_op.h"
+#include "../../includes/corwar.h"
+#include "../../includes/g_corewar_op.h"
 
 void 			kill_caretka(t_cor *cor, t_process *proc, int index)
 {
@@ -19,19 +19,20 @@ void 			kill_caretka(t_cor *cor, t_process *proc, int index)
 	//free(proc); //возможно не надо
 	remove_from_vec(&cor->process, index);
 	cor->count_cursors--;
+	proc = NULL;
 }
 
 void 			proverka(t_cor *cor)
 {
 	int 		index;
-	int 		mem;
+	//int 		mem;
 	t_process	*process;
 
 	index = 0;
 	//mem = cor->count_cursors;
 	while (index < cor->count_cursors)
 	{
-		process = get_from_vec(&cor->process, index);
+		process = get_from_vec1(&cor->process, index);
 		//ft_printf("process->player_id: %d\n", process->player_id);
 		//ft_printf("process->live_last_cycle: %d\n", process->live_last_cycle);
 		//ft_printf("cor->cycles_to_die: %d\n", cor->cycles_to_die);
@@ -67,7 +68,7 @@ int 			game_logic(t_cor *cor)
 	int32_t		one_cycle_to_die;
 	int 		minus;
 
-	int f = 0;//
+	//int f = 0;//
 
 	cor->cycles_to_die = CYCLE_TO_DIE;
 	while (cor->count_cursors != 0) //&& f++ < 2)
@@ -90,9 +91,9 @@ int 			game_logic(t_cor *cor)
 			minus = count_minus(cor);
 			proverka(cor);
 			cor->cycles_to_die = cor->cycles_to_die - minus;
-			if (cor->cycles_to_die < 50)
-				minus = minus;
-			if ((cor->flag.dump32 > 0 && cor->cycle == cor->flag.dump32)|| (cor->flag.dump64 > 0 && cor->cycle == cor->flag.dump64))
+			//if (cor->cycles_to_die < 50)
+			//	minus = minus;
+			if ((cor->flag.dump32 > 0 && (int) cor->cycle == cor->flag.dump32)|| (cor->flag.dump64 > 0 && (int) cor->cycle == cor->flag.dump64))
 			{
 				//print  // - вывести состояние текущего цикла
 				return (2);

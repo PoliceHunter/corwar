@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corwar.h"
-#include "g_corewar_op.h"
+#include "../../includes/corwar.h"
+#include "../../includes/g_corewar_op.h"
 
 int				check_arg_reg(t_cor *cor, t_process *process, int i)
 {
@@ -114,7 +114,7 @@ void			game_in_cycle(t_cor *cor)
 	mem = cor->count_cursors;
 	while (index < mem)
 	{
-		process = get_from_vec(&cor->process, index);
+		process = get_from_vec1(&cor->process, index);
 		//ft_printf("!!!--->>>process->player_id: %d\n", process->player_id);
 		//ft_printf("process->reg[1]: %d\n", process->reg[1]);
 		//ft_printf("process->pos: %d\n", process->pos);
@@ -124,7 +124,7 @@ void			game_in_cycle(t_cor *cor)
 			//ft_printf("-1 proc: %d pos: %d check: %d\n", process->player_id, process->pos, check);
 			if (check == 1)
 			{
-				char *name = process->op.name;
+//				char *name = process->op.name;
 				//ft_printf("-1 to do process->op.name: \"%s\" in %d cycle\n", process->op.name, process->cycle_to_exec);
 				process->cycle_to_exec--;
 				//ft_printf("cxbxf");																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												\n", check);

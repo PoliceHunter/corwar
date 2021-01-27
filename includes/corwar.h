@@ -1,10 +1,10 @@
 #ifndef CORWAR_CORWAR_H
 # define CORWAR_CORWAR_H
 
-# include "libft/inc/libft.h"
-# include "libft/inc/ft_printf.h"
-# include "libft/inc/get_next_line.h"
-# include "libft/inc/vector.h"
+# include "../libft/inc/libft.h"
+# include "../libft/inc/ft_printf.h"
+# include "../libft/inc/get_next_line.h"
+# include "../libft/inc/vector.h"
 # include "op.h"
 # include <stdlib.h>
 # include <stdio.h>
@@ -150,5 +150,7 @@ int32_t			get_step(t_cor *cor, t_process *proc, int i);
 int32_t			byte_to_int32_2(t_cor *cor, uint32_t address, int size);
 int32_t			get_value(t_cor *cor, t_process *proc, int i);
 void			check_flag(t_cor *cor);
+void 			proverka(t_cor *cor);
+void	*get_from_vec1(t_vector *vec, int index);
 
 #endif //CORWAR_CORWAR_H

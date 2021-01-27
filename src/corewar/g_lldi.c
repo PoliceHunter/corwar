@@ -10,28 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corwar.h"
+#include "../../includes/corwar.h"
+#include "../../includes/g_corewar_op.h"
 
+//загрузка значения из команды в регистр каретки (3 арг)
+// Значением, которая эта операция записывает, являются считанные 4 байта.
+//Они считываются по адресу, который формируется по следующему принципу:
+// текущая позиция + (<ЗНАЧЕНИЕ_ПЕРВОГО_АРГУМЕНТА> + <ЗНАЧЕНИЕ_ВТОРОГО_АРГУМЕНТА>).
+//В отличие от операции ldi в этом случае при формировании адреса не нужно делать усечение по модулю IDX_MOD.
+// Размер T_DIR 2.
+//Циклы до исполнения 50
 
-//«побитовое И» для значений первых двух аргументов и
-// записывает полученный результат в регистр, переданный в качестве третьего аргумента
-//Циклы до исполнения 6
-
-void				and(t_cor *cor, t_process *proc)
+void				lldi(t_cor *cor, t_process *proc)
 {
 	int32_t			value_to_reg; //результат побитового "и", которое нужно записать в регистр (3 арг)
 	int32_t			value1;
 	int32_t			value2;
 	uint8_t			reg3;
+	uint32_t		address;
 
 	reg3 = cor->map[get_address(proc, get_step(cor, proc, 2), 0)];
 	value1 = get_value(cor, proc, 0);
 	value2 = get_value(cor, proc, 1);
-	value_to_reg = value1 & value2;
+	address = proc->pos + (value1 + value2) % IDX_MOD;
+	value_to_reg = byte_to_int32_2(cor, address, 4);
 	proc->reg[reg3] = value_to_reg;
-	if (value_to_reg == 0)
-		proc->carry = 1;
-	else
-		proc->carry = 0;
 }
-

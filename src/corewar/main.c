@@ -1,4 +1,4 @@
-#include "corwar.h"
+#include "../../includes/corwar.h"
 
 void init_cor(t_cor *cor, char **av)
 {

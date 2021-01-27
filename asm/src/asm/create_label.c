@@ -12,7 +12,7 @@
 
 #include "asm.h"
 #include "asm_errors.h"
-#include "op.h"
+#include "includes/op.h"
 #include "libft.h"
 
 char *kostyl(char *s)

@@ -1,4 +1,4 @@
-#include "corwar.h"
+#include "../../includes/corwar.h"
 
 void free_cor(t_cor *cor, int i)
 {

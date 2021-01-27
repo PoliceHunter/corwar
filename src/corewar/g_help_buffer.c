@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corwar.h"
-#include "g_corewar_op.h"
+#include "../../includes/corwar.h"
+#include "../../includes/g_corewar_op.h"
 
 void make_buffer_codes(t_cor *cor)
 {
@@ -55,8 +55,15 @@ void	fill_buffer_with_zeros(t_cor *cor)
 
 void	check_flag(t_cor *cor)
 {
-	if (cor->flag.dump64 == cor->cycle && cor->flag.dump64 != 0)
+	if (cor->flag.dump64 == (int) cor->cycle && cor->flag.dump64 != 0)
 		print_arena(cor->map, 64);
-	if (cor->flag.dump32 == cor->cycle && cor->flag.dump32 != 0)
+	if (cor->flag.dump32 == (int) cor->cycle && cor->flag.dump32 != 0)
 		print_arena(cor->map, 32);
+}
+
+void	*get_from_vec1(t_vector *vec, int index)
+{
+	if (index >= vec->size)
+		return (NULL);
+	return (vec->data + (index * vec->elem_size));
 }

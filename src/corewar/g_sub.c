@@ -10,25 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corwar.h"
-#include "g_corewar_op.h"
+#include "../../includes/corwar.h"
+#include "../../includes/g_corewar_op.h"
 
-//загрузка значения из команды в регистр каретки (3 арг)
-// Размер T_DIR 2.
-//Циклы до исполнения 25
-//
-void				ldi(t_cor *cor, t_process *proc)
+//Циклы до исполнения 10
+
+void				sub(t_cor *cor, t_process *proc)
 {
 	int32_t			value_to_reg; //результат побитового "и", которое нужно записать в регистр (3 арг)
 	int32_t			value1;
 	int32_t			value2;
 	uint8_t			reg3;
-	uint32_t		address;
 
 	reg3 = cor->map[get_address(proc, get_step(cor, proc, 2), 0)];
 	value1 = get_value(cor, proc, 0);
 	value2 = get_value(cor, proc, 1);
-	address = proc->pos + (value1 + value2) % IDX_MOD;
-	value_to_reg = byte_to_int32_2(cor, address, 4);
+	value_to_reg = value1 - value2;
 	proc->reg[reg3] = value_to_reg;
+	if (value_to_reg == 0)
+		proc->carry = 1;
+	else
+		proc->carry = 0;
 }

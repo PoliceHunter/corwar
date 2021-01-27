@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corwar.h"
-#include "g_corewar_op.h"
+#include "../../includes/corwar.h"
+#include "../../includes/g_corewar_op.h"
 
 
 int32_t			get_step(t_cor *cor, t_process *proc, int i)

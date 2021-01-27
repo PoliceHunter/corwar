@@ -10,20 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corwar.h"
-#include "g_corewar_op.h"
+#include "../../includes/corwar.h"
+#include "../../includes/g_corewar_op.h"
 
-//делает копию каретки. И эту копию размещает по адресу текущая позиция  +
-// <ПЕРВЫЙ_АРГУМЕНТ> БЕЗ % IDX_MOD.
+//делает копию каретки. И эту копию размещает по адресу <ПЕРВЫЙ_АРГУМЕНТ> % IDX_MOD.
 // Размер T_DIR 2.
-//Циклы до исполнения 1000
+//Циклы до исполнения 800
 
-void				lfork(t_cor *cor, t_process *proc)
+void 				dublicate_process(t_process *dubl, t_process *proc)
 {
-	int32_t		address;
+	int 			index;
+
+	index = -1;
+	while (++index < REG_NUMBER)
+		dubl->reg[index] = proc->reg[index];
+	dubl->carry = proc->carry;
+	dubl->live_last_cycle = proc->live_last_cycle; //(gala) изменила 17.01
+	dubl->live_last_id = proc->live_last_id;
+}
+
+void				g_fork(t_cor *cor, t_process *proc)
+{
+	int32_t			arg1;
+	int32_t			address;
 	t_process 		*dubl;
 
-	address = proc->pos + get_value(cor, proc, 0);
+	arg1 = get_value(cor, proc, 0);
+	address = proc->pos + arg1 % IDX_MOD;
 	if (address > MEM_SIZE)
 		address = address % MEM_SIZE;
 	dubl = init_process(address, cor->process, proc->player_id);

@@ -12,7 +12,7 @@
 
 #include "asm.h"
 #include "libft.h"
-#include "op.h"
+#include "includes/op.h"
 
 int		is_space(int c)
 {

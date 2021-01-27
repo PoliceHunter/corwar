@@ -128,25 +128,25 @@ set(SOURCE_CODE
         libft/src/insert_sort_vector.c
         libft/src/push_pop_vector.c
         libft/src/ft_atol.c
-        corwar.h
-        exit.c
-        g_op/g_add.c
-        g_op/g_aff.c
-        g_op/g_and.c
-        g_op/g_fork.c
-        g_op/g_ld.c
-        g_op/g_ldi.c
-        g_op/g_lfork.c
-        g_op/g_live.c
-        g_op/g_lld.c
-        g_op/g_lldi.c
-        g_op/g_or.c
-        g_op/g_st.c
-        g_op/g_sti.c
-        g_op/g_sub.c
-        g_op/g_xor.c
-        g_op/g_zjmp.c
-        op.h g_op/g_game_logic.c g_op/g_game_in_cycle.c g_op/g_help_buffer.c g_op/g_get_put_values.c)
+        includes/corwar.h
+        src/corewar/exit.c
+        src/corewar/g_add.c
+        src/corewar/g_aff.c
+        src/corewar/g_and.c
+        src/corewar/g_fork.c
+        src/corewar/g_ld.c
+        src/corewar/g_ldi.c
+        src/corewar/g_lfork.c
+        src/corewar/g_live.c
+        src/corewar/g_lld.c
+        src/corewar/g_lldi.c
+        src/corewar/g_or.c
+        src/corewar/g_st.c
+        src/corewar/g_sti.c
+        src/corewar/g_sub.c
+        src/corewar/g_xor.c
+        src/corewar/g_zjmp.c
+        includes/op.h src/corewar/g_game_logic.c src/corewar/g_game_in_cycle.c src/corewar/g_help_buffer.c src/corewar/g_get_put_values.c)
 
 
-add_executable(corwar ${SOURCE_CODE} main.c g_op/g_game_in_cycle.c g_op/g_help_buffer.c)
+add_executable(corwar ${SOURCE_CODE} src/corewar/main.c src/corewar/g_game_in_cycle.c src/corewar/g_help_buffer.c)

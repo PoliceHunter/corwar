@@ -10,25 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corwar.h"
-#include "g_corewar_op.h"
+#include "../../includes/corwar.h"
 
-//записывает значение, полученное из первого аргумента, в регистр, переданный
-// как второй аргумент. Но если T_IND, то в этой операции мы будем считывать 4 байта
-// значения по адресу — текущая позиция + <ПЕРВЫЙ_АРГУМЕНТ>. Не применяя усечение по модулю
-// Оригинальная виртуальная машина corewar, к сожалению, работает неправильно. И считывает 2 байта, а не 4.
-//Циклы до исполнения 10
 
-void				lld(t_cor *cor, t_process *proc)
+//«побитовое И» для значений первых двух аргументов и
+// записывает полученный результат в регистр, переданный в качестве третьего аргумента
+//Циклы до исполнения 6
+
+void				and(t_cor *cor, t_process *proc)
 {
-	uint8_t			reg2;
-	int32_t			value_to_reg;
+	int32_t			value_to_reg; //результат побитового "и", которое нужно записать в регистр (3 арг)
+	int32_t			value1;
+	int32_t			value2;
+	uint8_t			reg3;
 
-	value_to_reg = get_value(cor, proc, 0);
-	reg2 = get_value(cor, proc, 1);
-	proc->reg[reg2] = value_to_reg;
+	reg3 = cor->map[get_address(proc, get_step(cor, proc, 2), 0)];
+	value1 = get_value(cor, proc, 0);
+	value2 = get_value(cor, proc, 1);
+	value_to_reg = value1 & value2;
+	proc->reg[reg3] = value_to_reg;
 	if (value_to_reg == 0)
 		proc->carry = 1;
 	else
 		proc->carry = 0;
 }
+
