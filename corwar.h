@@ -117,6 +117,8 @@ int32_t			bytecode_to_int32(const uint8_t *bytecode, size_t size);  //(gala) —É–
 
 uint32_t		find_cycle_to_exec(t_cor *cor, t_process *proc);
 void			print_arena(uint8_t *map, int print_mode);
+t_process 		*init_process(int32_t pos, t_vector process, int player_id);
+void 			dublicate_process(t_process *dubl, t_process *proc);
 
 //(gala)
 int32_t			byte_to_int32(t_cor *cor, t_process *process, int i, int size);
@@ -147,5 +149,6 @@ int32_t			get_address_map(int32_t address, int32_t step);
 int32_t			get_step(t_cor *cor, t_process *proc, int i);
 int32_t			byte_to_int32_2(t_cor *cor, uint32_t address, int size);
 int32_t			get_value(t_cor *cor, t_process *proc, int i);
+void			check_flag(t_cor *cor);
 
 #endif //CORWAR_CORWAR_H

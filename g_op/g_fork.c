@@ -17,27 +17,30 @@
 // Размер T_DIR 2.
 //Циклы до исполнения 800
 
+void 				dublicate_process(t_process *dubl, t_process *proc)
+{
+	int 			index;
+
+	index = -1;
+	while (++index < REG_NUMBER)
+		dubl->reg[index] = proc->reg[index];
+	dubl->carry = proc->carry;
+	dubl->live_last_cycle = proc->live_last_cycle; //(gala) изменила 17.01
+	dubl->live_last_id = proc->live_last_id;
+}
+
 void				g_fork(t_cor *cor, t_process *proc)
 {
-	// переменные
-	// адрес куда копировать каретку
+	int32_t			arg1;
+	int32_t			address;
+	t_process 		*dubl;
 
-	//движение дальше
-	//шаг курсора - прибавляем стандартный
-
-	//получение данных
-	//аргумент (1)
-	// вычисляем адрес текущая позиция + <ПЕРВЫЙ_АРГУМЕНТ> % IDX_MOD.
-
-	//изменения в структуре каретки
-	//копируем всю каретку и размещаем копию по новому адресу
-
-	//изменения в общей структуре vm
-	//увеличиваем счетчик кареток
-
-	//печать
-	// ft_printf("P %4d | fork %d (%d)\n",
-	//										cursor->id,
-	//										addr,
-	//										cursor->pc + addr % IDX_MOD)
+	arg1 = get_value(cor, proc, 0);
+	address = proc->pos + arg1 % IDX_MOD;
+	if (address > MEM_SIZE)
+		address = address % MEM_SIZE;
+	dubl = init_process(address, cor->process, proc->player_id);
+	dublicate_process(dubl, proc);
+	push_back_vec(&cor->process, dubl);
+	cor->count_cursors++;
 }

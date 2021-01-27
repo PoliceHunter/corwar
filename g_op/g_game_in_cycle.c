@@ -118,26 +118,14 @@ void			game_in_cycle(t_cor *cor)
 		//ft_printf("!!!--->>>process->player_id: %d\n", process->player_id);
 		//ft_printf("process->reg[1]: %d\n", process->reg[1]);
 		//ft_printf("process->pos: %d\n", process->pos);
-		if (process->player_id == 2 && process->op.op_code == 2 && process->cycle_to_exec == 0 && process->pos == 2428) //
-		{
-			mem = mem; //
-			ft_printf("pole[0]: %d\n", cor->map[process->pos - 1]);
-			ft_printf("pole[0]: %d\n", cor->map[process->pos]);
-			ft_printf("pole[0]: %d\n", cor->map[process->pos + 1]);
-			ft_printf("pole[0]: %d\n", cor->map[process->pos + 2]);
-			ft_printf("pole[0]: %d\n", cor->map[process->pos + 3]);
-			ft_printf("pole[0]: %d\n", cor->map[process->pos + 4]);
-			ft_printf("pole[0]: %d\n", cor->map[process->pos + 5]);
-			ft_printf("pole[0]: %d\n", cor->map[process->pos + 6]);
-		}
 		if (process->cycle_to_exec == -1)
 		{
 			check = read_op(cor, process);
-			ft_printf("-1 proc: %d pos: %d check: %d\n", process->player_id, process->pos, check);
+			//ft_printf("-1 proc: %d pos: %d check: %d\n", process->player_id, process->pos, check);
 			if (check == 1)
 			{
 				char *name = process->op.name;
-				ft_printf("-1 to do process->op.name: \"%s\" in %d cycle\n", process->op.name, process->cycle_to_exec);
+				//ft_printf("-1 to do process->op.name: \"%s\" in %d cycle\n", process->op.name, process->cycle_to_exec);
 				process->cycle_to_exec--;
 				//ft_printf("cxbxf");																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												\n", check);
 			}
@@ -148,21 +136,21 @@ void			game_in_cycle(t_cor *cor)
 			//ft_printf("check: %d\n", check);
 			if (check == 1) // все проверки успешны
 			{
-				ft_printf("process %d, pos: %d, done \"%s\"\n", process->player_id, process->pos, process->op.name);
+				//ft_printf("process %d, pos: %d, done \"%s\"\n", process->player_id, process->pos, process->op.name);
 				process->op.func(cor, process); //выполняем операцию
 				if (process->op_code != 9)
 				{
 					process->op_code = 0;
 					process->pos = get_address(process, cor->next_step, 1); //перепрыгиваем операцию
 				}
-				ft_printf("next_pos: %d\n", process->pos);
+				//ft_printf("next_pos: %d\n", process->pos);
 			}
 			else if (check == 2) //код операции не ок
 				process->pos = get_address(process, 1, 1); //переход на след позицию
 			else if (check == 3) //код операции ок, но арг или рег не ок
 			{
 				process->pos = get_address(process, cor->next_step, 1); //перепрыгиваем операцию
-				ft_printf("3--- process: %d, op: %d, pos: %d\n", process->player_id, process->op_code, process->pos);
+				//ft_printf("3--- process: %d, op: %d, pos: %d\n", process->player_id, process->op_code, process->pos);
 			}
 			//ft_printf("process->pos: %d\n", process->pos);
 		}

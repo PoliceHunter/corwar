@@ -20,25 +20,14 @@
 
 void				lfork(t_cor *cor, t_process *proc)
 {
-	//переменные
-	// адрес куда копировать каретку
+	int32_t		address;
+	t_process 		*dubl;
 
-	//движение дальше
-	//шаг курсора - прибавляем стандартный
-
-	//получение данных
-	//аргумент (1)
-	// вычисляем адрес текущая позиция + <ПЕРВЫЙ_АРГУМЕНТ>
-
-	//изменения в структуре каретки
-	//копируем всю каретку и размещаем копию по новому адресу
-
-	//изменения в общей структуре vm
-	//увеличиваем счетчик кареток
-
-	//печать
-	// ft_printf("P %4d | lfork %d (%d)\n",
-	//										cursor->id,
-	//										addr,
-	//										cursor->pc + addr % IDX_MOD)
+	address = proc->pos + get_value(cor, proc, 0);
+	if (address > MEM_SIZE)
+		address = address % MEM_SIZE;
+	dubl = init_process(address, cor->process, proc->player_id);
+	dublicate_process(dubl, proc);
+	push_back_vec(&cor->process, dubl);
+	cor->count_cursors++;
 }
