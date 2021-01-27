@@ -6,7 +6,7 @@
 /*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 11:21:41 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/19 22:25:44 by student          ###   ########.fr       */
+/*   Updated: 2021/01/27 20:43:24 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ void			setup_mention_val(t_parser *p)
 		mention = label->mention;
 		while (mention)
 		{
+			
 			val = mention->size == 2 ? (int16_t)(label->op_pos - mention->op_pos) :
 					(int32_t)(label->op_pos - mention->op_pos);
 			int32_to_bytecode(p->code, mention->pos, val, mention->size);
-			mention = mention->next;		
+				mention = mention->next;		
 		}
 		label = label->next;
 	}

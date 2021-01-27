@@ -6,7 +6,7 @@
 /*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 13:40:59 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/19 22:27:54 by student          ###   ########.fr       */
+/*   Updated: 2021/01/27 20:44:51 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,22 @@
 #include "op.h"
 #include "libft.h"
 
+char *kostyl(char *s)
+{
+	char **split;
+	int len;
+	
+	len =  0;
+	split = ft_strsplit(s, ',');
+	return split[0];
+}
+
 t_label			*find_label(t_label *label, char *name)
 {
+	
 	while (label)
 	{
-		if (!ft_strcmp(label->name, name))
+		if (!ft_strcmp(kostyl(label->name), kostyl(name)))
 			return (label);
 		label = label->next;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildup_code.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 11:43:34 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 11:55:13 by dcapers          ###   ########.fr       */
+/*   Updated: 2021/01/27 20:44:36 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,20 @@
 void			setup_label(t_parser *p, t_token *t)
 {
 	t_label			*label;
-
+   
 	if (!(label = find_label(p->label, t->content)))
 		push_label(p, create_label(t->content, p->op_pos));
 	if (label && label->op_pos == -1)
-		label->op_pos = p->op_pos;	
+	{
+		label->op_pos = p->pos;	
+	}
 }
 
 int8_t			setup_args(t_parser *p, t_token **curr, t_op *op)
 {
 	int8_t			arg_num;
 	int8_t			types_code;
+	int8_t	type;
 
 	types_code = 0;
 	arg_num = 0;
@@ -34,8 +37,8 @@ int8_t			setup_args(t_parser *p, t_token **curr, t_op *op)
 	{
 		if ((*curr)->type >= REGISTER && (*curr)->type <= INDIRECT_LABEL)
 		{
-			update_types_code(&types_code, arg_num,
-				setup_arg(p, op, *curr, arg_num));
+			update_types_code(&types_code, 
+				setup_arg(p, op, *curr, arg_num), arg_num);
 			(*curr) = (*curr)->next;
 		}
 		if (arg_num++ != op->args_num - 1)
@@ -60,8 +63,9 @@ void			setup_operator(t_parser *p, t_token **curr)
 		if (op->types_code)
 			p->pos++;
 		types_code = setup_args(p, curr, op);
-		if (types_code)
+		if (op->types_code)
 			p->code[p->op_pos + 1] = types_code;
+		
 	}
 	else
 		operator_error(*curr);
@@ -73,12 +77,12 @@ void			buildup_code(t_parser *p, t_token *curr)
 	{
 		if (p->pos >= p->code_size)
 			resize_buff(p);
+		p->op_pos = p->pos;
 		if (curr->type == LABEL)
 		{
 			setup_label(p, curr);
 			curr = curr->next;
-		}
-		p->op_pos = p->pos;
+		}		
 		if (curr->type == OPERATOR)
 			setup_operator(p, &curr);
 		if (curr->type != NEW_LINE)
