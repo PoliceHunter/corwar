@@ -11,10 +11,12 @@ void init_cor(t_cor *cor, char **av)
 	cor->count_cursors = 0;
 	cor->cycle = 0;
 	cor->cycle_to_check = 0;
+	cor->count_check = 0;
 	cor->last_live_player = 0;
 	cor->buffer_codes = NULL;		//(gala)
 	make_buffer_codes(cor);			//(gala)
 	cor->buffer_counter = 0;		//(gala)
+	cor->count_lives = 0;			//(gala) 17.01
 }
 
 void parse_dump_flag(t_cor *cor, char *num, int *i, int ac)
@@ -299,7 +301,7 @@ t_process *init_process(int32_t pos, t_vector process, int player_id)
 	proc = malloc(sizeof(t_process));
 	proc->carry = FALSE;
 	proc->cycle_to_exec = -1; //(gala) изменила
-	proc->live_last_cycle = 0;
+	proc->live_last_cycle = -1; //(gala) изменила 17.01
 	proc->live_last_id = 0;
 	proc->pos = pos;
 	proc->op_code = 0;
@@ -355,10 +357,11 @@ void start_game(t_cor *cor)
 
 	while (cor->process.size != 0 && ++index != cor->process.size)
 	{
-		if (cor->flag.dump64 == cor->cycle && cor->flag.dump64 != 0)
-			print_arena(cor->map, 64);
-		if (cor->flag.dump32 == cor->cycle && cor->flag.dump32 != 0)
-			print_arena(cor->map, 32);
+		//if (cor->flag.dump64 == cor->cycle && cor->flag.dump64 != 0)
+		//	print_arena(cor->map, 64);
+		//if (cor->flag.dump32 == cor->cycle && cor->flag.dump32 != 0)
+		//	print_arena(cor->map, 32);
+		//print_arena(cor->map, 64);//
 		game_logic(cor);
 		//t_process *caretka = get_from_vec(&cor->process, index);
 		//caretka->name_op = cor->map[caretka->pos]; // Check if name_op is correct
@@ -382,20 +385,20 @@ int main(int ac, char **av)
 	init_arena(&cor);
 	init_processes(&cor);
 	//((t_op *)operation[cor.map[((t_process *)get_from_vec(&cor.process, 1))->pos]])
-	ft_printf("\n%d\n", cor.map[0]);
-	uint8_t	buffer[4];
-	buffer[0] = cor.map[2];
-	buffer[1] = cor.map[3];
-	buffer[2] = cor.map[4];
-	buffer[3] = cor.map[5];
-	int y = bytecode_to_int32(buffer, 4);
-	ft_printf("---%d---", y);
+	//ft_printf("\n%d\n", cor.map[0]);
+	//uint8_t	buffer[4];
+	//buffer[0] = cor.map[2];
+	//buffer[1] = cor.map[3];
+	//buffer[2] = cor.map[4];
+	//buffer[3] = cor.map[5];
+	//int y = bytecode_to_int32(buffer, 4);
+	//ft_printf("---%d---", y);
 	if (cor.flag.visual == FALSE)
 	{
 		print_intro(&cor);
 		start_game(&cor);
 	}
-	add(&cor, get_from_vec(&cor.process, 0));
+	//add(&cor, get_from_vec(&cor.process, 0));
 	//print_arena(cor.map, 32);
 	return 0;
 }

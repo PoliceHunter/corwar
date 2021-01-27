@@ -53,13 +53,10 @@ void	fill_buffer_with_zeros(t_cor *cor)
 	cor->buffer_counter = 0;
 }
 
-int32_t		get_address(t_process *process, int32_t step)
+void	check_flag(t_cor *cor)
 {
-	int32_t	address;
-
-	address = process->pos + step;
-	if (address > MEM_SIZE)
-		address = address - MEM_SIZE;
-	process->cycle_to_exec = -1;
-	return (address);
+	if (cor->flag.dump64 == cor->cycle && cor->flag.dump64 != 0)
+		print_arena(cor->map, 64);
+	if (cor->flag.dump32 == cor->cycle && cor->flag.dump32 != 0)
+		print_arena(cor->map, 32);
 }

@@ -14,11 +14,24 @@
 
 //Циклы до исполнения 10
 
-void				add(t_cor *vm, t_process *proc) // Возможно нужна конкретная каретка, которая дожна приходить, тогда мы ее подставим и получим позицию на карте
+void				add(t_cor *cor, t_process *proc) // Возможно нужна конкретная каретка, которая дожна приходить, тогда мы ее подставим и получим позицию на карте
 {
 	// Как узнать тип аргумента.
+	int8_t 			valreg1;
+	int8_t 			valreg2;
+	uint8_t 		numreg3;
+	int32_t 		value_to_reg;
 
-	//// 00000011
+	valreg1 = get_value(cor, proc, 0);
+	valreg2 = get_value(cor, proc, 0);
+	value_to_reg = valreg1 + valreg2;
+	numreg3 = byte_to_int32(cor, proc, 2, cor->buffer_sizes[2]);
+	proc->reg[numreg3] = value_to_reg;
+	if (value_to_reg == 0)
+		proc->carry = 1;
+	else
+		proc->carry = 0;
+	// 00000011
 	//переменные
 	//сумма 1 и 2 значений из обозначенных регистров
 

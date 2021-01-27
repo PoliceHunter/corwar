@@ -7,7 +7,7 @@
 
 # include "../corwar.h" //(gala)
 
-static int 		SIZES[3] = {T_REG, T_DIR, T_IND};
+static int 		SIZES[3] = {T_REG, T_DIR, IND_SIZE}; //???
 static int 		CALC[3] = {192, 48, 12};
 static int 		SDVIG[3] = {6, 4, 2};
 
@@ -46,8 +46,8 @@ static t_op		g_op[16] = {
 				.args_num = 2,
 				.args_types_code = 1,
 				.args_codes1 = {REG_CODE, REG_CODE, 0},
-				.args_codes2 = {REG_CODE, T_IND, 0},
-				.args_codes3 = {REG_CODE, T_IND, 0},
+				.args_codes2 = {REG_CODE, IND_CODE, 0},
+				.args_codes3 = {REG_CODE, IND_CODE, 0},
 				.args_types = {T_REG, T_REG | T_IND, 0},
 				.modify_carry = 0,
 				.dir_size = 4,

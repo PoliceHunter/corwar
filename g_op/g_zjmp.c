@@ -17,24 +17,25 @@
 // каретка для выполнения следующей операции
 // Размер T_DIR 2.
 //Циклы до исполнения 20
+//изменения в структуре каретки
+//Если carry = 1, функция обновляет значение PC на адрес: текущая позиция + <ПЕРВЫЙ_АРГУМЕНТ> % IDX_MOD
+//Если значение carry равно нулю, перемещение не выполняется.
 
-void				zjmp(t_cor *vm, t_process *proc)
+void				zjmp(t_cor *cor, t_process *proc)
 {
-	//переменные
-	//
+	int32_t			arg1;
+	int32_t			jump;
 
-	//движение дальше
-	//шаг курсора - прибавляем стандартный cursor->step += OP_CODE_LEN;
-
-	//получение данных
-	//
-
-	//изменения в структуре каретки
-	//Если carry = 1, функция обновляет значение PC на адрес: текущая позиция + <ПЕРВЫЙ_АРГУМЕНТ> % IDX_MOD
-	//Если значение carry равно нулю, перемещение не выполняется.
-
-	//печать ft_printf("P %4d | zjmp %d %s\n",
-	//									cursor->id,
-	//									addr,
-	//									(cursor->carry) ? "OK" : "FAILED");
+	arg1 = byte_to_int32(cor, proc, 0, cor->buffer_sizes[0]);
+	jump = arg1 % IDX_MOD;
+	//proc->carry = 1;
+	if (proc->carry == 1)
+	{
+		proc->pos = get_address(proc, jump, 1); //перепрыгиваем операцию
+		proc->cycle_to_exec = -1;
+	}
+	else
+	{
+		proc->pos = get_address(proc, cor->next_step, 1);
+	}
 }

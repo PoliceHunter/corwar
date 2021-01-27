@@ -82,7 +82,7 @@ typedef struct			s_process
 	uint8_t				name_op;
 	//uint32_t			next_pos;
 	int					cycle_to_exec; 			// A counter containing the number of cycles that the carriage must wait before starting an operation.
-	uint32_t			live_last_cycle; 		// Contain the cycle on which the last live operation was performed
+	int32_t				live_last_cycle; 			// Contain the cycle on which the last live operation was performed //gala убрала u
 	uint32_t			live_last_id;
 	uint32_t			id; 					//// index of process
 	uint32_t			player_id;
@@ -117,6 +117,8 @@ int32_t			bytecode_to_int32(const uint8_t *bytecode, size_t size);  //(gala) у�
 
 uint32_t		find_cycle_to_exec(t_cor *cor, t_process *proc);
 void			print_arena(uint8_t *map, int print_mode);
+t_process 		*init_process(int32_t pos, t_vector process, int player_id);
+void 			dublicate_process(t_process *dubl, t_process *proc);
 
 //(gala)
 int32_t			byte_to_int32(t_cor *cor, t_process *process, int i, int size);
@@ -141,7 +143,12 @@ void			zjmp(t_cor *vm, t_process *proc);
 void			game_in_cycle(t_cor *cor);
 void			make_buffer_codes(t_cor *cor);
 void			fill_buffer_with_zeros(t_cor *cor);
-int32_t			get_begin_point(t_cor *cor, t_process *proc, int i);
-int32_t			get_address(t_process *process, int32_t step);
+int32_t			get_begin_point(t_cor *cor, t_process *proc, int i);//
+int32_t			get_address(t_process *process, int32_t step, int key);
+int32_t			get_address_map(int32_t address, int32_t step);
+int32_t			get_step(t_cor *cor, t_process *proc, int i);
+int32_t			byte_to_int32_2(t_cor *cor, uint32_t address, int size);
+int32_t			get_value(t_cor *cor, t_process *proc, int i);
+void			check_flag(t_cor *cor);
 
 #endif //CORWAR_CORWAR_H
