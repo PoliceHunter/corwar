@@ -64,6 +64,11 @@ CORE_LIST = main.c \
             g_sub.c \
             g_xor.c \
             g_zjmp.c \
+            init.c \
+            parse_flags.c \
+            parse_champion.c \
+            print.c \
+            player_num.c \
 
 ASM_SRC_DIR = $(SRC_DIR)$(ASM_DIR)
 CORE_SRC_DIR = $(SRC_DIR)$(CORE_DIR)

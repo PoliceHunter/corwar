@@ -56,3 +56,15 @@ void exterminate(t_cor *cor, int exit_code)
 	if (exit_code > 0 && exit_code < 11)
 		write_exit_code(exit_code);
 }
+
+void	error_usage(void)
+{
+	ft_putstr_fd("Usage:\n \
+	Example: ./corewar -visual -n -1 filename.cor\n \
+	GUI: ./corewar -visual [Players]\n \
+	Default Player Numbers: 1, 2, 3, 4...\n \
+	Change Player Number: -n -1 filename.cor\n \
+	Dump: ./corewar -dump 300 [Players](prints the memory after 300 cycles)\n \
+	Game on! 👾 🤖 🔫 \n", 2);
+	exit(1);
+}

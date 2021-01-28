@@ -6,7 +6,7 @@
 #    By: tmyrcell <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 20:28:46 by tmyrcell          #+#    #+#              #
-#    Updated: 2020/12/23 16:24:20 by tmyrcell         ###   ########.fr        #
+#    Updated: 2019/09/24 20:00:14 by tmyrcell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,6 @@ LIBFT =	ft_memset.c \
         init_free_vector.c \
         insert_sort_vector.c \
         push_pop_vector.c \
-		ft_atol.c \
 
 FT_PRINTF = 		ad_0_after0x.c \
              		ad_0_aftersign.c \
