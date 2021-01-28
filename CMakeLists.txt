@@ -146,6 +146,11 @@ set(SOURCE_CODE
         src/corewar/g_sub.c
         src/corewar/g_xor.c
         src/corewar/g_zjmp.c
+        src/corewar/init.c
+        src/corewar/parse_flags.c
+        src/corewar/parse_champion.c
+        src/corewar/print.c
+        src/corewar/player_num.c
         includes/op.h src/corewar/g_game_logic.c src/corewar/g_game_in_cycle.c src/corewar/g_help_buffer.c src/corewar/g_get_put_values.c)
 
 

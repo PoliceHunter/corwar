@@ -24,7 +24,6 @@ void				xor(t_cor *cor, t_process *proc)
 	int32_t			value2;
 	uint8_t			reg3;
 
-	print_arena(cor->map, 64);
 	reg3 = cor->map[get_address(proc, get_step(cor, proc, 2), 0)];
 
 	value1 = get_value(cor, proc, 0);
