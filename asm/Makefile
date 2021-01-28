@@ -28,39 +28,61 @@ CORE_INCLUDES = -I$(INCLUDES) \
 ASM_DIR = asm/
 CORE_DIR = corewar/
 
+ASM_LIST = asm_main.c \
+			asm_utils.c \
+			assemble.c \
+			add_token.c \
+			asm_errors.c \
+			asm_utils2.c \
+			parse_asm.c	\
+			setup_info.c \
+			setup_arg.c \
+			create_label.c \
+			resize_buff.c \
+			buildup_code.c \
+			buildup_binary.c \
+			parse_str.c
 CORE_LIST = main.c \
-            			exit.c \
-            			g_op/g_add.c \
-            			g_op/g_aff.c \
-            			g_op/g_and.c \
-            			g_op/g_fork.c \
-            			g_op/g_game_in_cycle.c \
-            			g_op/g_game_logic.c \
-            			g_op/g_help_buffer.c \
-            			g_op/g_ld.c \
-            			g_op/g_ldi.c \
-            			g_op/g_lfork.c \
-            			g_op/g_live.c \
-            			g_op/g_lld.c \
-            			g_op/g_lldi.c \
-            			g_op/g_or.c \
-            			g_op/g_st.c \
-            			g_op/g_sti.c \
-            			g_op/g_sub.c \
-            			g_op/g_xor.c \
-            			g_op/g_zjmp.c \
+            exit.c \
+            g_add.c \
+            g_aff.c \
+            g_and.c \
+            g_fork.c \
+            g_game_in_cycle.c \
+            g_game_logic.c \
+            g_help_buffer.c \
+            g_get_put_values.c \
+            g_ld.c \
+            g_ldi.c \
+            g_lfork.c \
+            g_live.c \
+           	g_lld.c \
+            g_lldi.c \
+            g_or.c \
+            g_st.c \
+            g_sti.c \
+            g_sub.c \
+            g_xor.c \
+            g_zjmp.c \
+            init.c \
+            parse_flags.c \
+            parse_champion.c \
+            print.c \
+            player_num.c \
 
+ASM_SRC_DIR = $(SRC_DIR)$(ASM_DIR)
 CORE_SRC_DIR = $(SRC_DIR)$(CORE_DIR)
 
-
+ASM_OBJ_DIR = $(OBJ_DIR)$(ASM_DIR)
 CORE_OBJ_DIR = $(OBJ_DIR)$(CORE_DIR)
 
-
+ASM_OBJ_LIST = $(patsubst %.c, %.o, $(ASM_LIST))
 CORE_OBJ_LIST = $(patsubst %.c, %.o, $(CORE_LIST))
 
+ASM_OBJ = $(addprefix $(ASM_OBJ_DIR),  $(ASM_OBJ_LIST))
 CORE_OBJ = $(addprefix $(CORE_OBJ_DIR),  $(CORE_OBJ_LIST))
 
-
+ASM_SRC = $(addprefix $(ASM_SRC_DIR), $(ASM_LIST))
 CORE_SRC = $(addprefix $(CORE_SRC_DIR), $(CORE_LIST))
 
 LIBFT_ALL		= $(addsuffix .all,$(LIBFT_DIR))
@@ -70,11 +92,15 @@ LIBFT_FCLEAN	= $(addsuffix .fclean,$(LIBFT_DIR))
 INCLUDES		= includes/
 INC_LIBFT	= $(addsuffix inc/,$(LIBFT_DIR))
 
-CORE_HEADERS_LIST = op.h corwar.h g_op/g_corewar_op.h
+ASM_HEADERS_LIST = asm.h errors.h
+CORE_HEADERS_LIST = op.h corwar.h g_corewar_op.h
 
-FLAGS = 
+ASM_HEADERS = $(addprefix includes/, $(ASM_HEADERS_LIST))
+CORE_HEADERS = $(addprefix includes/, $(CORE_HEADERS_LIST))
 
-all: $(LIBFT_ALL) $(CORE_NAME)
+FLAGS =
+
+all: $(LIBFT_ALL) $(ASM_NAME) #need add $(CORE_NAME)
 
 clean: $(LIBFT_CLEAN)
 	@rm -rf $(ASM_OBJ_DIR) $(CORE_OBJ_DIR) $(OBJ_DIR)
@@ -87,8 +113,15 @@ re:		fclean all
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
+$(ASM_OBJ_DIR):
+	@mkdir -p $(ASM_OBJ_DIR)
+
 $(CORE_OBJ_DIR):
 	@mkdir -p $(CORE_OBJ_DIR)
+
+$(ASM_NAME): $(LIBFT) $(OBJ_DIR) $(ASM_OBJ_DIR) $(ASM_OBJ)
+	@gcc $(FLAGS) $(ASM_INCLUDES) $(ASM_OBJ) $(LIBFT) -o $(ASM_NAME)
+	@echo "\033[32m$(ASM_NAME) binary created\033[0m."
 
 $(CORE_NAME): $(LIBFT) $(OBJ_DIR) $(CORE_OBJ_DIR) $(CORE_OBJ)
 	@gcc $(FLAGS) $(CORE_INCLUDES) $(CORE_OBJ) $(LIBFT) -o $(CORE_NAME)
