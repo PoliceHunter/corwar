@@ -35,6 +35,7 @@ void				g_fork(t_cor *cor, t_process *proc)
 	int32_t			arg1;
 	int32_t			address;
 	t_process 		*dubl;
+	t_process 		*proc1;///
 
 	arg1 = get_value(cor, proc, 0);
 	address = proc->pos + arg1 % IDX_MOD;
@@ -42,6 +43,7 @@ void				g_fork(t_cor *cor, t_process *proc)
 		address = address % MEM_SIZE;
 	dubl = init_process(address, cor->process, proc->player_id);
 	dublicate_process(dubl, proc);
-	push_back_vec(&cor->process, dubl);
+	push_front_vec(&cor->process, dubl);
+	proc1 = get_from_vec(&cor->process, 0);
 	cor->count_cursors++;
 }

@@ -72,6 +72,10 @@ string.h
 libft.h
 /Users/MAYK/COREWAR2/libft/inc/libft.h
 
+/Users/MAYK/COREWAR2/src/corewar/g_aff.c
+../../includes/corwar.h
+/Users/MAYK/COREWAR2/includes/corwar.h
+
 /Users/MAYK/COREWAR2/src/corewar/g_game_logic.c
 ../../includes/corwar.h
 /Users/MAYK/COREWAR2/includes/corwar.h

@@ -68,7 +68,10 @@ int 			game_logic(t_cor *cor)
 	int32_t		one_cycle_to_die;
 	int 		minus;
 
-	int f = -1;//
+	t_process *proc1;
+	t_process *process2;
+	int f = -1;//\
+
 
 	cor->cycles_to_die = CYCLE_TO_DIE;
 	while (cor->count_cursors != 0) //&& f++ < 2)
@@ -78,13 +81,15 @@ int 			game_logic(t_cor *cor)
 		{
 			one_cycle_to_die = 0;
 			//ft_printf("\ncor->cycles_to_die: %d\n", cor->cycles_to_die);
-			while (one_cycle_to_die++ < cor->cycles_to_die && ++f < 928) //cor->cycles_to_die
+			while (one_cycle_to_die++ < cor->cycles_to_die) // && ++f < 928) //cor->cycles_to_die
 			{
 				if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
 					ft_printf("cor->cycle: %d\n", cor->cycle);
 			//	ft_printf("\none_cycle_to_die: %d\n", one_cycle_to_die - 1);
 				game_in_cycle(cor);
 				cor->cycle++;
+				proc1 = get_from_vec(&cor->process, 0);
+				process2 = get_from_vec(&cor->process, 1);
 				if (check_flag(cor) == 1)
 					return (1);
 			}
