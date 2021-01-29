@@ -73,23 +73,33 @@ int 			game_logic(t_cor *cor)
 	cor->cycles_to_die = CYCLE_TO_DIE;
 	while (cor->count_cursors != 0) //&& f++ < 2)
 	{
+		//ft_printf("\ncor->cycles_to_die: %d\n", cor->cycles_to_die);
 		while (cor->cycles_to_die > 0) // && f++ < 2) //перепроверю
 		{
 			one_cycle_to_die = 0;
+			//ft_printf("\ncor->cycles_to_die: %d\n", cor->cycles_to_die);
 			while (one_cycle_to_die++ < cor->cycles_to_die && ++f < 928) //cor->cycles_to_die
 			{
 				if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
 					ft_printf("cor->cycle: %d\n", cor->cycle);
+			//	ft_printf("\none_cycle_to_die: %d\n", one_cycle_to_die - 1);
 				game_in_cycle(cor);
 				cor->cycle++;
 				if (check_flag(cor) == 1)
 					return (1);
 			}
+			//ft_printf("\nproverka, cycle = %d\n", cor->cycle);
+			//ft_printf("count_lives = %d count_check = %d \n", cor->count_lives, cor->count_check);
 			minus = count_minus(cor);
 			proverka(cor);
 			cor->cycles_to_die = cor->cycles_to_die - minus;
+			//if (cor->cycles_to_die < 50)
+			//	minus = minus;
 			if ((cor->flag.dump32 > 0 && (int) cor->cycle == cor->flag.dump32)|| (cor->flag.dump64 > 0 && (int) cor->cycle == cor->flag.dump64))
+			{
+				//print  // - вывести состояние текущего цикла
 				return (2);
+			}
 		}
 		if (cor->cycles_to_die <= 0)
 		{

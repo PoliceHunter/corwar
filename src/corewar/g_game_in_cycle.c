@@ -140,9 +140,24 @@ void			game_in_cycle(t_cor *cor)
 				process->op.func(cor, process); //выполняем операцию
 				if (process->op_code != 9)
 				{
+					process = process->op_code == 12 ? get_from_vec(&cor->process, index + 1) : process;
 					process->op_code = 0;
 					process->pos = get_address(process, cor->next_step, 1); //перепрыгиваем операцию
+					//
 				}
+				/*if (process->op_code != 9 && process->op_code != 12)
+				{
+					process->op_code = 0;
+					process->pos = get_address(process, cor->next_step, 1); //перепрыгиваем операцию
+					//
+				}
+				if (process->op_code == 12)
+				{
+					process = get_from_vec(&cor->process, index + 1);
+					process->op_code = 0;
+					process->pos = get_address(process, cor->next_step, 1); //перепрыгиваем операцию
+					//
+				}*/
 				if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
 					ft_printf("next_pos: %d\n", process->pos);
 			}
