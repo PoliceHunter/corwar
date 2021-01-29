@@ -28,6 +28,7 @@ void				lfork(t_cor *cor, t_process *proc)
 		address = address % MEM_SIZE;
 	dubl = init_process(address, cor->process, proc->player_id);
 	dublicate_process(dubl, proc);
-	push_back_vec(&cor->process, dubl);
+	push_front_vec(&cor->process, dubl);
 	cor->count_cursors++;
+	//ft_printf("lfork\n");
 }

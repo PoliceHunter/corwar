@@ -1,3 +1,3 @@
-./o_corewar -d 4370 ./Compiled/bee_gees.cor > f1
-./corewar -d 4370 ./Compiled/bee_gees.cor > f2
+./o_corewar ./Compiled/helltrain.cor ./Compiled/bigzork.cor > f1
+./corewar ./Compiled/helltrain.cor ./Compiled/bigzork.cor > f2
 diff -u f1 f2

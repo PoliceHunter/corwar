@@ -107,16 +107,19 @@ void			game_in_cycle(t_cor *cor)
 	int 		index;
 	t_process	*process;
 	int 		check;
+	int 		temp;
+	int 		prev_curs;
 
+	temp = -1;
 	index = -1;
-	while (++index < cor->count_cursors)
+	prev_curs = cor->count_cursors;
+	while (++index < prev_curs)
 	{
 		process = get_from_vec(&cor->process, index);
-		if (index == 1800)
-			printf("process debugging");
+		//if (index == 1825)
+		//	printf("process debugging");
 		if (process->cycle_to_exec == -1)
 		{
-			printf("before exec op %d --- cycle_to_exec %d\n", process->id, process->cycle_to_exec);
 			check = read_op(cor, process);
 			if (check == 1)
 				process->cycle_to_exec--;
@@ -126,11 +129,12 @@ void			game_in_cycle(t_cor *cor)
 			check = check_correct_op(cor, process);
 			if (check == 1) // все проверки успешны
 			{
+				temp = process->op_code;
 				process->op.func(cor, process); //выполняем операцию
-				printf("After %d --- cycle_to_exec %d\n", process->id, process->cycle_to_exec);
+				if (temp == 12)
+					process =  get_from_vec(&cor->process, index + 1);
 				if (process->op_code != 9)
 				{
-					process = process->op_code == 12 ? get_from_vec(&cor->process, index + 1) : process;
 					process->op_code = 0;
 					process->pos = get_address(process, cor->next_step, 1); //перепрыгиваем операцию
 				}

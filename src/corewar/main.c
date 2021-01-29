@@ -33,11 +33,8 @@ int main(int ac, char **av)
 	parse_champion_file(&cor);
 	init_arena(&cor);
 	init_processes(&cor);
-	if (cor.flag.visual == FALSE)
-	{
-		//print_intro(&cor);
-		start_game(&cor);
-	}
+	start_game(&cor);
+
 
 	return 0;
 }

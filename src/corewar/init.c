@@ -75,7 +75,7 @@ void init_processes(t_cor *cor)
 	index = -1;
 	while (++index != cor->count_cursors)
 	{
-		push_back_vec(&process, init_process(pos, process, cor->player[index].id)); //(gala) добавила id игрока
+		push_front_vec(&process, init_process(pos, process, cor->player[index].id)); //(gala) добавила id игрока
 		pos += MEM_SIZE / cor->count_players;
 	}
 	cor->process = process;
