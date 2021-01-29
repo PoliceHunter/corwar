@@ -27,6 +27,7 @@ void 				dublicate_process(t_process *dubl, t_process *proc)
 	dubl->carry = proc->carry;
 	dubl->live_last_cycle = proc->live_last_cycle; //(gala) изменила 17.01
 	dubl->live_last_id = proc->live_last_id;
+	dubl->id = 10; ///del
 }
 
 void				g_fork(t_cor *cor, t_process *proc)

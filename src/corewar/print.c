@@ -28,5 +28,5 @@ void		print_intro(t_cor *cor)
 	id = -1;
 	ft_printf("Introducing contestants...\n");
 	while (++id != cor->count_players)
-		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n", id, cor->player[id].code_size, cor->player[id].name, cor->player[id].comment);
+		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n", cor->player[id].id, cor->player[id].code_size, cor->player[id].name, cor->player[id].comment);
 }

@@ -10,11 +10,20 @@ int			is_filename(const char *filename, const char *ext)
 
 void start_game(t_cor *cor)
 {
-	int index = -1;
+	int		index;
 
-	while (cor->process.size != 0 && ++index != cor->process.size)
+	index = -1;
+	//print_arena(cor->map, 64);
+	game_logic(cor);
+	while (++index < cor->count_players)
 	{
-		game_logic(cor);
+		if (cor->player[index].id == cor->last_live_player)
+			break;
+	}
+	if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
+		ft_printf("Contestant %d, \"%s\", has won !\n", cor->last_live_player, cor->player[index].name);
+
+
 		//t_process *caretka = get_from_vec(&cor->process, index);
 		//caretka->name_op = cor->map[caretka->pos]; // Check if name_op is correct
 		//find_op(cor, caretka->name_op, caretka); // сопоставляет имся операции и выполняет функцию с названием этой операции
@@ -23,7 +32,6 @@ void start_game(t_cor *cor)
 			check_cycle(cor);
 			index = -1;
 		}*/
-	}
 }
 
 int main(int ac, char **av)
