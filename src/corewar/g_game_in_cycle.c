@@ -116,8 +116,6 @@ void			game_in_cycle(t_cor *cor)
 	while (index < mem)
 	{
 		process = get_from_vec(&cor->process, index);
-		//ft_printf("!!!--->>>process->player_id: %d\n", process->player_id);
-		//ft_printf("process->reg[1]: %d\n", process->reg[1]);
 		if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
 			ft_printf("process->pos: %d\n", process->pos);
 		if (process->cycle_to_exec == -1)
@@ -127,17 +125,14 @@ void			game_in_cycle(t_cor *cor)
 				ft_printf("-1 proc: %d pos: %d check: %d\n", process->player_id, process->pos, check);
 			if (check == 1)
 			{
-//				char *name = process->op.name;
 				if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
 					ft_printf("-1 to do process->op.name: \"%s\" in %d cycle\n", process->op.name, process->cycle_to_exec);
 				process->cycle_to_exec--;
-				//ft_printf("cxbxf");																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												\n", check);
 			}
 		}
 		else if (process->cycle_to_exec == 0)
 		{
 			check = check_correct_op(cor, process);
-			//ft_printf("check: %d\n", check);
 			if (check == 1) // все проверки успешны
 			{
 				if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
@@ -153,20 +148,11 @@ void			game_in_cycle(t_cor *cor)
 			}
 			else if (check == 2) //код операции не ок
 				process->pos = get_address(process, 1, 1); //переход на след позицию
-			else if (check == 3) //код операции ок, но арг или рег не ок
-			{
+			else if (check == 3) //код операции ок, но арг или рег не о
 				process->pos = get_address(process, cor->next_step, 1); //перепрыгиваем операцию
-				//ft_printf("3--- process: %d, op: %d, pos: %d\n", process->player_id, process->op_code, process->pos);
-			}
-			//ft_printf("process->pos: %d\n", process->pos);
 		}
 		else
-		{
 			process->cycle_to_exec--;
-			//ft_printf("else process->op_code: %d\n", process->op_code);
-			//ft_printf("else process->cycle_to_exec: %d\n", process->cycle_to_exec);
-			//ft_printf("else process->pos: %d\n", process->pos);
-		}
 		index++;
 	}
 }
