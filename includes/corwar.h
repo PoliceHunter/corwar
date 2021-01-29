@@ -83,7 +83,7 @@ typedef struct			s_process
 	uint8_t				name_op;
 	//uint32_t			next_pos;
 	int					cycle_to_exec; 			// A counter containing the number of cycles that the carriage must wait before starting an operation.
-	int32_t				live_last_cycle; 			// Contain the cycle on which the last live operation was performed //gala убрала u
+	int32_t				live_last_cycle; 		// Contain the cycle on which the last live operation was performed //gala убрала u
 	uint32_t			live_last_id;
 	uint32_t			id; 					//// index of process
 	uint32_t			player_id;
@@ -98,8 +98,8 @@ struct					s_cor
 	t_vector			process;						////vector process
 	char				**files; 							//// Our argv
 	uint32_t			cycle; 						//// Cunter containing total cycles have passed since the start of the game
-	int32_t				cycle_to_check; 				// Counter containing the number of cycles left before the check
 	int32_t				cycles_to_die; 					// The number of cycles between checks
+	int32_t             cycles_after_check;             //// New param, count cycles [0;cycles_to_die]
 	int					count_players; 						//// How many players in the game
 	int					count_cursors; 						//// count cursors on the start = count players
 	int					count_lives; 						//// (gala) считаем кол-во операций live за цикл

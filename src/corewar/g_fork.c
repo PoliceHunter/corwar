@@ -27,7 +27,6 @@ void 				dublicate_process(t_process *dubl, t_process *proc)
 	dubl->carry = proc->carry;
 	dubl->live_last_cycle = proc->live_last_cycle; //(gala) изменила 17.01
 	dubl->live_last_id = proc->live_last_id;
-	dubl->id = 10; ///del
 }
 
 void				g_fork(t_cor *cor, t_process *proc)
@@ -35,7 +34,6 @@ void				g_fork(t_cor *cor, t_process *proc)
 	int32_t			arg1;
 	int32_t			address;
 	t_process 		*dubl;
-	t_process 		*proc1;///
 
 	arg1 = get_value(cor, proc, 0);
 	address = proc->pos + arg1 % IDX_MOD;
@@ -43,7 +41,7 @@ void				g_fork(t_cor *cor, t_process *proc)
 		address = address % MEM_SIZE;
 	dubl = init_process(address, cor->process, proc->player_id);
 	dublicate_process(dubl, proc);
-	push_front_vec(&cor->process, dubl);
-	proc1 = get_from_vec(&cor->process, 0);
+	dubl->id = ((t_process *)get_from_vec(&cor->process, cor->process.size - 1))->id + 1;
+	push_back_vec(&cor->process, dubl);
 	cor->count_cursors++;
 }

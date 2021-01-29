@@ -14,7 +14,7 @@ void init_cor(t_cor *cor, char **av)
 	cor->flag.aff = 0;
 	cor->count_cursors = 0;
 	cor->cycle = 0;
-	cor->cycle_to_check = 0;
+	cor->cycles_after_check = 0;
 	cor->count_check = 0;
 	cor->last_live_player = 0;
 	cor->buffer_codes = NULL;		//(gala)

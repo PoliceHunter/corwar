@@ -13,99 +13,65 @@
 #include "../../includes/corwar.h"
 #include "../../includes/g_corewar_op.h"
 
-void 			kill_caretka(t_cor *cor, t_process *proc, int index)
+static _Bool	is_died(t_cor *cor, t_process *proc)
+{
+	return (cor->cycles_to_die <= 0
+	        || cor->cycle - proc->live_last_cycle >= cor->cycles_to_die);
+}
+
+void 			kill_caretka(t_cor *cor)
 {
 	//1 - удалить из структуры данную каретку, очистить память
 	//free(proc); //возможно не надо
-	remove_from_vec(&cor->process, index);
-	cor->count_cursors--;
-	proc = NULL;
+	t_process *process;
+	int index;
+
+	index = -1;
+	while (++index < cor->count_cursors)
+	{
+		process = get_from_vec(&cor->process, index);
+		if (process->live_last_cycle == -1 && is_died(cor, process))
+		{
+			remove_from_vec(&cor->process, index);
+			cor->count_cursors--;
+			index--;
+		}
+		else
+			process->live_last_cycle = -1; //// Проверить на правильность ипспользования
+	}
 }
 
 void 			proverka(t_cor *cor)
 {
 	int 		index;
-	//int 		mem;
 	t_process	*process;
 
 	index = 0;
-	//mem = cor->count_cursors;
-	while (index < cor->count_cursors)
-	{
-		process = get_from_vec(&cor->process, index);
-		//ft_printf("process->player_id: %d\n", process->player_id);
-		//ft_printf("process->live_last_cycle: %d\n", process->live_last_cycle);
-		//ft_printf("cor->cycles_to_die: %d\n", cor->cycles_to_die);
-		//ft_printf("if (process->live_last_cycle > cor->cycles_to_die)\n");
-		if (process->live_last_cycle == -1)
-		{
-			kill_caretka(cor, process, index);
-			index--;
-		}
-		else
-			process->live_last_cycle = -1;
-		index++;
-	}
-	cor->count_lives = 0; //
 	cor->count_check++;
-}
-
-int 			count_minus(t_cor *cor)
-{
-	int			minus;
-
-	minus = 0;
+	kill_caretka(cor);
 	if (cor->count_lives >= NBR_LIVE || cor->count_check == MAX_CHECKS)
 	{
-		minus = CYCLE_DELTA;
+		cor->cycles_to_die -= CYCLE_DELTA;
 		cor->count_check = 0;
 	}
-	return (minus);
+	cor->cycles_after_check = 0;
+	cor->count_lives = 0; //// Wast ist das?
 }
 
 int 			game_logic(t_cor *cor)
 {
-	int32_t		one_cycle_to_die;
-	int 		minus;
-
-	int f = -1;//
-
 	cor->cycles_to_die = CYCLE_TO_DIE;
-	while (cor->count_cursors != 0) //&& f++ < 2)
+	while (cor->count_cursors > 0)
 	{
-		//ft_printf("\ncor->cycles_to_die: %d\n", cor->cycles_to_die);
-		while (cor->cycles_to_die > 0) // && f++ < 2) //перепроверю
-		{
-			one_cycle_to_die = 0;
-			//ft_printf("\ncor->cycles_to_die: %d\n", cor->cycles_to_die);
-			while (one_cycle_to_die++ < cor->cycles_to_die && ++f < 928) //cor->cycles_to_die
-			{
-				if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
-					ft_printf("cor->cycle: %d\n", cor->cycle);
-			//	ft_printf("\none_cycle_to_die: %d\n", one_cycle_to_die - 1);
-				game_in_cycle(cor);
-				cor->cycle++;
-				if (check_flag(cor) == 1)
-					return (1);
-			}
-			//ft_printf("\nproverka, cycle = %d\n", cor->cycle);
-			//ft_printf("count_lives = %d count_check = %d \n", cor->count_lives, cor->count_check);
-			minus = count_minus(cor);
+		check_flag(cor);
+		if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
+			ft_printf("cor->cycle: %d\n", cor->cycle); //// Delete becouse unusage in original program
+		game_in_cycle(cor);
+		cor->cycle++;
+		cor->cycles_after_check++;
+		if (cor->cycles_to_die == cor->cycles_after_check
+		|| cor->cycles_to_die <= 0)
 			proverka(cor);
-			cor->cycles_to_die = cor->cycles_to_die - minus;
-			//if (cor->cycles_to_die < 50)
-			//	minus = minus;
-			if ((cor->flag.dump32 > 0 && (int) cor->cycle == cor->flag.dump32)|| (cor->flag.dump64 > 0 && (int) cor->cycle == cor->flag.dump64))
-			{
-				//print  // - вывести состояние текущего цикла
-				return (2);
-			}
-		}
-		if (cor->cycles_to_die <= 0)
-		{
-			game_in_cycle(cor);
-			proverka(cor);
-		}
 	}
 	return (1);
 }

@@ -58,13 +58,13 @@ int	check_flag(t_cor *cor)
 	if (cor->flag.dump64 == (int) cor->cycle && cor->flag.dump64 != 0)
 	{
 		print_arena(cor->map, 64);
-		return (1);
+		exit(0);
 	}
 
 	if (cor->flag.dump32 == (int) cor->cycle && cor->flag.dump32 != 0)
 	{
 		print_arena(cor->map, 32);
-		return (1);
+		exit(0);
 	}
 	return (0);
 }

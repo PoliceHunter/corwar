@@ -92,8 +92,6 @@ int				read_op(t_cor *cor, t_process *process)
 	fill_buffer_with_zeros(cor);
 	cor->next_step = 0;
 	process->op_code = cor->map[process->pos];
-	if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
-		ft_printf("read_op process->op_code: %d\n", process->op_code);
 	if (process->op_code > 0 && process->op_code < 17)
 	{
 		process->op = g_op[process->op_code - 1];
@@ -107,59 +105,35 @@ int				read_op(t_cor *cor, t_process *process)
 void			game_in_cycle(t_cor *cor)
 {
 	int 		index;
-	int 		mem;
 	t_process	*process;
 	int 		check;
 
-	index = 0;
-	mem = cor->count_cursors;
-	while (index < mem)
+	index = -1;
+	while (++index < cor->count_cursors)
 	{
 		process = get_from_vec(&cor->process, index);
-		if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
-			ft_printf("process->pos: %d\n", process->pos);
+		if (index == 1800)
+			printf("process debugging");
 		if (process->cycle_to_exec == -1)
 		{
+			printf("before exec op %d --- cycle_to_exec %d\n", process->id, process->cycle_to_exec);
 			check = read_op(cor, process);
-			if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
-				ft_printf("-1 proc: %d pos: %d check: %d\n", process->player_id, process->pos, check);
 			if (check == 1)
-			{
-				if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
-					ft_printf("-1 to do process->op.name: \"%s\" in %d cycle\n", process->op.name, process->cycle_to_exec);
 				process->cycle_to_exec--;
-			}
 		}
 		else if (process->cycle_to_exec == 0)
 		{
 			check = check_correct_op(cor, process);
 			if (check == 1) // все проверки успешны
 			{
-				if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
-					ft_printf("process %d, pos: %d, done \"%s\"\n", process->player_id, process->pos, process->op.name);
 				process->op.func(cor, process); //выполняем операцию
+				printf("After %d --- cycle_to_exec %d\n", process->id, process->cycle_to_exec);
 				if (process->op_code != 9)
 				{
 					process = process->op_code == 12 ? get_from_vec(&cor->process, index + 1) : process;
 					process->op_code = 0;
 					process->pos = get_address(process, cor->next_step, 1); //перепрыгиваем операцию
-					//
 				}
-				/*if (process->op_code != 9 && process->op_code != 12)
-				{
-					process->op_code = 0;
-					process->pos = get_address(process, cor->next_step, 1); //перепрыгиваем операцию
-					//
-				}
-				if (process->op_code == 12)
-				{
-					process = get_from_vec(&cor->process, index + 1);
-					process->op_code = 0;
-					process->pos = get_address(process, cor->next_step, 1); //перепрыгиваем операцию
-					//
-				}*/
-				if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
-					ft_printf("next_pos: %d\n", process->pos);
 			}
 			else if (check == 2) //код операции не ок
 				process->pos = get_address(process, 1, 1); //переход на след позицию
@@ -168,6 +142,5 @@ void			game_in_cycle(t_cor *cor)
 		}
 		else
 			process->cycle_to_exec--;
-		index++;
 	}
 }
