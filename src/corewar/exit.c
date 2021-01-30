@@ -42,7 +42,6 @@ void write_exit_code(int exit_code)
 		ft_putstr_fd("Problems with initialize code size\n", 2);
 	if (exit_code == ERR_STR_INIT)
 		ft_putstr_fd("Problems with initialize string\n", 2);
-
 	exit(1);
 }
 

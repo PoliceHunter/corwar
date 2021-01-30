@@ -1,0 +1,234 @@
+==63240== Memcheck, a memory error detector
+==63240== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==63240== Using Valgrind-3.17.0.GIT and LibVEX; rerun with -h for copyright info
+==63240== Command: ./corewar ../CORECHECKER/champs/bytecode/Wall.cor
+==63240== Parent PID: 63236
+==63240== 
+==63240== Invalid read of size 1
+==63240==    at 0x10000228F: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240==  Address 0x10080e544 is 804 bytes inside a block of size 832 free'd
+==63240==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x100006251: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x1000031E4: lfork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240==  Block was alloc'd at
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x1000061F3: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x100001B6A: g_fork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240== 
+==63240== Invalid write of size 1
+==63240==    at 0x1000022A0: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240==  Address 0x10080e544 is 804 bytes inside a block of size 832 free'd
+==63240==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x100006251: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x1000031E4: lfork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240==  Block was alloc'd at
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x1000061F3: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x100001B6A: g_fork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240== 
+==63240== Invalid write of size 1
+==63240==    at 0x1000022A8: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240==  Address 0x10080e55c is 828 bytes inside a block of size 832 free'd
+==63240==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x100006251: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x1000031E4: lfork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240==  Block was alloc'd at
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x1000061F3: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x100001B6A: g_fork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240== 
+==63240== Invalid read of size 4
+==63240==    at 0x100002D82: get_address (in ./corewar)
+==63240==    by 0x1000022C3: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240==  Address 0x10080e540 is 800 bytes inside a block of size 832 free'd
+==63240==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x100006251: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x1000031E4: lfork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240==  Block was alloc'd at
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x1000061F3: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x100001B6A: g_fork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240== 
+==63240== Invalid write of size 4
+==63240==    at 0x100002DB4: get_address (in ./corewar)
+==63240==    by 0x1000022C3: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240==  Address 0x10080e548 is 808 bytes inside a block of size 832 free'd
+==63240==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x100006251: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x1000031E4: lfork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240==  Block was alloc'd at
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x1000061F3: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x100001B6A: g_fork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240== 
+==63240== Invalid write of size 4
+==63240==    at 0x1000022C8: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240==  Address 0x10080e540 is 800 bytes inside a block of size 832 free'd
+==63240==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x100006251: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x1000031E4: lfork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240==  Block was alloc'd at
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x1000061F3: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x100001B6A: g_fork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240== 
+==63240== 
+==63240== HEAP SUMMARY:
+==63240==     in use at exit: 9,158,252 bytes in 55,303 blocks
+==63240==   total heap usage: 55,383 allocs, 80 frees, 12,571,760 bytes allocated
+==63240== 
+==63240== 16 bytes in 1 blocks are definitely lost in loss record 4 of 46
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x1000026FC: make_buffer_codes (in ./corewar)
+==63240==    by 0x100003A43: init_cor (in ./corewar)
+==63240==    by 0x1000014BA: main (in ./corewar)
+==63240== 
+==63240== 16 bytes in 1 blocks are definitely lost in loss record 5 of 46
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x100002754: make_buffer_codes (in ./corewar)
+==63240==    by 0x100003A43: init_cor (in ./corewar)
+==63240==    by 0x1000014BA: main (in ./corewar)
+==63240== 
+==63240== 104 bytes in 1 blocks are definitely lost in loss record 26 of 46
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x100003BB6: init_process (in ./corewar)
+==63240==    by 0x100003D03: init_processes (in ./corewar)
+==63240==    by 0x1000014F7: main (in ./corewar)
+==63240== 
+==63240== 129 bytes in 1 blocks are definitely lost in loss record 31 of 46
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x10000598E: ft_strnew (in ./corewar)
+==63240==    by 0x10000459B: parse_str (in ./corewar)
+==63240==    by 0x1000043B9: parse_champion_file (in ./corewar)
+==63240==    by 0x1000014DF: main (in ./corewar)
+==63240== 
+==63240== 338 bytes in 1 blocks are definitely lost in loss record 36 of 46
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x10000462B: parse_code (in ./corewar)
+==63240==    by 0x1000044D5: parse_champion_file (in ./corewar)
+==63240==    by 0x1000014DF: main (in ./corewar)
+==63240== 
+==63240== 2,049 bytes in 1 blocks are definitely lost in loss record 41 of 46
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x10000598E: ft_strnew (in ./corewar)
+==63240==    by 0x10000459B: parse_str (in ./corewar)
+==63240==    by 0x10000446D: parse_champion_file (in ./corewar)
+==63240==    by 0x1000014DF: main (in ./corewar)
+==63240== 
+==63240== 7,696 bytes in 74 blocks are definitely lost in loss record 44 of 46
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x100003BB6: init_process (in ./corewar)
+==63240==    by 0x100001B1F: g_fork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240== 
+==63240== 3,407,872 bytes in 1 blocks are definitely lost in loss record 45 of 46
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x1000061F3: expand_vec (in ./corewar)
+==63240==    by 0x100006339: push_front_vec (in ./corewar)
+==63240==    by 0x1000031E4: lfork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240== 
+==63240== 5,726,552 bytes in 55,063 blocks are definitely lost in loss record 46 of 46
+==63240==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==63240==    by 0x100003BB6: init_process (in ./corewar)
+==63240==    by 0x1000031BA: lfork (in ./corewar)
+==63240==    by 0x100002251: game_in_cycle (in ./corewar)
+==63240==    by 0x100002566: game_logic (in ./corewar)
+==63240==    by 0x10000134B: start_game (in ./corewar)
+==63240==    by 0x10000150F: main (in ./corewar)
+==63240== 
+==63240== LEAK SUMMARY:
+==63240==    definitely lost: 9,144,772 bytes in 55,144 blocks
+==63240==    indirectly lost: 0 bytes in 0 blocks
+==63240==      possibly lost: 0 bytes in 0 blocks
+==63240==    still reachable: 2,048 bytes in 1 blocks
+==63240==         suppressed: 11,432 bytes in 158 blocks
+==63240== Reachable blocks (those to which a pointer was found) are not shown.
+==63240== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==63240== 
+==63240== For lists of detected and suppressed errors, rerun with: -s
+==63240== ERROR SUMMARY: 81 errors from 15 contexts (suppressed: 8 from 8)

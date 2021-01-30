@@ -1,0 +1,51 @@
+==21224== Memcheck, a memory error detector
+==21224== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==21224== Using Valgrind-3.17.0.GIT and LibVEX; rerun with -h for copyright info
+==21224== Command: ./corewar ../CORECHECKER/champs/unit_tests/test_op/14_lldi-three_valid_registers.cor
+==21224== Parent PID: 21220
+==21224== 
+==21224== Invalid read of size 1
+==21224==    at 0x100002EA9: byte_to_int32_2 (in ./corewar)
+==21224==    by 0x100003493: lldi (in ./corewar)
+==21224==    by 0x100002321: game_in_cycle (in ./corewar)
+==21224==    by 0x100002626: game_logic (in ./corewar)
+==21224==    by 0x10000145B: start_game (in ./corewar)
+==21224==    by 0x10000161F: main (in ./corewar)
+==21224==  Address 0x2049134ba is not stack'd, malloc'd or (recently) free'd
+==21224== 
+==21224== 
+==21224== Process terminating with default action of signal 11 (SIGSEGV)
+==21224==  Access not within mapped region at address 0x2049134BA
+==21224==    at 0x100002EA9: byte_to_int32_2 (in ./corewar)
+==21224==    by 0x100003493: lldi (in ./corewar)
+==21224==    by 0x100002321: game_in_cycle (in ./corewar)
+==21224==    by 0x100002626: game_logic (in ./corewar)
+==21224==    by 0x10000145B: start_game (in ./corewar)
+==21224==    by 0x10000161F: main (in ./corewar)
+==21224==  If you believe this happened as a result of a stack
+==21224==  overflow in your program's main thread (unlikely but
+==21224==  possible), you can try to increase the size of the
+==21224==  main thread stack using the --main-stacksize= flag.
+==21224==  The main thread stack size used in this run was 8388608.
+==21224== 
+==21224== HEAP SUMMARY:
+==21224==     in use at exit: 15,903 bytes in 166 blocks
+==21224==   total heap usage: 214 allocs, 48 frees, 21,361 bytes allocated
+==21224== 
+==21224== 104 bytes in 1 blocks are definitely lost in loss record 28 of 44
+==21224==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==21224==    by 0x100003BB6: init_process (in ./corewar)
+==21224==    by 0x100003D03: init_processes (in ./corewar)
+==21224==    by 0x100001607: main (in ./corewar)
+==21224== 
+==21224== LEAK SUMMARY:
+==21224==    definitely lost: 104 bytes in 1 blocks
+==21224==    indirectly lost: 0 bytes in 0 blocks
+==21224==      possibly lost: 0 bytes in 0 blocks
+==21224==    still reachable: 4,367 bytes in 7 blocks
+==21224==         suppressed: 11,432 bytes in 158 blocks
+==21224== Reachable blocks (those to which a pointer was found) are not shown.
+==21224== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==21224== 
+==21224== For lists of detected and suppressed errors, rerun with: -s
+==21224== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 8 from 8)

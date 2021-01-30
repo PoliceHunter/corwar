@@ -1,0 +1,51 @@
+==16176== Memcheck, a memory error detector
+==16176== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==16176== Using Valgrind-3.17.0.GIT and LibVEX; rerun with -h for copyright info
+==16176== Command: ./corewar ../CORECHECKER/champs/unit_tests/test_op/14_lldi-all_registers_are_valid_comment_end_of_line_with_spaces.cor
+==16176== Parent PID: 16172
+==16176== 
+==16176== Invalid read of size 1
+==16176==    at 0x100002EA9: byte_to_int32_2 (in ./corewar)
+==16176==    by 0x100003493: lldi (in ./corewar)
+==16176==    by 0x100002321: game_in_cycle (in ./corewar)
+==16176==    by 0x100002626: game_logic (in ./corewar)
+==16176==    by 0x10000145B: start_game (in ./corewar)
+==16176==    by 0x10000161F: main (in ./corewar)
+==16176==  Address 0x20491349a is not stack'd, malloc'd or (recently) free'd
+==16176== 
+==16176== 
+==16176== Process terminating with default action of signal 11 (SIGSEGV)
+==16176==  Access not within mapped region at address 0x20491349A
+==16176==    at 0x100002EA9: byte_to_int32_2 (in ./corewar)
+==16176==    by 0x100003493: lldi (in ./corewar)
+==16176==    by 0x100002321: game_in_cycle (in ./corewar)
+==16176==    by 0x100002626: game_logic (in ./corewar)
+==16176==    by 0x10000145B: start_game (in ./corewar)
+==16176==    by 0x10000161F: main (in ./corewar)
+==16176==  If you believe this happened as a result of a stack
+==16176==  overflow in your program's main thread (unlikely but
+==16176==  possible), you can try to increase the size of the
+==16176==  main thread stack using the --main-stacksize= flag.
+==16176==  The main thread stack size used in this run was 8388608.
+==16176== 
+==16176== HEAP SUMMARY:
+==16176==     in use at exit: 15,903 bytes in 166 blocks
+==16176==   total heap usage: 214 allocs, 48 frees, 21,463 bytes allocated
+==16176== 
+==16176== 104 bytes in 1 blocks are definitely lost in loss record 28 of 44
+==16176==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==16176==    by 0x100003BB6: init_process (in ./corewar)
+==16176==    by 0x100003D03: init_processes (in ./corewar)
+==16176==    by 0x100001607: main (in ./corewar)
+==16176== 
+==16176== LEAK SUMMARY:
+==16176==    definitely lost: 104 bytes in 1 blocks
+==16176==    indirectly lost: 0 bytes in 0 blocks
+==16176==      possibly lost: 0 bytes in 0 blocks
+==16176==    still reachable: 4,367 bytes in 7 blocks
+==16176==         suppressed: 11,432 bytes in 158 blocks
+==16176== Reachable blocks (those to which a pointer was found) are not shown.
+==16176== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==16176== 
+==16176== For lists of detected and suppressed errors, rerun with: -s
+==16176== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 8 from 8)

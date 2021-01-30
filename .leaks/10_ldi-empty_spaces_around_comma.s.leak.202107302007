@@ -1,0 +1,51 @@
+==97819== Memcheck, a memory error detector
+==97819== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==97819== Using Valgrind-3.17.0.GIT and LibVEX; rerun with -h for copyright info
+==97819== Command: ./corewar ../CORECHECKER/champs/unit_tests/test_op/10_ldi-empty_spaces_around_comma.cor
+==97819== Parent PID: 97815
+==97819== 
+==97819== Invalid read of size 1
+==97819==    at 0x100002EA9: byte_to_int32_2 (in ./corewar)
+==97819==    by 0x1000031A3: ldi (in ./corewar)
+==97819==    by 0x100002321: game_in_cycle (in ./corewar)
+==97819==    by 0x100002626: game_logic (in ./corewar)
+==97819==    by 0x10000145B: start_game (in ./corewar)
+==97819==    by 0x10000161F: main (in ./corewar)
+==97819==  Address 0x2049134bb is not stack'd, malloc'd or (recently) free'd
+==97819== 
+==97819== 
+==97819== Process terminating with default action of signal 11 (SIGSEGV)
+==97819==  Access not within mapped region at address 0x2049134BB
+==97819==    at 0x100002EA9: byte_to_int32_2 (in ./corewar)
+==97819==    by 0x1000031A3: ldi (in ./corewar)
+==97819==    by 0x100002321: game_in_cycle (in ./corewar)
+==97819==    by 0x100002626: game_logic (in ./corewar)
+==97819==    by 0x10000145B: start_game (in ./corewar)
+==97819==    by 0x10000161F: main (in ./corewar)
+==97819==  If you believe this happened as a result of a stack
+==97819==  overflow in your program's main thread (unlikely but
+==97819==  possible), you can try to increase the size of the
+==97819==  main thread stack using the --main-stacksize= flag.
+==97819==  The main thread stack size used in this run was 8388608.
+==97819== 
+==97819== HEAP SUMMARY:
+==97819==     in use at exit: 15,903 bytes in 166 blocks
+==97819==   total heap usage: 214 allocs, 48 frees, 21,365 bytes allocated
+==97819== 
+==97819== 104 bytes in 1 blocks are definitely lost in loss record 28 of 44
+==97819==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==97819==    by 0x100003BB6: init_process (in ./corewar)
+==97819==    by 0x100003D03: init_processes (in ./corewar)
+==97819==    by 0x100001607: main (in ./corewar)
+==97819== 
+==97819== LEAK SUMMARY:
+==97819==    definitely lost: 104 bytes in 1 blocks
+==97819==    indirectly lost: 0 bytes in 0 blocks
+==97819==      possibly lost: 0 bytes in 0 blocks
+==97819==    still reachable: 4,367 bytes in 7 blocks
+==97819==         suppressed: 11,432 bytes in 158 blocks
+==97819== Reachable blocks (those to which a pointer was found) are not shown.
+==97819== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==97819== 
+==97819== For lists of detected and suppressed errors, rerun with: -s
+==97819== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 8 from 8)

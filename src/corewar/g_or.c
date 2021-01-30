@@ -27,6 +27,8 @@ void				or(t_cor *cor, t_process *proc)
 	reg3 = cor->map[get_address(proc, get_step(cor, proc, 2), 0)];
 
 	value1 = get_value(cor, proc, 0);
+	if (value1 == MEM_SIZE + 1)
+		return;
 	value2 = get_value(cor, proc, 1);
 	value_to_reg = value1 | value2;
 	proc->reg[reg3] = value_to_reg;

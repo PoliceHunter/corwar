@@ -71,7 +71,6 @@ int 			game_logic(t_cor *cor)
 		if (cor->flag.visual && cor->cycles_after_check == 0)
 		{
 			ft_printf("---beg count_cursors: %d\n", cor->count_cursors);
-			//ft_printf("cor->cycle: %d\n", cor->cycle); //// Delete becouse unusage in original program
 		}
 		check_flag(cor);
 		game_in_cycle(cor);
@@ -82,11 +81,13 @@ int 			game_logic(t_cor *cor)
 			ft_printf("cycles_to_die: %d\n", cor->cycles_to_die); //// Delete becouse unusage in original program
 			ft_printf("count_lives: %d\n", cor->count_lives);
 			ft_printf("count_cursors: %d\n", cor->count_cursors);
-			//ft_printf("cor->cycle: %d\n", cor->cycle); //// Delete becouse unusage in original program
+			ft_printf("cor->cycle: %d\n", cor->cycle); //// Delete becouse unusage in original program
 		}
 		if (cor->cycles_to_die == cor->cycles_after_check
 		|| cor->cycles_to_die <= 0)
 			proverka(cor);
+		if (cor->count_cursors > 20000)
+			return (1);
 	}
 	return (1);
 }

@@ -1,0 +1,201 @@
+==55101== Memcheck, a memory error detector
+==55101== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==55101== Using Valgrind-3.17.0.GIT and LibVEX; rerun with -h for copyright info
+==55101== Command: ./corewar ../CORECHECKER/champs/bytecode/NoIdea.cor
+==55101== Parent PID: 55097
+==55101== 
+==55101== Invalid read of size 1
+==55101==    at 0x10000228F: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101==  Address 0x10080cffc is 76 bytes inside a block of size 104 free'd
+==55101==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100006251: expand_vec (in ./corewar)
+==55101==    by 0x100006339: push_front_vec (in ./corewar)
+==55101==    by 0x1000031E4: lfork (in ./corewar)
+==55101==    by 0x100002251: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101==  Block was alloc'd at
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100006091: new_vector (in ./corewar)
+==55101==    by 0x100003C8B: init_processes (in ./corewar)
+==55101==    by 0x1000014F7: main (in ./corewar)
+==55101== 
+==55101== Invalid write of size 1
+==55101==    at 0x1000022A0: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101==  Address 0x10080cffc is 76 bytes inside a block of size 104 free'd
+==55101==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100006251: expand_vec (in ./corewar)
+==55101==    by 0x100006339: push_front_vec (in ./corewar)
+==55101==    by 0x1000031E4: lfork (in ./corewar)
+==55101==    by 0x100002251: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101==  Block was alloc'd at
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100006091: new_vector (in ./corewar)
+==55101==    by 0x100003C8B: init_processes (in ./corewar)
+==55101==    by 0x1000014F7: main (in ./corewar)
+==55101== 
+==55101== Invalid write of size 1
+==55101==    at 0x1000022A8: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101==  Address 0x10080d014 is 100 bytes inside a block of size 104 free'd
+==55101==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100006251: expand_vec (in ./corewar)
+==55101==    by 0x100006339: push_front_vec (in ./corewar)
+==55101==    by 0x1000031E4: lfork (in ./corewar)
+==55101==    by 0x100002251: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101==  Block was alloc'd at
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100006091: new_vector (in ./corewar)
+==55101==    by 0x100003C8B: init_processes (in ./corewar)
+==55101==    by 0x1000014F7: main (in ./corewar)
+==55101== 
+==55101== Invalid read of size 4
+==55101==    at 0x100002D82: get_address (in ./corewar)
+==55101==    by 0x1000022C3: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101==  Address 0x10080cff8 is 72 bytes inside a block of size 104 free'd
+==55101==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100006251: expand_vec (in ./corewar)
+==55101==    by 0x100006339: push_front_vec (in ./corewar)
+==55101==    by 0x1000031E4: lfork (in ./corewar)
+==55101==    by 0x100002251: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101==  Block was alloc'd at
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100006091: new_vector (in ./corewar)
+==55101==    by 0x100003C8B: init_processes (in ./corewar)
+==55101==    by 0x1000014F7: main (in ./corewar)
+==55101== 
+==55101== Invalid write of size 4
+==55101==    at 0x100002DB4: get_address (in ./corewar)
+==55101==    by 0x1000022C3: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101==  Address 0x10080d000 is 80 bytes inside a block of size 104 free'd
+==55101==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100006251: expand_vec (in ./corewar)
+==55101==    by 0x100006339: push_front_vec (in ./corewar)
+==55101==    by 0x1000031E4: lfork (in ./corewar)
+==55101==    by 0x100002251: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101==  Block was alloc'd at
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100006091: new_vector (in ./corewar)
+==55101==    by 0x100003C8B: init_processes (in ./corewar)
+==55101==    by 0x1000014F7: main (in ./corewar)
+==55101== 
+==55101== Invalid write of size 4
+==55101==    at 0x1000022C8: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101==  Address 0x10080cff8 is 72 bytes inside a block of size 104 free'd
+==55101==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100006251: expand_vec (in ./corewar)
+==55101==    by 0x100006339: push_front_vec (in ./corewar)
+==55101==    by 0x1000031E4: lfork (in ./corewar)
+==55101==    by 0x100002251: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101==  Block was alloc'd at
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100006091: new_vector (in ./corewar)
+==55101==    by 0x100003C8B: init_processes (in ./corewar)
+==55101==    by 0x1000014F7: main (in ./corewar)
+==55101== 
+==55101== 
+==55101== HEAP SUMMARY:
+==55101==     in use at exit: 433,266 bytes in 2,126 blocks
+==55101==   total heap usage: 2,202 allocs, 76 frees, 651,928 bytes allocated
+==55101== 
+==55101== 16 bytes in 1 blocks are definitely lost in loss record 4 of 45
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x1000026FC: make_buffer_codes (in ./corewar)
+==55101==    by 0x100003A43: init_cor (in ./corewar)
+==55101==    by 0x1000014BA: main (in ./corewar)
+==55101== 
+==55101== 16 bytes in 1 blocks are definitely lost in loss record 5 of 45
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100002754: make_buffer_codes (in ./corewar)
+==55101==    by 0x100003A43: init_cor (in ./corewar)
+==55101==    by 0x1000014BA: main (in ./corewar)
+==55101== 
+==55101== 104 bytes in 1 blocks are definitely lost in loss record 26 of 45
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100003BB6: init_process (in ./corewar)
+==55101==    by 0x100003D03: init_processes (in ./corewar)
+==55101==    by 0x1000014F7: main (in ./corewar)
+==55101== 
+==55101== 129 bytes in 1 blocks are definitely lost in loss record 31 of 45
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x10000598E: ft_strnew (in ./corewar)
+==55101==    by 0x10000459B: parse_str (in ./corewar)
+==55101==    by 0x1000043B9: parse_champion_file (in ./corewar)
+==55101==    by 0x1000014DF: main (in ./corewar)
+==55101== 
+==55101== 640 bytes in 1 blocks are definitely lost in loss record 36 of 45
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x10000462B: parse_code (in ./corewar)
+==55101==    by 0x1000044D5: parse_champion_file (in ./corewar)
+==55101==    by 0x1000014DF: main (in ./corewar)
+==55101== 
+==55101== 2,049 bytes in 1 blocks are definitely lost in loss record 41 of 45
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x10000598E: ft_strnew (in ./corewar)
+==55101==    by 0x10000459B: parse_str (in ./corewar)
+==55101==    by 0x10000446D: parse_champion_file (in ./corewar)
+==55101==    by 0x1000014DF: main (in ./corewar)
+==55101== 
+==55101== 203,840 bytes in 1,960 blocks are definitely lost in loss record 44 of 45
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x100003BB6: init_process (in ./corewar)
+==55101==    by 0x1000031BA: lfork (in ./corewar)
+==55101==    by 0x100002251: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101== 
+==55101== 212,992 bytes in 1 blocks are definitely lost in loss record 45 of 45
+==55101==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==55101==    by 0x1000061F3: expand_vec (in ./corewar)
+==55101==    by 0x100006339: push_front_vec (in ./corewar)
+==55101==    by 0x1000031E4: lfork (in ./corewar)
+==55101==    by 0x100002251: game_in_cycle (in ./corewar)
+==55101==    by 0x100002566: game_logic (in ./corewar)
+==55101==    by 0x10000134B: start_game (in ./corewar)
+==55101==    by 0x10000150F: main (in ./corewar)
+==55101== 
+==55101== LEAK SUMMARY:
+==55101==    definitely lost: 419,786 bytes in 1,967 blocks
+==55101==    indirectly lost: 0 bytes in 0 blocks
+==55101==      possibly lost: 0 bytes in 0 blocks
+==55101==    still reachable: 2,048 bytes in 1 blocks
+==55101==         suppressed: 11,432 bytes in 158 blocks
+==55101== Reachable blocks (those to which a pointer was found) are not shown.
+==55101== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==55101== 
+==55101== For lists of detected and suppressed errors, rerun with: -s
+==55101== ERROR SUMMARY: 74 errors from 14 contexts (suppressed: 8 from 8)

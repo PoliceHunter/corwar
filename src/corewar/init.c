@@ -21,6 +21,7 @@ void init_cor(t_cor *cor, char **av)
 	make_buffer_codes(cor);			//(gala)
 	cor->buffer_counter = 0;		//(gala)
 	cor->count_lives = 0;			//(gala) 17.01
+	cor->valid_fork = 0;
 }
 
 void init_arena(t_cor *cor)
@@ -56,6 +57,7 @@ t_process *init_process(int32_t pos, t_vector process, int player_id)
 	proc->live_last_id = 0;
 	proc->pos = pos;
 	proc->op_code = 0;
+	proc->real_op_code = 0;///
 	proc->id = process.size; // Указываем id процесса по размеру вектора
 	proc->player_id = player_id; //<- (gala) change, its FIRST player's number => COLOUR!!!!!
 	proc->reg[1] = -player_id; //<- (gala) change, its player's 'minus' number!!!!!

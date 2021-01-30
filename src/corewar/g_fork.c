@@ -37,6 +37,11 @@ void				g_fork(t_cor *cor, t_process *proc)
 
 	arg1 = get_value(cor, proc, 0);
 	address = proc->pos + arg1 % IDX_MOD;
+	if (address < 0)
+	{
+		cor->valid_fork = 0;
+		return;
+	}
 	if (address > MEM_SIZE)
 		address = address % MEM_SIZE;
 	dubl = init_process(address, cor->process, proc->player_id);
@@ -44,5 +49,6 @@ void				g_fork(t_cor *cor, t_process *proc)
 	dubl->id = ((t_process *)get_from_vec(&cor->process, 0))->id + 1;
 	push_front_vec(&cor->process, dubl);
 	cor->count_cursors++;
+	cor->valid_fork = 1;
 	//ft_printf("fork\n");
 }

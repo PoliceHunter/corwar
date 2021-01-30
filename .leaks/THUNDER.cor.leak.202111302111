@@ -1,0 +1,79 @@
+==62512== Memcheck, a memory error detector
+==62512== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==62512== Using Valgrind-3.17.0.GIT and LibVEX; rerun with -h for copyright info
+==62512== Command: ./corewar ../CORECHECKER/champs/bytecode/THUNDER.cor
+==62512== Parent PID: 62508
+==62512== 
+==62512== 
+==62512== HEAP SUMMARY:
+==62512==     in use at exit: 17,052 bytes in 168 blocks
+==62512==   total heap usage: 235 allocs, 67 frees, 23,146 bytes allocated
+==62512== 
+==62512== 16 bytes in 1 blocks are definitely lost in loss record 4 of 45
+==62512==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==62512==    by 0x1000026FC: make_buffer_codes (in ./corewar)
+==62512==    by 0x100003A43: init_cor (in ./corewar)
+==62512==    by 0x1000014BA: main (in ./corewar)
+==62512== 
+==62512== 16 bytes in 1 blocks are definitely lost in loss record 5 of 45
+==62512==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==62512==    by 0x100002754: make_buffer_codes (in ./corewar)
+==62512==    by 0x100003A43: init_cor (in ./corewar)
+==62512==    by 0x1000014BA: main (in ./corewar)
+==62512== 
+==62512== 104 bytes in 1 blocks are definitely lost in loss record 26 of 45
+==62512==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==62512==    by 0x100003BB6: init_process (in ./corewar)
+==62512==    by 0x100003D03: init_processes (in ./corewar)
+==62512==    by 0x1000014F7: main (in ./corewar)
+==62512== 
+==62512== 129 bytes in 1 blocks are definitely lost in loss record 31 of 45
+==62512==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==62512==    by 0x10000598E: ft_strnew (in ./corewar)
+==62512==    by 0x10000459B: parse_str (in ./corewar)
+==62512==    by 0x1000043B9: parse_champion_file (in ./corewar)
+==62512==    by 0x1000014DF: main (in ./corewar)
+==62512== 
+==62512== 208 bytes in 2 blocks are definitely lost in loss record 32 of 45
+==62512==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==62512==    by 0x100003BB6: init_process (in ./corewar)
+==62512==    by 0x100001B1F: g_fork (in ./corewar)
+==62512==    by 0x100002251: game_in_cycle (in ./corewar)
+==62512==    by 0x100002566: game_logic (in ./corewar)
+==62512==    by 0x10000134B: start_game (in ./corewar)
+==62512==    by 0x10000150F: main (in ./corewar)
+==62512== 
+==62512== 416 bytes in 1 blocks are definitely lost in loss record 37 of 45
+==62512==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==62512==    by 0x1000061F3: expand_vec (in ./corewar)
+==62512==    by 0x100006339: push_front_vec (in ./corewar)
+==62512==    by 0x100001B6A: g_fork (in ./corewar)
+==62512==    by 0x100002251: game_in_cycle (in ./corewar)
+==62512==    by 0x100002566: game_logic (in ./corewar)
+==62512==    by 0x10000134B: start_game (in ./corewar)
+==62512==    by 0x10000150F: main (in ./corewar)
+==62512== 
+==62512== 634 bytes in 1 blocks are definitely lost in loss record 38 of 45
+==62512==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==62512==    by 0x10000462B: parse_code (in ./corewar)
+==62512==    by 0x1000044D5: parse_champion_file (in ./corewar)
+==62512==    by 0x1000014DF: main (in ./corewar)
+==62512== 
+==62512== 2,049 bytes in 1 blocks are definitely lost in loss record 43 of 45
+==62512==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==62512==    by 0x10000598E: ft_strnew (in ./corewar)
+==62512==    by 0x10000459B: parse_str (in ./corewar)
+==62512==    by 0x10000446D: parse_champion_file (in ./corewar)
+==62512==    by 0x1000014DF: main (in ./corewar)
+==62512== 
+==62512== LEAK SUMMARY:
+==62512==    definitely lost: 3,572 bytes in 9 blocks
+==62512==    indirectly lost: 0 bytes in 0 blocks
+==62512==      possibly lost: 0 bytes in 0 blocks
+==62512==    still reachable: 2,048 bytes in 1 blocks
+==62512==         suppressed: 11,432 bytes in 158 blocks
+==62512== Reachable blocks (those to which a pointer was found) are not shown.
+==62512== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==62512== 
+==62512== For lists of detected and suppressed errors, rerun with: -s
+==62512== ERROR SUMMARY: 8 errors from 8 contexts (suppressed: 8 from 8)

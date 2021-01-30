@@ -1,0 +1,82 @@
+==31481== Memcheck, a memory error detector
+==31481== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==31481== Using Valgrind-3.17.0.GIT and LibVEX; rerun with -h for copyright info
+==31481== Command: ./corewar ../CORECHECKER/champs/unit_tests/test_op/01_live-dir_value_is_big.cor
+==31481== Parent PID: 31477
+==31481== 
+==31481== Invalid read of size 4
+==31481==    at 0x100004CAF: ft_memmove_less_post (in ./corewar)
+==31481==    by 0x100004E6C: ft_memmove_less (in ./corewar)
+==31481==    by 0x1000050EF: ft_memmove (in ./corewar)
+==31481==    by 0x1000061D1: remove_from_vec (in ./corewar)
+==31481==    by 0x100002532: kill_caretka (in ./corewar)
+==31481==    by 0x10000259E: proverka (in ./corewar)
+==31481==    by 0x100002776: game_logic (in ./corewar)
+==31481==    by 0x1000014CB: start_game (in ./corewar)
+==31481==    by 0x10000168F: main (in ./corewar)
+==31481==  Address 0x10080cda8 is 0 bytes after a block of size 104 alloc'd
+==31481==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31481==    by 0x1000060D1: new_vector (in ./corewar)
+==31481==    by 0x100003CCB: init_processes (in ./corewar)
+==31481==    by 0x100001677: main (in ./corewar)
+==31481== 
+==31481== 
+==31481== HEAP SUMMARY:
+==31481==     in use at exit: 15,903 bytes in 166 blocks
+==31481==   total heap usage: 231 allocs, 65 frees, 21,615 bytes allocated
+==31481== 
+==31481== 5 bytes in 1 blocks are definitely lost in loss record 1 of 44
+==31481==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31481==    by 0x10000466B: parse_code (in ./corewar)
+==31481==    by 0x100004515: parse_champion_file (in ./corewar)
+==31481==    by 0x10000165F: main (in ./corewar)
+==31481== 
+==31481== 16 bytes in 1 blocks are definitely lost in loss record 5 of 44
+==31481==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31481==    by 0x10000281C: make_buffer_codes (in ./corewar)
+==31481==    by 0x100003A93: init_cor (in ./corewar)
+==31481==    by 0x10000163A: main (in ./corewar)
+==31481== 
+==31481== 16 bytes in 1 blocks are definitely lost in loss record 6 of 44
+==31481==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31481==    by 0x100002874: make_buffer_codes (in ./corewar)
+==31481==    by 0x100003A93: init_cor (in ./corewar)
+==31481==    by 0x10000163A: main (in ./corewar)
+==31481== 
+==31481== 104 bytes in 1 blocks are definitely lost in loss record 27 of 44
+==31481==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31481==    by 0x1000060D1: new_vector (in ./corewar)
+==31481==    by 0x100003CCB: init_processes (in ./corewar)
+==31481==    by 0x100001677: main (in ./corewar)
+==31481== 
+==31481== 104 bytes in 1 blocks are definitely lost in loss record 28 of 44
+==31481==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31481==    by 0x100003BF6: init_process (in ./corewar)
+==31481==    by 0x100003D43: init_processes (in ./corewar)
+==31481==    by 0x100001677: main (in ./corewar)
+==31481== 
+==31481== 129 bytes in 1 blocks are definitely lost in loss record 33 of 44
+==31481==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31481==    by 0x1000059CE: ft_strnew (in ./corewar)
+==31481==    by 0x1000045DB: parse_str (in ./corewar)
+==31481==    by 0x1000043F9: parse_champion_file (in ./corewar)
+==31481==    by 0x10000165F: main (in ./corewar)
+==31481== 
+==31481== 2,049 bytes in 1 blocks are definitely lost in loss record 42 of 44
+==31481==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31481==    by 0x1000059CE: ft_strnew (in ./corewar)
+==31481==    by 0x1000045DB: parse_str (in ./corewar)
+==31481==    by 0x1000044AD: parse_champion_file (in ./corewar)
+==31481==    by 0x10000165F: main (in ./corewar)
+==31481== 
+==31481== LEAK SUMMARY:
+==31481==    definitely lost: 2,423 bytes in 7 blocks
+==31481==    indirectly lost: 0 bytes in 0 blocks
+==31481==      possibly lost: 0 bytes in 0 blocks
+==31481==    still reachable: 2,048 bytes in 1 blocks
+==31481==         suppressed: 11,432 bytes in 158 blocks
+==31481== Reachable blocks (those to which a pointer was found) are not shown.
+==31481== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==31481== 
+==31481== For lists of detected and suppressed errors, rerun with: -s
+==31481== ERROR SUMMARY: 25 errors from 8 contexts (suppressed: 8 from 8)

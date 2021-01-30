@@ -25,13 +25,15 @@ void				sti(t_cor *cor, t_process *proc)
 	int32_t			regvalue;
 	int32_t			value2;
 	int32_t			value3;
-	uint32_t		address;
+	int32_t		address;
 
 	reg1 = cor->map[get_address(proc, 2, 0)];
 	regvalue = proc->reg[reg1];
 	value2 = byte_to_int32(cor, proc, 1, cor->buffer_sizes[1]);
 	value3 = byte_to_int32(cor, proc, 2, cor->buffer_sizes[2]);
 	address = proc->pos + (value2 + value3) % IDX_MOD;
+	if (address < 0)
+		return;
 	value32_to_map(cor, regvalue, address, DIR_SIZE);
 }
 

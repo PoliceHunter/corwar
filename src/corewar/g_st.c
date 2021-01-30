@@ -28,7 +28,7 @@ void				st(t_cor *cor, t_process *proc)
 	uint8_t			reg1num;
 	uint8_t			reg2num;
 	int32_t			regvalue;
-	uint32_t		address;
+	int32_t			address;
 	int32_t			arg2;
 
 	reg1num = cor->map[get_address(proc, 2, 0)];
@@ -42,6 +42,8 @@ void				st(t_cor *cor, t_process *proc)
 	{
 		arg2 = byte_to_int32(cor, proc, 1, cor->buffer_sizes[1]);
 		address = proc->pos + arg2 % IDX_MOD;
+		if (address < 0)
+			return;
 		value32_to_map(cor, regvalue, address, DIR_SIZE);
 	}
 	//print_arena(cor->map, 64);

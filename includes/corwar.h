@@ -65,7 +65,6 @@ typedef struct	s_op
 	int			args_codes1[3];
 	int			args_codes2[3];
 	int			args_codes3[3];
-	uint8_t		args_types[3];
 	int			modify_carry;
 	uint8_t		dir_size;
 	int			cycles;
@@ -87,7 +86,8 @@ typedef struct			s_process
 	uint32_t			live_last_id;
 	uint32_t			id; 					//// index of process
 	uint32_t			player_id;
-	t_op				op;						// (gala) функция операции
+	uint8_t 			real_op_code;
+	//t_op				op;						// (gala) функция операции
 }						t_process;
 
 typedef	struct s_cor	t_cor;
@@ -111,6 +111,20 @@ struct					s_cor
 	int 				buffer_counter;			// (gala) счетчик кодов операций
 	int 				check_arg_reg;			// (gala) 1 правильно, 0 - нет
 	int 				next_step;			// (gala) временная переменная - на сколько шагов двигаться
+	uint32_t 			*buf_proc_id; ////alter
+	int32_t 			*reg[REG_NUMBER + 1]; 	////Array of variables for storing data
+	uint8_t 			*carry;					//A special variable that affects the operation of the "zjmp" function and can
+	uint32_t 			*pos; 					////Map address
+	int 				valid_fork;
+	uint8_t 			*op_code; 				//Contains the operation code, at the time of moving to this position on the map
+	int					*cycle_to_exec; 			// A counter containing the number of cycles that the carriage must wait before starting an operation.
+	int32_t				*live_last_cycle; 		// Contain the cycle on which the last live operation was performed //gala убрала u
+	uint32_t			*live_last_id;
+	uint32_t			*id; 					//// index of process
+	uint32_t			*player_id;
+	t_op				*op;					// (gala) функция операции
+	uint8_t				*real_ops;
+	int					alt_buf_cntr;
 };
 
 void			exterminate(t_cor *cor, int exit_code);

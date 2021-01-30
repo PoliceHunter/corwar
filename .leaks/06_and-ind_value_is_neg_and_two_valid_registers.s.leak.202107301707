@@ -1,0 +1,53 @@
+==48999== Memcheck, a memory error detector
+==48999== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==48999== Using Valgrind-3.17.0.GIT and LibVEX; rerun with -h for copyright info
+==48999== Command: ./corewar ../CORECHECKER/champs/unit_tests/test_op/06_and-ind_value_is_neg_and_two_valid_registers.cor
+==48999== Parent PID: 48995
+==48999== 
+==48999== Invalid read of size 1
+==48999==    at 0x100002EF9: byte_to_int32_2 (in ./corewar)
+==48999==    by 0x100002BFA: get_value (in ./corewar)
+==48999==    by 0x100001B13: and (in ./corewar)
+==48999==    by 0x10000235D: game_in_cycle (in ./corewar)
+==48999==    by 0x100002686: game_logic (in ./corewar)
+==48999==    by 0x1000014CB: start_game (in ./corewar)
+==48999==    by 0x10000168F: main (in ./corewar)
+==48999==  Address 0x204913472 is not stack'd, malloc'd or (recently) free'd
+==48999== 
+==48999== 
+==48999== Process terminating with default action of signal 11 (SIGSEGV)
+==48999==  Access not within mapped region at address 0x204913472
+==48999==    at 0x100002EF9: byte_to_int32_2 (in ./corewar)
+==48999==    by 0x100002BFA: get_value (in ./corewar)
+==48999==    by 0x100001B13: and (in ./corewar)
+==48999==    by 0x10000235D: game_in_cycle (in ./corewar)
+==48999==    by 0x100002686: game_logic (in ./corewar)
+==48999==    by 0x1000014CB: start_game (in ./corewar)
+==48999==    by 0x10000168F: main (in ./corewar)
+==48999==  If you believe this happened as a result of a stack
+==48999==  overflow in your program's main thread (unlikely but
+==48999==  possible), you can try to increase the size of the
+==48999==  main thread stack using the --main-stacksize= flag.
+==48999==  The main thread stack size used in this run was 8388608.
+==48999== 
+==48999== HEAP SUMMARY:
+==48999==     in use at exit: 15,904 bytes in 166 blocks
+==48999==   total heap usage: 214 allocs, 48 frees, 21,411 bytes allocated
+==48999== 
+==48999== 104 bytes in 1 blocks are definitely lost in loss record 28 of 44
+==48999==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==48999==    by 0x100003BF6: init_process (in ./corewar)
+==48999==    by 0x100003D43: init_processes (in ./corewar)
+==48999==    by 0x100001677: main (in ./corewar)
+==48999== 
+==48999== LEAK SUMMARY:
+==48999==    definitely lost: 104 bytes in 1 blocks
+==48999==    indirectly lost: 0 bytes in 0 blocks
+==48999==      possibly lost: 0 bytes in 0 blocks
+==48999==    still reachable: 4,368 bytes in 7 blocks
+==48999==         suppressed: 11,432 bytes in 158 blocks
+==48999== Reachable blocks (those to which a pointer was found) are not shown.
+==48999== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==48999== 
+==48999== For lists of detected and suppressed errors, rerun with: -s
+==48999== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 8 from 8)

@@ -1,0 +1,51 @@
+==66494== Memcheck, a memory error detector
+==66494== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==66494== Using Valgrind-3.17.0.GIT and LibVEX; rerun with -h for copyright info
+==66494== Command: ./corewar ../CORECHECKER/champs/unit_tests/test_op/10_ldi-dir_value_is_null_and_two_valid_registers.cor
+==66494== Parent PID: 66490
+==66494== 
+==66494== Invalid read of size 1
+==66494==    at 0x100002EA9: byte_to_int32_2 (in ./corewar)
+==66494==    by 0x1000031A3: ldi (in ./corewar)
+==66494==    by 0x100002321: game_in_cycle (in ./corewar)
+==66494==    by 0x100002626: game_logic (in ./corewar)
+==66494==    by 0x10000145B: start_game (in ./corewar)
+==66494==    by 0x10000161F: main (in ./corewar)
+==66494==  Address 0x20491349b is not stack'd, malloc'd or (recently) free'd
+==66494== 
+==66494== 
+==66494== Process terminating with default action of signal 11 (SIGSEGV)
+==66494==  Access not within mapped region at address 0x20491349B
+==66494==    at 0x100002EA9: byte_to_int32_2 (in ./corewar)
+==66494==    by 0x1000031A3: ldi (in ./corewar)
+==66494==    by 0x100002321: game_in_cycle (in ./corewar)
+==66494==    by 0x100002626: game_logic (in ./corewar)
+==66494==    by 0x10000145B: start_game (in ./corewar)
+==66494==    by 0x10000161F: main (in ./corewar)
+==66494==  If you believe this happened as a result of a stack
+==66494==  overflow in your program's main thread (unlikely but
+==66494==  possible), you can try to increase the size of the
+==66494==  main thread stack using the --main-stacksize= flag.
+==66494==  The main thread stack size used in this run was 8388608.
+==66494== 
+==66494== HEAP SUMMARY:
+==66494==     in use at exit: 15,904 bytes in 166 blocks
+==66494==   total heap usage: 214 allocs, 48 frees, 21,414 bytes allocated
+==66494== 
+==66494== 104 bytes in 1 blocks are definitely lost in loss record 28 of 44
+==66494==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==66494==    by 0x100003BB6: init_process (in ./corewar)
+==66494==    by 0x100003D03: init_processes (in ./corewar)
+==66494==    by 0x100001607: main (in ./corewar)
+==66494== 
+==66494== LEAK SUMMARY:
+==66494==    definitely lost: 104 bytes in 1 blocks
+==66494==    indirectly lost: 0 bytes in 0 blocks
+==66494==      possibly lost: 0 bytes in 0 blocks
+==66494==    still reachable: 4,368 bytes in 7 blocks
+==66494==         suppressed: 11,432 bytes in 158 blocks
+==66494== Reachable blocks (those to which a pointer was found) are not shown.
+==66494== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==66494== 
+==66494== For lists of detected and suppressed errors, rerun with: -s
+==66494== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 8 from 8)

@@ -25,6 +25,8 @@ void				lld(t_cor *cor, t_process *proc)
 	int32_t			value_to_reg;
 
 	value_to_reg = get_value(cor, proc, 0);
+	if (value_to_reg == MEM_SIZE + 1)
+		return;
 	reg2 = get_value(cor, proc, 1);
 	proc->reg[reg2] = value_to_reg;
 	if (value_to_reg == 0)

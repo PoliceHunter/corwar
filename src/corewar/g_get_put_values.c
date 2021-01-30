@@ -26,7 +26,7 @@ int32_t			get_step(t_cor *cor, t_process *proc, int i)
 		begin = begin + cor->buffer_sizes[i1];
 		i1++;
 	}
-	begin = begin + 1 + proc->op.args_types_code;
+	begin = begin + 1 + g_op[proc->real_op_code].args_types_code;
 	return (begin);
 }
 
@@ -35,7 +35,7 @@ int32_t			get_value(t_cor *cor, t_process *proc, int i)
 {
 	int32_t		res;
 	int			num;
-	uint32_t	addr;
+	int32_t	addr;
 
 	res = 0;
 	num = 0;
@@ -51,7 +51,9 @@ int32_t			get_value(t_cor *cor, t_process *proc, int i)
 	else if (cor->buffer_codes[i] == IND_CODE)
 	{
 		num = byte_to_int32(cor, proc, i, cor->buffer_sizes[i]); //2 т.к. ИНД
-		if (proc->op.op_code != 13 && proc->op.op_code != 14)
+		if (num < 0)
+			return (MEM_SIZE + 1);///
+		if (g_op[proc->real_op_code].op_code != 13 && g_op[proc->real_op_code].op_code != 14)
 			addr = get_address(proc, num % IDX_MOD, 0);
 		else
 			addr = get_address(proc, num, 0);
@@ -144,7 +146,7 @@ int32_t		byte_to_int32_2(t_cor *cor, uint32_t address, int size) //а что е�
 void			value32_to_map(t_cor *cor, int32_t value, uint32_t address, int size)
 {
 	int8_t		i;
-	uint32_t	finaddr;
+	uint32_t	finaddr;///
 
 	i = 0;
 	while (size)

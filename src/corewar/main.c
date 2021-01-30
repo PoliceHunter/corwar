@@ -14,13 +14,20 @@ void start_game(t_cor *cor)
 
 	index = -1;
 	game_logic(cor);
-	while (++index < cor->count_players)
+	while (cor->last_live_player != 0 && ++index < cor->count_players)
 	{
 		if (cor->player[index].id == cor->last_live_player)
 			break;
 	}
 	if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
+	{
+		if (cor->last_live_player == 0)
+		{
+			index = 0;
+			cor->last_live_player = cor->player[index].id;
+		}
 		ft_printf("Contestant %d, \"%s\", has won !\n", cor->last_live_player, cor->player[index].name);
+	}
 }
 
 int main(int ac, char **av)
@@ -33,6 +40,7 @@ int main(int ac, char **av)
 	parse_champion_file(&cor);
 	init_arena(&cor);
 	init_processes(&cor);
+	print_intro(&cor);
 	start_game(&cor);
 
 
