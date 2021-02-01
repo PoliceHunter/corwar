@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_utils2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 14:21:44 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 12:37:24 by dcapers          ###   ########.fr       */
+/*   Updated: 2021/01/29 19:47:45 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include "libft.h"
 #include "op.h"
 
-int		is_space(int c)
+int			is_space(int c)
 {
 	return (c == '\t' || c == '\v' ||
 		c == '\f' || c == '\r' || c == ' ');
 }
 
-int		is_delimiter(int c)
+int			is_delimiter(int c)
 {
 	return (c == '\0' || c == '\n' || is_space(c)
 		|| c == COMMAND_CHAR || c == STR_CHR
@@ -31,7 +31,7 @@ int		is_delimiter(int c)
 void		skip_spaces(t_parser *p, char *row)
 {
 	if (!row || !*row)
-		return;
+		return ;
 	while (is_space(row[p->col]))
 		p->col++;
 }
@@ -39,8 +39,8 @@ void		skip_spaces(t_parser *p, char *row)
 void		skip_comment(t_parser *p, char *row)
 {
 	if (!row || !*row)
-		return;
-	if (row && row[p->col] == COMMENT_CHAR || row[p->col] == ALT_COMMENT_CHAR)
+		return ;
+	if (row && (row[p->col] == COMMENT_CHAR || row[p->col] == ALT_COMMENT_CHAR))
 		while (row[p->col] != '\0')
 			p->col++;
 }

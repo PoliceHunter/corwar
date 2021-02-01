@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 11:58:47 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 12:08:25 by dcapers          ###   ########.fr       */
+/*   Updated: 2021/01/29 19:56:08 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			kill_exe(char *msg)
 	exit(0);
 }
 
-int		is_reg(const char *arg)
+int				is_reg(const char *arg)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ int		is_reg(const char *arg)
 	return (0);
 }
 
-char	*get_content(t_parser *parser, const char *row, unsigned start)
+char			*get_content(t_parser *parser, const char *row, unsigned start)
 {
 	char	*content;
 	int		len;
@@ -51,7 +51,7 @@ char	*get_content(t_parser *parser, const char *row, unsigned start)
 	return (content);
 }
 
-int		get_row(t_parser *p, char **str)
+int				get_row(t_parser *p, char **str)
 {
 	int			size;
 

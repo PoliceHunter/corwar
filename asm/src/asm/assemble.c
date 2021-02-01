@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assemble.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 11:21:41 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/27 20:43:24 by student          ###   ########.fr       */
+/*   Updated: 2021/01/29 20:09:08 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@
 #include "asm_errors.h"
 #include "fcntl.h"
 #include "libft.h"
-#include <unistd.h>
 
-t_parser		*parser_init(int fd)
+t_parser			*parser_init(int fd)
 {
 	t_parser		*parser;
 
-	if(!(parser = (t_parser *)ft_memalloc(sizeof(t_parser))))
+	if (!(parser = (t_parser *)ft_memalloc(sizeof(t_parser))))
 		kill_exe(ERR_PARSER_INIT);
 	parser->fd = fd;
 	parser->token = NULL;
 	parser->last = NULL;
-	parser->name = NULL; 
+	parser->name = NULL;
 	parser->comment = NULL;
 	parser->code = NULL;
 	parser->label = NULL;
@@ -36,14 +35,13 @@ t_parser		*parser_init(int fd)
 	parser->pos = 0;
 	parser->code_size = 0;
 	return (parser);
-
 }
 
-void			setup_mention_val(t_parser *p)
+void				setup_mention_val(t_parser *p)
 {
-	t_label		*label;
-	t_mention	*mention;
-	int32_t		val;
+	t_label			*label;
+	t_mention		*mention;
+	int32_t			val;
 
 	label = p->label;
 	while (label)
@@ -51,21 +49,20 @@ void			setup_mention_val(t_parser *p)
 		mention = label->mention;
 		while (mention)
 		{
-			
-			val = mention->size == 2 ? (int16_t)(label->op_pos - mention->op_pos) :
-					(int32_t)(label->op_pos - mention->op_pos);
+			val = mention->size == 2 ? (int16_t)(label->op_pos -
+			mention->op_pos) : (int32_t)(label->op_pos - mention->op_pos);
 			int32_to_bytecode(p->code, mention->pos, val, mention->size);
-				mention = mention->next;		
+			mention = mention->next;
 		}
 		label = label->next;
 	}
 }
 
-void			assemble(char *filename)
+void				assemble(char *filename)
 {
-	int			fd;
-	t_parser	*parser;
-	t_token		*curr;
+	int				fd;
+	t_parser		*parser;
+	t_token			*curr;
 
 	if ((fd = open(filename, O_RDONLY)) == -1)
 		kill_exe(ERR_FILE_OPEN);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_errors.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 11:49:30 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 12:35:35 by dcapers          ###   ########.fr       */
+/*   Updated: 2021/01/29 19:51:44 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # define ERR_FILE_OPEN			"Can\'t open file!"
 
 # include "asm.h"
-
 
 void				token_error(t_token *token);
 void				label_error(t_token *token);

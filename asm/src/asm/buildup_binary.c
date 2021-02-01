@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildup_binary.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 11:45:15 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/27 20:43:53 by student          ###   ########.fr       */
+/*   Updated: 2021/01/29 20:14:44 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "fcntl.h"
 #include "libft.h"
 
-void	int32_to_bytecode(char *data, int32_t pos,
+void			int32_to_bytecode(char *data, int32_t pos,
 			int32_t value, size_t size)
 {
 	int8_t		i;
@@ -29,7 +29,6 @@ void	int32_to_bytecode(char *data, int32_t pos,
 	}
 }
 
-
 int				is_true_ext(const char *filename, const char *ext)
 {
 	if (filename && ext && ft_strlen(filename) >= ft_strlen(ext))
@@ -42,7 +41,7 @@ char			*change_ext(char *filename, const char *old, const char *ext)
 {
 	char			*base;
 
-	base =  ft_strsub(filename, 0, ft_strlen(filename) - ft_strlen(old));
+	base = ft_strsub(filename, 0, ft_strlen(filename) - ft_strlen(old));
 	if (!base)
 		kill_exe(ERR_STR_INIT);
 	if (!(filename = ft_strjoin(base, ext)))

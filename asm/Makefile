@@ -64,7 +64,7 @@ LIBFT_CLEAN	= $(addsuffix .clean,$(LIBFT_DIR))
 LIBFT_FCLEAN	= $(addsuffix .fclean,$(LIBFT_DIR))
 
 INCLUDES		= includes/
-INC_LIBFT	= $(addsuffix includes/,$(LIBFT_DIR))
+INC_LIBFT	= $(addsuffix inc/,$(LIBFT_DIR))
 
 ASM_HEADERS_LIST = asm.h errors.h
 CORE_HEADERS_LIST = corewar.h errors.h

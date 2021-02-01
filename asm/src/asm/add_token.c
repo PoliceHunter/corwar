@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 02:38:08 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 12:36:51 by dcapers          ###   ########.fr       */
+/*   Updated: 2021/01/29 19:55:32 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,19 @@ void			add_token(t_parser *p, t_token *token)
 	t_token		*tmp;
 
 	if (!p || !token)
-		return;
+		return ;
 	if (!p->token)
 		p->token = token;
 	if (p->last)
 		p->last->next = token;
-	p->last = token;	
+	p->last = token;
+}
+
+void			push_label(t_parser *p, t_label *label)
+{
+	if (p->label_last)
+		p->label_last->next = label;
+	p->label_last = label;
+	if (!p->label)
+		p->label = label;
 }

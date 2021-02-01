@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_asm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:01:32 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 12:37:45 by dcapers          ###   ########.fr       */
+/*   Updated: 2021/01/29 20:22:18 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void			parse_command(t_parser *p, char *row, t_token *t)
 		t->content = get_content(p, row, start);
 		add_token(p, t);
 	}
-	if (ft_strcmp(t->content, NAME_CMD_STRING) && 
+	if (ft_strcmp(t->content, NAME_CMD_STRING) &&
 			ft_strcmp(t->content, COMMENT_CMD_STRING))
 		lexical_error(p->row, start);
 }
@@ -78,7 +78,7 @@ void			parse_digits(t_parser *p, char *row, t_token *t)
 		parse_syms(p, row, t);
 	}
 	else
-		kill_exe(ERR_TOKEN_INIT);		
+		kill_exe(ERR_TOKEN_INIT);
 }
 
 void			parse_token(t_parser *p, char **row)
@@ -98,11 +98,10 @@ void			parse_token(t_parser *p, char **row)
 		else
 			parse_digits(p, *row, create_token(p, DIRECT));
 	}
-	else if((*row)[p->col] == LABEL_CHAR && ++p->col)
+	else if ((*row)[p->col] == LABEL_CHAR && ++p->col)
 		parse_syms(p, *row, create_token(p, INDIRECT_LABEL));
 	else
 		parse_digits(p, *row, create_token(p, INDIRECT));
-	
 }
 
 void			parse_asm(t_parser *parser)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 01:48:45 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/27 20:45:08 by student          ###   ########.fr       */
+/*   Updated: 2021/01/29 20:06:13 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int8_t	get_arg_type(t_type type)
 
 void			setup_register(t_parser *p, t_token *curr, t_op *op)
 {
-	
 	int32_to_bytecode(p->code, p->pos,
 		(int8_t)ft_atoi(&curr->content[1]), 1);
 	p->pos++;
@@ -40,10 +39,10 @@ void			setup_num(t_parser *p, t_token *curr, t_op *op)
 {
 	size_t		size;
 	int32_t		val;
-	
+
 	size = curr->type == INDIRECT ? IND_SIZE : op->dir_size;
 	val = size == 2 ? (int16_t)ft_atoi(curr->content) :
-						(int32_t)ft_atoi(curr->content);	
+						(int32_t)ft_atoi(curr->content);
 	int32_to_bytecode(p->code, p->pos, val, size);
 	p->pos += size;
 }
@@ -58,7 +57,7 @@ void			setup_mention(t_parser *p, t_token *curr, t_op *op)
 	{
 		label = create_label(curr->content, -1);
 		push_label(p, label);
-	}	
+	}
 	push_mention(label, create_mention(p->op_pos, p->pos, curr, size));
 	p->pos += size;
 }
@@ -78,5 +77,4 @@ int8_t			setup_arg(t_parser *p, t_op *op, t_token *curr, int8_t arg_num)
 	else
 		setup_register(p, curr, op);
 	return (type);
-
 }

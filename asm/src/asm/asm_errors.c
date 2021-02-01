@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_errors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 03:19:18 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 12:36:59 by dcapers          ###   ########.fr       */
+/*   Updated: 2021/01/29 20:15:02 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "asm_errors.h"
 #include "libft.h"
 
-void				token_error(t_token *token)
+void	token_error(t_token *token)
 {
 	ft_putstr_fd("Unexpected token \"", 2);
 	ft_putstr_fd(token->content, 2);

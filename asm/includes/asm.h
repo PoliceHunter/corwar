@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 12:36:17 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 12:36:26 by dcapers          ###   ########.fr       */
+/*   Updated: 2021/01/29 19:50:50 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,14 @@ void					parse_str(t_parser *p, char **row, t_token *t);
 void					asm_test(char *s);
 void					kill_exe(char *msg);
 int						is_true_ext(const char *filename, const char *ext);
-char					*change_ext(char *filename, const char *old, const char *ext);
+char					*change_ext(char *filename, const char *old,
+						const char *ext);
 void					skip_spaces(t_parser *p, char *row);
 void					skip_comment(t_parser *p, char *row);
 t_token					*create_token(t_parser *p, t_type type);
 void					add_token(t_parser *p, t_token *token);
-char					*get_content(t_parser *parser, const char *row, unsigned start);
+char					*get_content(t_parser *parser, const char *row,
+						unsigned start);
 int						is_delimiter(int c);
 int						is_space(int c);
 int						is_reg(const char *arg);
@@ -123,9 +125,10 @@ t_label					*find_label(t_label *label, char *name);
 void					buildup_code(t_parser *p, t_token *curr);
 void					buildup_binary(t_parser *p, char *filename);
 void					resize_buff(t_parser *p);
-int8_t					setup_arg(t_parser *p, t_op *op, t_token *curr, int8_t arg_num);
-void					update_types_code(int8_t *types_code, int8_t type, int arg_num);
+int8_t					setup_arg(t_parser *p, t_op *op, t_token *curr,
+						int8_t arg_num);
+void					update_types_code(int8_t *types_code, int8_t type,
+						int arg_num);
 void					dump_tokens(t_token *t);
-
 
 #endif

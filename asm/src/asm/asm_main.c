@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcapers <dcapers@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 11:12:51 by dcapers           #+#    #+#             */
-/*   Updated: 2020/12/20 12:37:09 by dcapers          ###   ########.fr       */
+/*   Updated: 2021/01/29 19:51:13 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "op.h"
 #include "libft.h"
 
-void	print_help(void)
+void			print_help(void)
 {
 	ft_putstr("Usage: ./asm (champion.s)\n");
 	ft_putstr("    champion.s   — from assemble to bytecode\n");
