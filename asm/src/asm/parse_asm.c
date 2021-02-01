@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_asm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:01:32 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/29 20:22:18 by mjohnsie         ###   ########.fr       */
+/*   Updated: 2021/02/01 22:14:53 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void			parse_asm(t_parser *parser)
 				parse_token(parser, &row);
 		}
 		add_token(parser, create_token(parser, NEW_LINE));
+		ft_strdel(&row);
 	}
 	add_token(parser, create_token(parser, END));
 }

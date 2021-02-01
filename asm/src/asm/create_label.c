@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_label.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 13:40:59 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/29 20:13:23 by mjohnsie         ###   ########.fr       */
+/*   Updated: 2021/02/01 22:30:04 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ char			*take_lebel(char *s)
 
 	len = 0;
 	split = ft_strsplit(s, ',');
-	return (split[0]);
+	s = ft_strcpy(s, split[0]);
+	free_str(split);
+	return (s);
 }
 
 t_label			*find_label(t_label *label, char *name)
@@ -50,7 +52,7 @@ t_mention		*create_mention(int32_t op_pos, int32_t pos,
 {
 	t_mention	*mention;
 
-	if (!(mention = (t_mention *)malloc(sizeof(t_mention))))
+	if (!(mention = (t_mention *)ft_memalloc(sizeof(t_mention))))
 		kill_exe(ERR_MENTION_INIT);
 	mention->pos = pos;
 	mention->op_pos = op_pos;
@@ -65,7 +67,7 @@ t_label			*create_label(char *name, int32_t pos)
 {
 	t_label		*label;
 
-	if (!(label = (t_label *)malloc(sizeof(t_label))))
+	if (!(label = (t_label *)ft_memalloc(sizeof(t_label))))
 		kill_exe(ERR_LABEL_INIT);
 	label->name = name;
 	label->mention = NULL;

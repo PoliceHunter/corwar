@@ -6,7 +6,7 @@
 #    By: student <student@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/20 12:04:51 by dcapers           #+#    #+#              #
-#    Updated: 2020/12/21 18:44:35 by student          ###   ########.fr        #
+#    Updated: 2021/02/01 21:06:00 by student          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ ASM_LIST = asm_main.c \
 			resize_buff.c \
 			buildup_code.c \
 			buildup_binary.c \
-			parse_str.c 
+			parse_str.c \
+			free.c
 CORE_LIST = 
 
 ASM_SRC_DIR = $(SRC_DIR)$(ASM_DIR)

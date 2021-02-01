@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 12:36:17 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/29 19:50:50 by mjohnsie         ###   ########.fr       */
+/*   Updated: 2021/02/01 22:19:45 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,12 @@ int8_t					setup_arg(t_parser *p, t_op *op, t_token *curr,
 void					update_types_code(int8_t *types_code, int8_t type,
 						int arg_num);
 void					dump_tokens(t_token *t);
+static void				free_tokens(t_token **list);
+static void				free_labels(t_label **list);
+static void				free_mentions(t_mention **list);
+void					free_asm_parser(t_parser **parser);
+void					free_str(char **str);
+
+
 
 #endif

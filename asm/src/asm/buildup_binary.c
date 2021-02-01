@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildup_binary.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 11:45:15 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/29 20:14:44 by mjohnsie         ###   ########.fr       */
+/*   Updated: 2021/02/01 22:22:22 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,5 @@ void			buildup_binary(t_parser *p, char *filename)
 	ft_putstr("Writing output program to ");
 	ft_putstr(filename);
 	ft_putchar('\n');
+	free(filename);
 }

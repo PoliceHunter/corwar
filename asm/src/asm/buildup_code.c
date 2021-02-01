@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildup_code.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 11:43:34 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/29 20:11:07 by mjohnsie         ###   ########.fr       */
+/*   Updated: 2021/02/01 21:12:51 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int8_t			setup_args(t_parser *p, t_token **curr, t_op *op)
 				setup_arg(p, op, *curr, arg_num), arg_num);
 			(*curr) = (*curr)->next;
 		}
+		else
+			token_error(*curr);
 		if (arg_num++ != op->args_num - 1)
 		{
 			if ((*curr)->type != SEPARATOR)
