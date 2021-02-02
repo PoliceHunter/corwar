@@ -1,7 +1,0 @@
-*.DS_Store*
-*.o
-
-# Clion
-.idea
-cmake-build-debug
-CMakeLists.txt
