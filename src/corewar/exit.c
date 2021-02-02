@@ -1,11 +1,25 @@
 #include "../../includes/corwar.h"
 
-void free_cor(t_cor *cor, int i)
+/*void free_cor(t_cor *cor, int i)
 {
 	free(&cor->player[i].code_size);
 	free(cor->player[i].comment);
 	free(cor->player[i].name);
 	free(cor->player);
+}*/
+
+void free_cor(t_cor *cor)
+{
+	int i;
+
+	i = -1;
+	while (++i != cor->count_players)
+	{
+		free(cor->player[i].name);
+		free(cor->player[i].code);
+		free(cor->player[i].comment);
+	}
+	free_vec(&cor->process);
 }
 
 void write_exit_code(int exit_code)
@@ -47,11 +61,7 @@ void write_exit_code(int exit_code)
 
 void exterminate(t_cor *cor, int exit_code)
 {
-	int i;
-
-	i = -1;
-	while (++i < cor->count_players)
-		free_cor(cor, i);
+	free_cor(cor);
 	if (exit_code > 0 && exit_code < 11)
 		write_exit_code(exit_code);
 }

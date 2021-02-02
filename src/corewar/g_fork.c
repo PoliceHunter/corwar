@@ -46,6 +46,9 @@ void				g_fork(t_cor *cor, t_process *proc)
 		address = address % MEM_SIZE;
 	dubl = init_process(address, cor->process, proc->player_id);
 	dublicate_process(dubl, proc);
+	if (cor->cycle == 1752)
+		arg1 = arg1;
+	new_place(cor, dubl);
 	dubl->id = ((t_process *)get_from_vec(&cor->process, 0))->id + 1;
 	push_front_vec(&cor->process, dubl);
 	cor->count_cursors++;

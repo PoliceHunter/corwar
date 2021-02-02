@@ -28,7 +28,10 @@ void start_game(t_cor *cor)
 		}
 		ft_printf("Contestant %d, \"%s\", has won !\n", cor->last_live_player, cor->player[index].name);
 	}
+	free_cor(cor);
 }
+
+
 
 int main(int ac, char **av)
 {
@@ -42,8 +45,6 @@ int main(int ac, char **av)
 	init_processes(&cor);
 	print_intro(&cor);
 	start_game(&cor);
-
-
 	return 0;
 }
 //TODO Зависимость id игрока от положения на карте

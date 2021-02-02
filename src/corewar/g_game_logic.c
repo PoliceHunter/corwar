@@ -70,7 +70,7 @@ int 			game_logic(t_cor *cor)
 	{
 		if (cor->flag.visual && cor->cycles_after_check == 0)
 		{
-			ft_printf("---beg count_cursors: %d\n", cor->count_cursors);
+			//ft_printf("---beg count_cursors: %d\n", cor->count_cursors);
 		}
 		check_flag(cor);
 		game_in_cycle(cor);
@@ -86,8 +86,8 @@ int 			game_logic(t_cor *cor)
 		if (cor->cycles_to_die == cor->cycles_after_check
 		|| cor->cycles_to_die <= 0)
 			proverka(cor);
-		if (cor->count_cursors > 20000)
-			return (1);
+		/*if (cor->count_cursors > 20000)
+			return (1);*/
 	}
 	return (1);
 }

@@ -36,6 +36,6 @@ void				zjmp(t_cor *cor, t_process *proc)
 	}
 	else
 	{
-		proc->pos = get_address(proc, cor->next_step, 1);
+		proc->pos = get_address(proc, proc->next_step, 1);
 	}
 }

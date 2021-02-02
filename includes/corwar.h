@@ -80,6 +80,7 @@ typedef struct			s_process
 	uint32_t 			pos; 					////Map address
 	uint8_t 			op_code; 				//Contains the operation code, at the time of moving to this position on the map
 	uint8_t				name_op;
+	int 				next_step; ///gala new
 	//uint32_t			next_pos;
 	int					cycle_to_exec; 			// A counter containing the number of cycles that the carriage must wait before starting an operation.
 	int32_t				live_last_cycle; 		// Contain the cycle on which the last live operation was performed //gala убрала u
@@ -110,7 +111,7 @@ struct					s_cor
 	int 				*buffer_sizes;			// (gala) коды операций
 	int 				buffer_counter;			// (gala) счетчик кодов операций
 	int 				check_arg_reg;			// (gala) 1 правильно, 0 - нет
-	int 				next_step;			// (gala) временная переменная - на сколько шагов двигаться
+	//int 				next_step;			// (gala) временная переменная - на сколько шагов двигаться
 	uint32_t 			*buf_proc_id; ////alter
 	int32_t 			*reg[REG_NUMBER + 1]; 	////Array of variables for storing data
 	uint8_t 			*carry;					//A special variable that affects the operation of the "zjmp" function and can
@@ -129,6 +130,7 @@ struct					s_cor
 
 void			exterminate(t_cor *cor, int exit_code);
 int32_t			bytecode_to_int32(const uint8_t *bytecode, size_t size);  //(gala) убрала статик
+void			free_cor(t_cor *cor);
 
 uint32_t		find_cycle_to_exec(t_cor *cor, t_process *proc);
 void			print_arena(uint8_t *map, int print_mode);
@@ -180,5 +182,6 @@ void 			parse_champion_file(t_cor *cor);
 void			save_empty_num_player(t_cor *cor, const int *i);
 void			save_num_player(t_cor *cor, char *num, int *i, int ac);
 void			error_usage(void);
+void 			new_place(t_cor *cor, t_process *process);
 
 #endif //CORWAR_CORWAR_H
