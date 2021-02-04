@@ -13,7 +13,7 @@ void start_game(t_cor *cor)
 	int		index;
 
 	index = -1;
-	game_logic(cor);
+    process_game_logic(cor);
 	while (cor->last_live_player != 0 && ++index < cor->count_players)
 	{
 		if (cor->player[index].id == cor->last_live_player)

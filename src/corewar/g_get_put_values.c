@@ -38,11 +38,11 @@ int32_t			get_value(t_cor *cor, t_process *proc, int i)
 	int32_t	addr;
 
 	res = 0;
-	num = 0;
+	//num = 0;
 	if (cor->buffer_codes[i] == REG_CODE)
 	{
 		num = byte_to_int32(cor, proc, i, cor->buffer_sizes[i]);
-		res = proc->reg[num];
+		res = proc->reg[num - 1];
 	}
 	else if (cor->buffer_codes[i] == DIR_CODE)
 	{

@@ -29,13 +29,13 @@ void				lfork(t_cor *cor, t_process *proc)
 		cor->valid_fork = 0;
 		return;
 	}
-
 	if (address > MEM_SIZE)
 		address = address % MEM_SIZE;
 	dubl = init_process(address, cor->process, proc->player_id);
 	dublicate_process(dubl, proc);
+	new_place(cor, dubl);
+	dubl->id = ((t_process *)get_from_vec(&cor->process, 0))->id + 1;
 	push_front_vec(&cor->process, dubl);
 	cor->count_cursors++;
 	cor->valid_fork = 1;
-	//ft_printf("lfork\n");
 }

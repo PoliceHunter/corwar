@@ -50,7 +50,7 @@ void				g_fork(t_cor *cor, t_process *proc)
 		arg1 = arg1;
 	new_place(cor, dubl);
 	dubl->id = ((t_process *)get_from_vec(&cor->process, 0))->id + 1;
-	push_front_vec(&cor->process, dubl);
+	emplace_front_vec(&cor->process, dubl);
 	cor->count_cursors++;
 	cor->valid_fork = 1;
 	//ft_printf("fork\n");

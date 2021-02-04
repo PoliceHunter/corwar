@@ -49,7 +49,7 @@ t_process *init_process(int32_t pos, t_vector process, int player_id)
 	t_process	*proc;
 	int			i;
 
-	i = 2;
+	i = 1;
 	proc = malloc(sizeof(t_process));
 	proc->carry = FALSE;
 	proc->cycle_to_exec = -1; //(gala) изменила
@@ -60,8 +60,8 @@ t_process *init_process(int32_t pos, t_vector process, int player_id)
 	proc->real_op_code = 0;///
 	proc->id = process.size; // Указываем id процесса по размеру вектора
 	proc->player_id = player_id; //<- (gala) change, its FIRST player's number => COLOUR!!!!!
-	proc->reg[1] = -player_id; //<- (gala) change, its player's 'minus' number!!!!!
-	while (i < 17)
+	proc->reg[0] = -player_id; //<- (gala) change, its player's 'minus' number!!!!!
+	while (i < 16)
 		proc->reg[i++] = 0;
 	return (proc);
 }
@@ -77,7 +77,9 @@ void init_processes(t_cor *cor)
 	index = -1;
 	while (++index != cor->count_cursors)
 	{
-		push_front_vec(&process, init_process(pos, process, cor->player[index].id)); //(gala) добавила id игрока
+        t_process * tmp = init_process(pos, process, cor->player[index].id);
+		push_front_vec(&process, tmp); //(gala) добавила id игрока
+		free(tmp);
 		pos += MEM_SIZE / cor->count_players;
 	}
 	cor->process = process;

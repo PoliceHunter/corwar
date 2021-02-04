@@ -20,6 +20,10 @@ void free_cor(t_cor *cor)
 		free(cor->player[i].comment);
 	}
 	free_vec(&cor->process);
+	if (cor->buffer_sizes != NULL)
+        free(cor->buffer_sizes);
+    if (cor->buffer_codes != NULL)
+        free(cor->buffer_codes);
 }
 
 void write_exit_code(int exit_code)

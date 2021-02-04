@@ -22,7 +22,7 @@ void				aff(t_cor *cor, t_process *proc)
 	int32_t			value;
 
 	regnum1 = get_value(cor, proc, 0);
-	value = proc->reg[regnum1];
+	value = proc->reg[regnum1 - 1];
 	//Приводим его к типу char aff_symbol = (char)value;									DIR_SIZE);
 	if (cor->flag.aff)
 		ft_printf("Aff: %c\n", (char)value);

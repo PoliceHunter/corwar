@@ -28,7 +28,7 @@ int				check_arg_reg(t_cor *cor, t_process *process, int i) ///alt
 	if (cor->buffer_codes[i] == REG_CODE)
 	{
 		code = cor->map[get_address(process, get_step(cor, process, i), 0)];
-		if (code < 1 || code > 16)
+		if (code < 0 || code > 15)
 			return (0);
 	}
 	return (1);
@@ -165,10 +165,11 @@ void			game_in_cycle(t_cor *cor)
 			if (check == 1) // все проверки успешны
 			{
 				temp = process->op_code;
-				if (cor->flag.visual && cor->cycle < 12300 && process->id == 32)
+				if (cor->flag.visual && cor->cycle == 16383)// && process->id == 32)
 				{
-					ft_printf("!!done op: %s", g_op[process->real_op_code].name);
-					ft_printf(" !!!!cycle %d, id %d, pos: %d, cours %d\n", cor->cycle, process->id, process->pos, cor->count_cursors);
+					ft_printf("!op: %s", g_op[process->real_op_code].name);
+					ft_printf(" !cycle %d, id %d, pos: %d, carry %d, cours %d", cor->cycle, process->id, process->pos, process->carry, cor->count_cursors);
+					ft_printf(" //r %d=%d=%d=%d\n", process->reg[0], process->reg[1], process->reg[2], process->reg[3]);
 				}
 				g_op[process->real_op_code].func(cor, process); ///выполняем операцию
 				if (temp == 12 && cor->valid_fork == 1)

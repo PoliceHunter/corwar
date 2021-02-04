@@ -10,6 +10,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <fcntl.h>
+#include <stdint.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -74,7 +75,7 @@ typedef struct	s_op
 
 typedef struct			s_process
 {
-	int32_t 			reg[REG_NUMBER + 1]; 	////Array of variables for storing data
+	int32_t 			reg[REG_NUMBER]; 	////Array of variables for storing data
 	uint8_t 			carry;					//A special variable that affects the operation of the "zjmp" function and can
 												// ** take one of two values: 1 or 0. If it's 1, then the function updates the ** "position
 	uint32_t 			pos; 					////Map address
@@ -140,7 +141,7 @@ void 			dublicate_process(t_process *dubl, t_process *proc);
 //(gala)
 int32_t			byte_to_int32(t_cor *cor, t_process *process, int i, int size);
 void			value32_to_map(t_cor *cor, int32_t value, uint32_t address, int size);
-int 			game_logic(t_cor *cor);
+int 			process_game_logic(t_cor *cor);
 void			add(t_cor *vm, t_process *proc);
 void			sti(t_cor *vm, t_process *proc);
 void			live(t_cor *vm, t_process *proc);
@@ -167,7 +168,7 @@ int32_t			get_step(t_cor *cor, t_process *proc, int i);
 int32_t			byte_to_int32_2(t_cor *cor, uint32_t address, int size);
 int32_t			get_value(t_cor *cor, t_process *proc, int i);
 int 			check_flag(t_cor *cor);
-void 			proverka(t_cor *cor);
+void 			make_check(t_cor *cor);
 void    		init_cor(t_cor *cor, char **av);
 void    		init_arena(t_cor *cor);
 t_process		*init_process(int32_t pos, t_vector process, int player_id);

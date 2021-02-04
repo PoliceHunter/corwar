@@ -23,10 +23,10 @@ void				add(t_cor *cor, t_process *proc) // Возможно нужна конк
 	int32_t 		value_to_reg;
 
 	valreg1 = get_value(cor, proc, 0);
-	valreg2 = get_value(cor, proc, 0);
+	valreg2 = get_value(cor, proc, 1);
 	value_to_reg = valreg1 + valreg2;
 	numreg3 = byte_to_int32(cor, proc, 2, cor->buffer_sizes[2]);
-	proc->reg[numreg3] = value_to_reg;
+	proc->reg[numreg3 - 1] = value_to_reg;
 	if (value_to_reg == 0)
 		proc->carry = 1;
 	else
