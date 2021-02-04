@@ -28,7 +28,7 @@ void				sti(t_cor *cor, t_process *proc)
 	int32_t		address;
 
 	reg1 = cor->map[get_address(proc, 2, 0)];
-	regvalue = proc->reg[reg1];
+	regvalue = proc->reg[reg1 - 1];
 	value2 = byte_to_int32(cor, proc, 1, cor->buffer_sizes[1]);
 	value3 = byte_to_int32(cor, proc, 2, cor->buffer_sizes[2]);
 	address = proc->pos + (value2 + value3) % IDX_MOD;

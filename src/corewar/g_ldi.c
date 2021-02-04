@@ -34,5 +34,5 @@ void				ldi(t_cor *cor, t_process *proc)
 	if (address < 0)
 		return;
 	value_to_reg = byte_to_int32_2(cor, address, 4);
-	proc->reg[reg3] = value_to_reg;
+	proc->reg[reg3 - 1] = value_to_reg;
 }

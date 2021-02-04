@@ -32,12 +32,14 @@ void 			kill_caretka(t_cor *cor)
 		process = get_from_vec(&cor->process, index);
 		if (process->live_last_cycle == -1 || cor->cycles_to_die <= 0) // && is_died(cor, process))
 		{
+			int i = process->id;
+			int g = process->pos;
+			remove_from_vec(&cor->process, index);
 			if (cor->flag.visual)
 			{
-				ft_printf("killed curs: %d pos %d\n", process->id, process->pos);
+				ft_printf("killed curs: %d pos %d\n", i, g);
 				//ft_printf("cor->cycle: %d\n", cor->cycle); //// Delete becouse unusage in original program
 			}
-			remove_from_vec(&cor->process, index);
 			cor->count_cursors--;
 			index--;
 		}
@@ -78,10 +80,10 @@ int 			game_logic(t_cor *cor)
 		cor->cycles_after_check++;
 		if (cor->flag.visual && cor->cycles_after_check == cor->cycles_to_die - 1)
 		{
-			ft_printf("cycles_to_die: %d\n", cor->cycles_to_die); //// Delete becouse unusage in original program
-			ft_printf("count_lives: %d\n", cor->count_lives);
-			ft_printf("count_cursors: %d\n", cor->count_cursors);
-			ft_printf("cor->cycle: %d\n", cor->cycle); //// Delete becouse unusage in original program
+			//ft_printf("cycles_to_die: %d\n", cor->cycles_to_die); //// Delete becouse unusage in original program
+			//ft_printf("count_lives: %d\n", cor->count_lives);
+			//ft_printf("count_cursors: %d\n", cor->count_cursors);
+			//ft_printf("cor->cycle: %d\n", cor->cycle); //// Delete becouse unusage in original program
 		}
 		if (cor->cycles_to_die == cor->cycles_after_check
 		|| cor->cycles_to_die <= 0)

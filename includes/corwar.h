@@ -74,7 +74,7 @@ typedef struct	s_op
 
 typedef struct			s_process
 {
-	int32_t 			reg[REG_NUMBER + 1]; 	////Array of variables for storing data
+	int32_t 			reg[REG_NUMBER]; 	////Array of variables for storing data
 	uint8_t 			carry;					//A special variable that affects the operation of the "zjmp" function and can
 												// ** take one of two values: 1 or 0. If it's 1, then the function updates the ** "position
 	uint32_t 			pos; 					////Map address

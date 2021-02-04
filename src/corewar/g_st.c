@@ -32,11 +32,11 @@ void				st(t_cor *cor, t_process *proc)
 	int32_t			arg2;
 
 	reg1num = cor->map[get_address(proc, 2, 0)];
-	regvalue = proc->reg[reg1num];
+	regvalue = proc->reg[reg1num - 1];
 	if (cor->buffer_codes[1] == REG_CODE)
 	{
 		reg2num = cor->map[get_address(proc, get_step(cor, proc, 1), 0)];
-		proc->reg[reg2num] = regvalue;
+		proc->reg[reg2num - 1] = regvalue;
 	}
 	if (cor->buffer_codes[1] == IND_CODE)
 	{

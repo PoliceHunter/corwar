@@ -28,7 +28,7 @@ void				lld(t_cor *cor, t_process *proc)
 	if (value_to_reg == MEM_SIZE + 1)
 		return;
 	reg2 = get_value(cor, proc, 1);
-	proc->reg[reg2] = value_to_reg;
+	proc->reg[reg2 - 1] = value_to_reg;
 	if (value_to_reg == 0)
 		proc->carry = 1;
 	else

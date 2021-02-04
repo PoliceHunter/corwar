@@ -26,7 +26,7 @@ void				sub(t_cor *cor, t_process *proc)
 	value1 = get_value(cor, proc, 0);
 	value2 = get_value(cor, proc, 1);
 	value_to_reg = value1 - value2;
-	proc->reg[reg3] = value_to_reg;
+	proc->reg[reg3 - 1] = value_to_reg;
 	if (value_to_reg == 0)
 		proc->carry = 1;
 	else
