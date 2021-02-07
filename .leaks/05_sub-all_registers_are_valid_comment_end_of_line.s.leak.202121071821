@@ -1,0 +1,22 @@
+==32645== Memcheck, a memory error detector
+==32645== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==32645== Using Valgrind-3.17.0.GIT and LibVEX; rerun with -h for copyright info
+==32645== Command: ./corewar ../CORECHECKER/champs/unit_tests/test_op/05_sub-all_registers_are_valid_comment_end_of_line.cor
+==32645== Parent PID: 32641
+==32645== 
+==32645== 
+==32645== HEAP SUMMARY:
+==32645==     in use at exit: 13,480 bytes in 159 blocks
+==32645==   total heap usage: 231 allocs, 72 frees, 21,685 bytes allocated
+==32645== 
+==32645== LEAK SUMMARY:
+==32645==    definitely lost: 0 bytes in 0 blocks
+==32645==    indirectly lost: 0 bytes in 0 blocks
+==32645==      possibly lost: 0 bytes in 0 blocks
+==32645==    still reachable: 2,048 bytes in 1 blocks
+==32645==         suppressed: 11,432 bytes in 158 blocks
+==32645== Reachable blocks (those to which a pointer was found) are not shown.
+==32645== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==32645== 
+==32645== For lists of detected and suppressed errors, rerun with: -s
+==32645== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 8 from 8)

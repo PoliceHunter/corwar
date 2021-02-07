@@ -1,0 +1,22 @@
+==23695== Memcheck, a memory error detector
+==23695== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==23695== Using Valgrind-3.17.0.GIT and LibVEX; rerun with -h for copyright info
+==23695== Command: ./corewar ../CORECHECKER/champs/unit_tests/test_op/02_ld-dir_value_is_uint_max_reg_is_valid.cor
+==23695== Parent PID: 23691
+==23695== 
+==23695== 
+==23695== HEAP SUMMARY:
+==23695==     in use at exit: 13,480 bytes in 159 blocks
+==23695==   total heap usage: 231 allocs, 72 frees, 21,649 bytes allocated
+==23695== 
+==23695== LEAK SUMMARY:
+==23695==    definitely lost: 0 bytes in 0 blocks
+==23695==    indirectly lost: 0 bytes in 0 blocks
+==23695==      possibly lost: 0 bytes in 0 blocks
+==23695==    still reachable: 2,048 bytes in 1 blocks
+==23695==         suppressed: 11,432 bytes in 158 blocks
+==23695== Reachable blocks (those to which a pointer was found) are not shown.
+==23695== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==23695== 
+==23695== For lists of detected and suppressed errors, rerun with: -s
+==23695== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 8 from 8)

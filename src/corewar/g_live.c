@@ -31,8 +31,9 @@ void				live(t_cor *cor, t_process *proc)
 	if (valid > -1)
 	{
 		cor->last_live_player = proc->player_id;
-		cor->count_lives++;
+		//cor->count_lives++;
 	}
+	cor->count_lives++;///
 	/*if (cor->flag.dump64 == 0 && cor->flag.dump32 == 0)
 	{
 		ft_printf("cycle: %d curs: %d pos %d live %d\n", cor->cycle, proc->id, proc->pos, proc->live_last_cycle);

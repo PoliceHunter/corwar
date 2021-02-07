@@ -21,7 +21,7 @@
 
 void				lld(t_cor *cor, t_process *proc)
 {
-	uint8_t			reg2;
+	int32_t			reg2;
 	int32_t			value_to_reg;
 
 	value_to_reg = get_value(cor, proc, 0);

@@ -17,9 +17,9 @@
 void				add(t_cor *cor, t_process *proc) // Возможно нужна конкретная каретка, которая дожна приходить, тогда мы ее подставим и получим позицию на карте
 {
 	// Как узнать тип аргумента.
-	int8_t 			valreg1;
-	int8_t 			valreg2;
-	uint8_t 		numreg3;
+	int32_t 		valreg1;
+	int32_t 		valreg2;
+	int32_t 		numreg3;
 	int32_t 		value_to_reg;
 
 	valreg1 = get_value(cor, proc, 0);

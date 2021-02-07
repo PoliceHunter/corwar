@@ -15,9 +15,12 @@ void free_cor(t_cor *cor)
 	i = -1;
 	while (++i != cor->count_players)
 	{
-		free(cor->player[i].name);
-		free(cor->player[i].code);
-		free(cor->player[i].comment);
+		if (cor->player[i].name)
+			free(cor->player[i].name);
+		if (cor->player[i].code)
+			free(cor->player[i].code);
+		if (cor->player[i].comment)
+			free(cor->player[i].comment);
 	}
 	free_vec(&cor->process);
 	if (cor->buffer_sizes != NULL)
@@ -60,13 +63,13 @@ void write_exit_code(int exit_code)
 		ft_putstr_fd("Problems with initialize code size\n", 2);
 	if (exit_code == ERR_STR_INIT)
 		ft_putstr_fd("Problems with initialize string\n", 2);
-	exit(1);
+	exit(0);
 }
 
 void exterminate(t_cor *cor, int exit_code)
 {
-	free_cor(cor);
-	if (exit_code > 0 && exit_code < 11)
+	//free_cor(cor);
+	if (exit_code > 0 && exit_code < 13)
 		write_exit_code(exit_code);
 }
 

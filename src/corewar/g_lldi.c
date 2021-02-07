@@ -26,7 +26,7 @@ void				lldi(t_cor *cor, t_process *proc)
 	int32_t			value_to_reg; //результат побитового "и", которое нужно записать в регистр (3 арг)
 	int32_t			value1;
 	int32_t			value2;
-	uint8_t			reg3;
+	int32_t			reg3;
 	int32_t			address;
 
 	reg3 = cor->map[get_address(proc, get_step(cor, proc, 2), 0)];
@@ -34,9 +34,10 @@ void				lldi(t_cor *cor, t_process *proc)
 	if (value1 == MEM_SIZE + 1)
 		return;
 	value2 = get_value(cor, proc, 1);
-	address = proc->pos + (value1 + value2) % IDX_MOD;
+	address = get_address(proc, (value1 + value2), 0);
+	/*address = proc->pos + (value1 + value2);
 	if (address < 0)
-		return;
+		return;*/
 	value_to_reg = byte_to_int32_2(cor, address, 4);
 	proc->reg[reg3 - 1] = value_to_reg;
 }

@@ -37,7 +37,7 @@ void 			kill_caretka(t_cor *cor)
 			remove_from_vec(&cor->process, index);
 			if (cor->flag.visual)
 			{
-				ft_printf("killed curs: %d pos %d\n", i, g);
+				//ft_printf("killed curs: %d pos %d\n", i, g);
 				//ft_printf("cor->cycle: %d\n", cor->cycle); //// Delete becouse unusage in original program
 			}
 			cor->count_cursors--;
@@ -71,8 +71,8 @@ int 			process_game_logic(t_cor *cor)
 			//ft_printf("---beg count_cursors: %d\n", cor->count_cursors);
 		}
 		check_flag(cor);
-		game_in_cycle(cor);
 		cor->cycle++;
+		game_in_cycle(cor);
 		cor->cycles_after_check++;
 		if (cor->flag.visual && cor->cycles_after_check == cor->cycles_to_die - 1)
 		{

@@ -36,19 +36,18 @@ void				g_fork(t_cor *cor, t_process *proc)
 	t_process 		*dubl;
 
 	arg1 = get_value(cor, proc, 0);
-	address = proc->pos + arg1 % IDX_MOD;
+	address = get_address(proc, arg1 % IDX_MOD, 0);
+	/*address = proc->pos + arg1 % IDX_MOD;
 	if (address < 0)
 	{
 		cor->valid_fork = 0;
 		return;
 	}
 	if (address > MEM_SIZE)
-		address = address % MEM_SIZE;
+		address = address % MEM_SIZE;*/
 	dubl = init_process(address, cor->process, proc->player_id);
 	dublicate_process(dubl, proc);
-	if (cor->cycle == 1752)
-		arg1 = arg1;
-	new_place(cor, dubl);
+//	new_place(cor, dubl);
 	dubl->id = ((t_process *)get_from_vec(&cor->process, 0))->id + 1;
 	emplace_front_vec(&cor->process, dubl);
 	cor->count_cursors++;

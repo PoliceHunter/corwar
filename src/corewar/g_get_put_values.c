@@ -51,13 +51,13 @@ int32_t			get_value(t_cor *cor, t_process *proc, int i)
 	else if (cor->buffer_codes[i] == IND_CODE)
 	{
 		num = byte_to_int32(cor, proc, i, cor->buffer_sizes[i]); //2 т.к. ИНД
-		if (num < 0)
-			return (MEM_SIZE + 1);///
+		///if (num < 0)
+		///	return (MEM_SIZE + 1);///
 		if (g_op[proc->real_op_code].op_code != 13 && g_op[proc->real_op_code].op_code != 14)
 			addr = get_address(proc, num % IDX_MOD, 0);
 		else
 			addr = get_address(proc, num, 0);
-		res = byte_to_int32_2(cor, addr, 4);
+		res = byte_to_int32_2(cor, addr, 4);///4
 	}
 	return (res);
 }
@@ -145,14 +145,14 @@ int32_t		byte_to_int32_2(t_cor *cor, uint32_t address, int size) //а что е�
 
 void			value32_to_map(t_cor *cor, int32_t value, uint32_t address, int size)
 {
-	int8_t		i;
+	uint32_t		i;
 	uint32_t	finaddr;///
 
 	i = 0;
 	while (size)
 	{
 		finaddr = address + size - 1;
-		if (finaddr > MEM_SIZE)
+		if (finaddr >= MEM_SIZE)
 			finaddr = finaddr % MEM_SIZE;
 		cor->map[finaddr] = (uint8_t)((value >> i) & 0xFF);
 		i += 8;
@@ -160,23 +160,65 @@ void			value32_to_map(t_cor *cor, int32_t value, uint32_t address, int size)
 	}
 }
 
-int32_t		get_address(t_process *process, int32_t step, int key)
+/*int32_t		get_address(t_process *process, int32_t step, int key)
 {
 	int32_t	address;
+	int32_t	delta;
 
-	address = process->pos + step;
-	if (address > MEM_SIZE)
+	delta = process->pos + step;
+	if (delta < 0)
+	{
+		if (delta < -MEM_SIZE)
+			delta = delta % MEM_SIZE;
+		address = MEM_SIZE + delta;
+	}
+	else
+		address = process->pos + step;
+	if (address >= MEM_SIZE)
 		address = address % MEM_SIZE;
 	if (key == 1)
 		process->cycle_to_exec = -1;
+	return (address);
+}*/
+
+int32_t		get_address(t_process *process, int32_t step, int key)
+{
+	int32_t	address;
+	int32_t	delta;
+
+	delta = process->pos + step;
+	if (delta < 0)
+	{
+		if (delta < -MEM_SIZE)
+			delta = delta % MEM_SIZE;
+		address = MEM_SIZE + delta;
+	}
+	else
+		address = process->pos + step;
+	if (address >= MEM_SIZE)
+		address = address % MEM_SIZE;
+	if (key == 1)
+		process->cycle_to_exec = 0;
+	process->next_step = 0;
 	return (address);
 }
 
 int32_t		get_address_map(int32_t address, int32_t step)
 {
 	int32_t	address2;
+	int32_t	delta;
 
-	address2 = address + step;
+	delta = address + step;
+	if (delta < 0)
+		address2 = MEM_SIZE + delta;
+
+	//else
+	//	address = process->pos + step;
+//
+	//if (step < 0 && (address < -step))
+	//	address2 = MEM_SIZE - (step - address);
+	else
+		address2 = address + step;
 	if (address2 > MEM_SIZE)
 		address2 = address2 % MEM_SIZE;
 	return (address2);

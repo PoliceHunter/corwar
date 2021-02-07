@@ -18,7 +18,7 @@
 
 void				aff(t_cor *cor, t_process *proc)
 {
-	uint8_t			regnum1;
+	int32_t			regnum1;
 	int32_t			value;
 
 	regnum1 = get_value(cor, proc, 0);

@@ -52,10 +52,11 @@ t_process *init_process(int32_t pos, t_vector process, int player_id)
 	i = 1;
 	proc = malloc(sizeof(t_process));
 	proc->carry = FALSE;
-	proc->cycle_to_exec = -1; //(gala) изменила
+	proc->cycle_to_exec = 0; //(gala) изменила
 	proc->live_last_cycle = -1; //(gala) изменила 17.01
 	proc->live_last_id = 0;
 	proc->pos = pos;
+	proc->op_step = 0;
 	proc->op_code = 0;
 	proc->real_op_code = 0;///
 	proc->id = process.size; // Указываем id процесса по размеру вектора

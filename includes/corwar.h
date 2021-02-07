@@ -82,6 +82,7 @@ typedef struct			s_process
 	uint8_t 			op_code; 				//Contains the operation code, at the time of moving to this position on the map
 	uint8_t				name_op;
 	int 				next_step; ///gala new
+	int 				op_step; ///gala new
 	//uint32_t			next_pos;
 	int					cycle_to_exec; 			// A counter containing the number of cycles that the carriage must wait before starting an operation.
 	int32_t				live_last_cycle; 		// Contain the cycle on which the last live operation was performed //gala убрала u

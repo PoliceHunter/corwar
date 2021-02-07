@@ -22,7 +22,7 @@ void				ld(t_cor *cor, t_process *proc)
 	// число из первого арг, если 1 рег - T_DIR, или число из адреса, если 2 рег - T_IND
 	//номер регистра каретки, который передается как 2 аргумент
 	//вычисленный адрес, если 2 рег - T_IND
-	uint8_t			reg2;
+	int32_t			reg2;
 	int32_t			value_to_reg;
 
 	value_to_reg = get_value(cor, proc, 0);

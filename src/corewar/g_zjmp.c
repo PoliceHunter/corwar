@@ -31,11 +31,12 @@ void				zjmp(t_cor *cor, t_process *proc)
 	//proc->carry = 1;
 	if (proc->carry == 1)
 	{
-		proc->pos = get_address(proc, jump, 1); //перепрыгиваем операцию
-		proc->cycle_to_exec = -1;
+		//proc->pos = get_address(proc, jump, 1); //перепрыгиваем операцию
+		proc->op_step = jump;
+		//proc->cycle_to_exec = -1;
 	}
-	else
+	/*else
 	{
 		proc->pos = get_address(proc, proc->next_step, 1);
-	}
+	}*//////
 }

@@ -20,22 +20,25 @@
 
 void				lfork(t_cor *cor, t_process *proc)
 {
-	int32_t		address;
+	int32_t			address;
 	t_process 		*dubl;
+	int32_t			arg1;
 
-	address = proc->pos + get_value(cor, proc, 0);
+	arg1 = get_value(cor, proc, 0);
+	address = get_address(proc, arg1, 0);
+	/*address = proc->pos + get_value(cor, proc, 0);
 	if (address < 0)
 	{
 		cor->valid_fork = 0;
 		return;
 	}
 	if (address > MEM_SIZE)
-		address = address % MEM_SIZE;
+		address = address % MEM_SIZE;*/
 	dubl = init_process(address, cor->process, proc->player_id);
 	dublicate_process(dubl, proc);
-	new_place(cor, dubl);
+//	new_place(cor, dubl);
 	dubl->id = ((t_process *)get_from_vec(&cor->process, 0))->id + 1;
-	push_front_vec(&cor->process, dubl);
+	emplace_front_vec(&cor->process, dubl);
 	cor->count_cursors++;
 	cor->valid_fork = 1;
 }

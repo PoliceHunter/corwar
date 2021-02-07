@@ -22,7 +22,7 @@ void				or(t_cor *cor, t_process *proc)
 	int32_t			value_to_reg; //результат побитового "xor", которое нужно записать в регистр (3 арг)
 	int32_t			value1;
 	int32_t			value2;
-	uint8_t			reg3;
+	int32_t			reg3;
 
 	reg3 = cor->map[get_address(proc, get_step(cor, proc, 2), 0)];
 

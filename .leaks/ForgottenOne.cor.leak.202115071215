@@ -1,0 +1,425 @@
+==90044== Memcheck, a memory error detector
+==90044== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==90044== Using Valgrind-3.17.0.GIT and LibVEX; rerun with -h for copyright info
+==90044== Command: ./corewar ../CORECHECKER/champs/bytecode/ForgottenOne.cor
+==90044== Parent PID: 90040
+==90044== 
+==90044== Invalid read of size 1
+==90044==    at 0x1000021DD: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a38 is 424,184 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid write of size 1
+==90044==    at 0x1000021EE: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a38 is 424,184 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid write of size 1
+==90044==    at 0x1000021F6: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a54 is 424,212 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid read of size 4
+==90044==    at 0x100002202: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a3c is 424,188 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid read of size 4
+==90044==    at 0x100002BF2: get_address (in ./corewar)
+==90044==    by 0x10000220E: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a34 is 424,180 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid read of size 4
+==90044==    at 0x100002C34: get_address (in ./corewar)
+==90044==    by 0x10000220E: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a34 is 424,180 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid write of size 4
+==90044==    at 0x100002C66: get_address (in ./corewar)
+==90044==    by 0x10000220E: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a40 is 424,192 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid write of size 4
+==90044==    at 0x100002213: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a34 is 424,180 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid read of size 4
+==90044==    at 0x10000227C: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a40 is 424,192 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid write of size 4
+==90044==    at 0x100001EBD: read_op (in ./corewar)
+==90044==    by 0x100001F7C: new_place (in ./corewar)
+==90044==    by 0x100002292: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a3c is 424,188 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid read of size 4
+==90044==    at 0x100001ECC: read_op (in ./corewar)
+==90044==    by 0x100001F7C: new_place (in ./corewar)
+==90044==    by 0x100002292: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a34 is 424,180 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid write of size 1
+==90044==    at 0x100001EDD: read_op (in ./corewar)
+==90044==    by 0x100001F7C: new_place (in ./corewar)
+==90044==    by 0x100002292: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a38 is 424,184 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid read of size 1
+==90044==    at 0x100001EE5: read_op (in ./corewar)
+==90044==    by 0x100001F7C: new_place (in ./corewar)
+==90044==    by 0x100002292: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a38 is 424,184 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid read of size 1
+==90044==    at 0x100001EF6: read_op (in ./corewar)
+==90044==    by 0x100001F7C: new_place (in ./corewar)
+==90044==    by 0x100002292: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a38 is 424,184 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== Invalid write of size 4
+==90044==    at 0x100001FB3: new_place (in ./corewar)
+==90044==    by 0x100002292: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Address 0x100935a40 is 424,192 bytes inside a block of size 425,984 free'd
+==90044==    at 0x10011CA0D: free (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x1000062E1: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044==  Block was alloc'd at
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100006283: expand_vec (in ./corewar)
+==90044==    by 0x100006029: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000019F3: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== 
+==90044== Process terminating with default action of signal 1 (SIGHUP)
+==90044==    at 0x100004CFB: ft_memmove_greater_post (in ./corewar)
+==90044==    by 0x100004EC9: ft_memmove_greater (in ./corewar)
+==90044==    by 0x100004F59: ft_memmove (in ./corewar)
+==90044==    by 0x100006065: emplace_front_vec (in ./corewar)
+==90044==    by 0x1000030BE: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== HEAP SUMMARY:
+==90044==     in use at exit: 45,514,079 bytes in 175,499 blocks
+==90044==   total heap usage: 175,566 allocs, 67 frees, 72,782,584 bytes allocated
+==90044== 
+==90044== 380,640 bytes in 3,660 blocks are definitely lost in loss record 44 of 46
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100003A26: init_process (in ./corewar)
+==90044==    by 0x100001996: g_fork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== 17,853,992 bytes in 171,673 blocks are definitely lost in loss record 45 of 46
+==90044==    at 0x10011C635: malloc (in /usr/local/Cellar/valgrind/HEAD-e0af3eb/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==90044==    by 0x100003A26: init_process (in ./corewar)
+==90044==    by 0x100003066: lfork (in ./corewar)
+==90044==    by 0x10000219A: game_in_cycle (in ./corewar)
+==90044==    by 0x100002483: process_game_logic (in ./corewar)
+==90044==    by 0x10000115B: start_game (in ./corewar)
+==90044==    by 0x10000131F: main (in ./corewar)
+==90044== 
+==90044== LEAK SUMMARY:
+==90044==    definitely lost: 18,234,632 bytes in 175,333 blocks
+==90044==    indirectly lost: 0 bytes in 0 blocks
+==90044==      possibly lost: 0 bytes in 0 blocks
+==90044==    still reachable: 27,268,015 bytes in 8 blocks
+==90044==         suppressed: 11,432 bytes in 158 blocks
+==90044== Reachable blocks (those to which a pointer was found) are not shown.
+==90044== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==90044== 
+==90044== For lists of detected and suppressed errors, rerun with: -s
+==90044== ERROR SUMMARY: 92 errors from 17 contexts (suppressed: 8 from 8)
