@@ -6,7 +6,7 @@
 /*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 04:25:06 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/29 19:53:31 by mjohnsie         ###   ########.fr       */
+/*   Updated: 2021/02/02 21:08:11 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@ void			update_types_code(int8_t *types_code, int8_t type, int arg_num)
 {
 	int		arg_code;
 
-	arg_code = (type == T_DIR ? DIR_CODE :
-			(type == T_REG ? REG_CODE : IND_CODE));
+	if (type == T_DIR)
+		arg_code = DIR_CODE;
+	else if (type == T_REG)
+		arg_code = REG_CODE;
+	else
+		arg_code = IND_CODE;
 	(*types_code) |= (arg_code << 2 * (4 - arg_num - 1));
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 12:36:17 by dcapers           #+#    #+#             */
-/*   Updated: 2021/02/01 22:19:45 by student          ###   ########.fr       */
+/*   Updated: 2021/02/02 21:00:45 by mjohnsie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,7 @@ void					dump_tokens(t_token *t);
 static void				free_tokens(t_token **list);
 static void				free_labels(t_label **list);
 static void				free_mentions(t_mention **list);
-void					free_asm_parser(t_parser **parser);
+void					free_asm(t_parser **parser);
 void					free_str(char **str);
-
-
 
 #endif

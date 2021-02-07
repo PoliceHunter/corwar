@@ -6,7 +6,7 @@
 /*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 11:21:41 by dcapers           #+#    #+#             */
-/*   Updated: 2021/02/01 21:10:00 by student          ###   ########.fr       */
+/*   Updated: 2021/02/03 22:53:44 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,5 @@ void				assemble(char *filename)
 	setup_mention_val(parser);
 	ft_putstr("MENTIONED\n");
 	buildup_binary(parser, filename);
-	ft_strdel(&filename);
-	free_asm_parser(&parser);
+	free_asm(&parser);
 }

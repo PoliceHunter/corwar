@@ -6,7 +6,7 @@
 /*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 13:40:59 by dcapers           #+#    #+#             */
-/*   Updated: 2021/02/01 22:30:04 by student          ###   ########.fr       */
+/*   Updated: 2021/02/03 22:59:51 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,11 @@
 #include "op.h"
 #include "libft.h"
 
-char			*take_lebel(char *s)
-{
-	char		**split;
-	int			len;
-
-	len = 0;
-	split = ft_strsplit(s, ',');
-	s = ft_strcpy(s, split[0]);
-	free_str(split);
-	return (s);
-}
-
 t_label			*find_label(t_label *label, char *name)
 {
 	while (label)
 	{
-		if (!ft_strcmp(take_lebel(label->name), take_lebel(name)))
+		if (!ft_strcmp(label->name, name))
 			return (label);
 		label = label->next;
 	}
@@ -69,7 +57,7 @@ t_label			*create_label(char *name, int32_t pos)
 
 	if (!(label = (t_label *)ft_memalloc(sizeof(t_label))))
 		kill_exe(ERR_LABEL_INIT);
-	label->name = name;
+	label->name = ft_strdup(name);
 	label->mention = NULL;
 	label->mention_last = NULL;
 	label->op_pos = pos;

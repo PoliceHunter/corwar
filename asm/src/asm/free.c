@@ -6,7 +6,7 @@
 /*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 11:21:41 by dcapers           #+#    #+#             */
-/*   Updated: 2021/02/01 22:20:30 by student          ###   ########.fr       */
+/*   Updated: 2021/02/03 22:53:33 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,12 @@ static void	free_labels(t_label **list)
 		current = current->next;
 		ft_strdel(&(delete->name));
 		free_mentions(&(delete->mention));
-        free_mentions(&(delete->mention_last));
 		ft_memdel((void **)&delete);
 	}
 	*list = NULL;
 }
 
-void		free_asm_parser(t_parser **parser)
+void		free_asm(t_parser **parser)
 {
 	free_tokens(&((*parser)->token));
 	ft_strdel(&((*parser)->name));

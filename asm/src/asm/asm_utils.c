@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 11:58:47 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/29 19:56:08 by mjohnsie         ###   ########.fr       */
+/*   Updated: 2021/02/03 22:56:15 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ char			*get_content(t_parser *parser, const char *row, unsigned start)
 	char	*content;
 	int		len;
 
-	len = parser->col - start;
 	if (row[start] == LABEL_CHAR)
 		start++;
+	len = parser->col - start;
 	if (!(content = ft_strsub(row, start, len)))
 		kill_exe(ERR_STR_INIT);
 	return (content);
