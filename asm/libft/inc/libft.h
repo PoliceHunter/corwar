@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 20:00:46 by tmyrcell          #+#    #+#             */
-/*   Updated: 2021/01/29 19:46:49 by mjohnsie         ###   ########.fr       */
+/*   Updated: 2021/02/08 23:02:17 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # define WSIZE sizeof(int)
 # undef WMASK
 # define WMASK (WSIZE - 1)
+# define FT_ULONG_MAX	((unsigned long)(~0L))
+# define FT_LONG_MAX	((long)(FT_ULONG_MAX >> 1))
 
 # include <unistd.h>
 # include <string.h>
@@ -35,6 +37,7 @@ struct	s_list
 };
 
 int		ft_atoi(const char *str);
+int		ft_atoi32(const char *str);
 void	ft_bzero(void *s, size_t n);
 int		ft_isprint(int c);
 int		ft_isascii(int c);

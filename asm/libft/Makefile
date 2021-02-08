@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmyrcell <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: student <student@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 20:28:46 by tmyrcell          #+#    #+#              #
-#    Updated: 2019/09/24 20:00:14 by tmyrcell         ###   ########.fr        #
+#    Updated: 2021/02/08 23:00:56 by student          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,7 @@ LIBFT =	ft_memset.c \
         insert_sort_vector.c \
         push_pop_vector.c \
         ft_strjoin_by.c \
+		ft_atoi32.c \
         
 FT_PRINTF = 		ad_0_after0x.c \
              		ad_0_aftersign.c \

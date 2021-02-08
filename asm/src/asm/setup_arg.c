@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjohnsie <mjohnsie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 01:48:45 by dcapers           #+#    #+#             */
-/*   Updated: 2021/01/29 20:06:13 by mjohnsie         ###   ########.fr       */
+/*   Updated: 2021/02/08 23:05:19 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void			setup_num(t_parser *p, t_token *curr, t_op *op)
 	int32_t		val;
 
 	size = curr->type == INDIRECT ? IND_SIZE : op->dir_size;
-	val = size == 2 ? (int16_t)ft_atoi(curr->content) :
-						(int32_t)ft_atoi(curr->content);
+	val = size == 2 ? (int16_t)ft_atoi32(curr->content) :
+						(int32_t)ft_atoi32(curr->content);
 	int32_to_bytecode(p->code, p->pos, val, size);
 	p->pos += size;
 }
